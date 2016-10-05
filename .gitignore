@@ -1,7 +1,11 @@
-# Unity generated
-
-Temp/
-Library/
+# Unity files
+Library
+Temp
+*.pdb
+*.pidb
+*.unityproj
+*.sln
+*.userprefs
 
 # Windows image file caches
 Thumbs.db
