@@ -29,6 +29,10 @@ public class DebugAuthoringTools : MonoBehaviour {
         pt.setMyUI(df);//적용할 UI임...
 
 
+		ScenarioModuleTemplate myScenario = new ScenarioModuleTemplate ();
+
+
+
 
 
 
@@ -48,16 +52,7 @@ public class DebugAuthoringTools : MonoBehaviour {
         //object 설정
         task.addObject("Approach_to_Object",GameObject.Find("Wake"));
 
-        
-        pt.insertTask("", task);        
-
-
-
-
-
-
-
-        
+        pt.insertTask("", task);      
         
 		//fire Report
 
@@ -75,7 +70,7 @@ public class DebugAuthoringTools : MonoBehaviour {
 				"중형",
 				"소형"
 			}
-		};
+		}; 
 
 		int[] trueAns = new int[] {0,2,1};
 
@@ -93,7 +88,6 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task2.addProperty ("Move_Button_Info", "z");
 
 		task2.addObject ("Approach_to_Object", GameObject.Find ("ShipPhone"));
-
 
 		pt.insertTask ("FireNotice", task2);
 

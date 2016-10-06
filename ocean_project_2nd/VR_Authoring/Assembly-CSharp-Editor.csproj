@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{03D25F26-B4D9-F37F-40BA-AD9DD478DDF9}</ProjectGuid>
+    <ProjectGuid>{9A469BFC-9549-420C-E53D-F60AD37A0101}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -122,10 +122,10 @@
  <HintPath>D:/unity/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll</HintPath>
  </Reference>
  <Reference Include="Photon3Unity3D">
- <HintPath>D:/1mythings/study/research/ocean_project/2차년도/저작도구 Unity 테스트/unity extension 관련/unityExtensionTest/Assets/Plugins/Photon3Unity3D.dll</HintPath>
+ <HintPath>D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Plugins/Photon3Unity3D.dll</HintPath>
  </Reference>
  <Reference Include="websocket-sharp">
- <HintPath>D:/1mythings/study/research/ocean_project/2차년도/저작도구 Unity 테스트/unity extension 관련/unityExtensionTest/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
+ <HintPath>D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Plugins/WebSocket/websocket-sharp.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>D:/unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -136,11 +136,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{773D79EE-02EA-69AA-43CC-74DD97835958}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{80A11C6F-5B33-3C73-30B6-BF4F4E2EBCE9}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{F254660E-27C4-1995-028B-5BD374FC57C1}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{E6524F11-3231-0B08-82CD-B6F0019B1BE9}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript.unityproj">
-      <Project>{497489D5-0AE9-9862-F1FF-08780B0DA1DC}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
+      <Project>{F8306C6F-E36D-1E6F-EDE0-1B8C35C0799B}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
