@@ -15,7 +15,7 @@ public class ApproachObjState : StateModuleTemplate {
 
 	public ApproachObjState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
 	{
-		
+		myStateName = "특정 Obj에 다가가기";
 	}
 
 
@@ -38,7 +38,7 @@ public class ApproachObjState : StateModuleTemplate {
 
     public override void Init()
     {
-		myStateName = "특정 Obj에 다가가기";
+		
 
         base.Init();
 

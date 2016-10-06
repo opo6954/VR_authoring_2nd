@@ -1,0 +1,12 @@
+<Scenario name="Fire" difficulty="13" Time="111.303">
+  <Task name="FireNotice">
+    <State name="특정 Obj에 다가가기">
+      <Properties Patrol_Contents="선박 내부를 순찰하세요" />
+      <Objects Approach_to_Object="Wake" />
+    </State>
+    <State name="화면이 멈춘 상태에서 특정 키 누르기">
+      <Properties Notice_Contents="화재를 발견했습니다." Guide_Contents="X버튼: 다음 task 진행" Select_Button_Info="x" />
+      <Objects />
+    </State>
+  </Task>
+</Scenario>

@@ -39,44 +39,41 @@ public class FireNotice : TaskModuleTemplate  {
         //일단 첫 task니까 설정
     }
 
+
     
+	public override	void readyTask()
+	{
+		
+
+		myUIInfo.loadUIPrefab("DefaultForm");
 
 
-    public override void TaskStart()
-    {
-
-        
-        base.TaskStart();
-
-        myUIInfo.loadUIPrefab("DefaultForm");
-        
-
-        defaultForm = myUIInfo.getUIPrefab("DefaultForm");
+		defaultForm = myUIInfo.getUIPrefab("DefaultForm");
 
 
 
-        //defaultForm.GetComponent<DefaultForm>().changeCurrTaskInfo(getProperty<string>("Patrol_Contents"));
+		//defaultForm.GetComponent<DefaultForm>().changeCurrTaskInfo(getProperty<string>("Patrol_Contents"));
 
-
-
-        
-
-        //아마 추후에 이 부분도 저작할 수 있을 듯 합니다
+		//아마 추후에 이 부분도 저작할 수 있을 듯 합니다
 		ApproachObjState a = new ApproachObjState(this, defaultForm);
 		a.setProperty (getProperties ());
 		a.setObject (getObjects ());
 
 		// ,getProperty<string>("Patrol_Contents"), getObject<GameObject>("WakeUpObject"));
-        ButtonPressState b = new ButtonPressState(this, defaultForm);
+		ButtonPressState b = new ButtonPressState(this, defaultForm);
 		b.setProperty (getProperties ());
 		b.setObject (getObjects ());
 
-         
 
-        //myStateList에 차례대로 넣습니다.
-        myStateList.Add(a);
-        myStateList.Add(b);
-        
+
+		//myStateList에 차례대로 넣습니다.
+		myStateList.Add(a);
+		myStateList.Add(b);
+	}
+
+    public override void TaskStart()
+    {
+		base.TaskStart();
     }
 
 

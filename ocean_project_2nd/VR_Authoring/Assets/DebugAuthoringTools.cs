@@ -13,7 +13,9 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 	PlayerTemplate pt =  null;
 
-
+	/*
+	 * dictionary 순회 가능, keys형식의 list로 주는
+	 * */
 
 
 
@@ -27,6 +29,17 @@ public class DebugAuthoringTools : MonoBehaviour {
 
         df.loadUIPrefab("BackgroundForm");//global UI라서 걍 넣음
         pt.setMyUI(df);//적용할 UI임...
+
+
+
+
+		//xml 저장 check
+		ScenarioModuleTemplate smt = new ScenarioModuleTemplate();
+		smt.setMyDifficulty (13);
+		smt.setMyPeriodTime (111.303);
+		smt.setMyScenarioName ("Fire");
+
+
 
 
 
@@ -48,15 +61,23 @@ public class DebugAuthoringTools : MonoBehaviour {
         //object 설정
         task.addObject("Approach_to_Object",GameObject.Find("Wake"));
 
+		task.setMyUI (pt.myUIInfo);
+		task.setMyPlayer (pt);
+
+		//pt.insertTask("", task);        
+
+
+		task.readyTask ();
+
         
-        pt.insertTask("", task);        
+        
+
+
+		smt.taskList.Add (task);
 
 
 
-
-
-
-
+		smt.saveScenario2Xml ();
         
         
 		//fire Report
@@ -164,7 +185,9 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 
 
-		pt.beginFirstTask ();
+		//pt.beginFirstTask ();
+
+
 
 
 

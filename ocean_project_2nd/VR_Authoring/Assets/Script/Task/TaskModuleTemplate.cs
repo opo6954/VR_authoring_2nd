@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 
 //module은 항상 1인칭 플레이어한테 붙도록 하자
@@ -16,6 +17,9 @@ public class TaskModuleTemplate : MonoBehaviour {
     protected UIModuleTemplate myUIInfo;//선택된 UI 종류
     
     public string myTaskName;
+
+	private bool isPropertyEditEnd = false;
+	private bool isObjectEditEnd = false;
 
     
     private bool isTaskStart;
@@ -42,10 +46,14 @@ public class TaskModuleTemplate : MonoBehaviour {
 	public string[] objectsList;
 
     protected List<StateModuleTemplate> myStateList = new List<StateModuleTemplate>();
-    
 
     //property관련 함수
+	//Property, Obj 설정 함수
 
+	public virtual void readyTask()
+	{
+		Debug.Log ("ready for task");
+	}
 
     public void addProperty(string propertyName, object o)
     {
@@ -152,16 +160,28 @@ public class TaskModuleTemplate : MonoBehaviour {
         TaskInit();
 	}
 
-	//task xml 저장
 
-	public virtual void savexml()
+	//task xml 저장
+	//document에 붙여라
+	public void saveTaskXml(XmlDocument document, XmlElement parent)
 	{
-		Debug.Log ("XML 포맷으로 저장");
+		XmlElement element = document.CreateElement ("Task");
+		element.SetAttribute ("name", myTaskName);
+		parent.AppendChild (element);
+
+		Debug.Log (myStateList.Count);
+
+		for (int i = 0; i < myStateList.Count; i++) {
+			myStateList [i].saveStateXml (document,element);
+		}
+
+
+		Debug.Log ("XML 포맷으로 저장해라");
 	}
 
 	//task xml 불러오기
 
-	public virtual void loadxml()
+	public void loadTaskXml()
 	{		
 		Debug.Log ("XML 포맷 불러오기");
 	}

@@ -7,7 +7,7 @@ public class PlayerTemplate : MonoBehaviour {
     //task가 순서대로 실행됩니다
     private Dictionary<string, TaskModuleTemplate> taskList;
     GameObject canvas_ui;
-    UIModuleTemplate myUIInfo;
+    public UIModuleTemplate myUIInfo;
 
     public bool isJoystick = false;
     public bool isLeapMotion = false;

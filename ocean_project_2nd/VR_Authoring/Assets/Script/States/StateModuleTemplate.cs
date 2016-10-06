@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 /*
  * State module을 위한 template, State는 UIForm과 1대1로 매칭될 수 있습니다. 
@@ -128,6 +129,36 @@ public class StateModuleTemplate {
         myPosition = _myPos;
     }
 
+	//XML 저장 및 로드 함수
+
+	public void saveStateXml(XmlDocument document, XmlElement parent)
+	{
+		//state에서 저장할 부분:
+		XmlElement element = document.CreateElement("State");
+		XmlElement propElement = document.CreateElement ("Properties");
+		XmlElement objElement = document.CreateElement ("Objects");
+
+		element.SetAttribute ("name", myStateName);
+
+		foreach (KeyValuePair<string, object> kv in propertyGroup) {
+			propElement.SetAttribute (kv.Key, kv.Value.ToString ());			
+		}
+
+		foreach (KeyValuePair<string, object> kv in objectGroup) {
+			//obj는 그 obj의 gameobject의 이름으로 저장하자, 이름은 중복하면 안된다는 가정을 하자
+			objElement.SetAttribute (kv.Key, getObject<GameObject> (kv.Key).name);
+		}
+
+		element.AppendChild (propElement);
+		element.AppendChild (objElement);
+		parent.AppendChild (element);
+
+		Debug.Log ("State를 xml로 저장하는 부분");
+	}
+	public void loadStateXml()
+	{
+		Debug.Log ("State를 xml로 저장하는 부분");
+	}
 
 
 

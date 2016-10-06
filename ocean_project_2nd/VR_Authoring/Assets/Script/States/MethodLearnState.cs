@@ -44,7 +44,7 @@ public class MethodLearnState : StateModuleTemplate {
 
 	public MethodLearnState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
 	{
-
+		myStateName = "Method 숙지 - 3D 모델 인식 및 영상 교육";
 	}
 
 	public override void setProperty (System.Collections.Generic.Dictionary<string, object> properties)
@@ -124,7 +124,7 @@ public class MethodLearnState : StateModuleTemplate {
 
 	public override void Init ()
 	{
-		myStateName = "Method 숙지 - 3D 모델 인식 및 영상 교육";
+		
 		base.Init ();
 
 
