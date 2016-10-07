@@ -244,7 +244,7 @@ public class StateModuleTemplate {
 		element.AppendChild (objElement);
 		parent.AppendChild (element);
 
-		Debug.Log ("State를 xml로 저장하는 부분");
+
 	}
 	public void loadStateXml()
 	{

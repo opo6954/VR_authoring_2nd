@@ -38,7 +38,7 @@ public class UIModuleTemplate : MonoBehaviour {
     {
         initUI();
 
-		Debug.Log ("Count?: " + uiFormList.Count.ToString());
+
 
         string UImoduledirectory = "UserInterface/" + myUIFormName;
 

@@ -199,6 +199,8 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 		smt.saveScenario2Xml ();
 
+		smt.loadScenariofromXml ("fire");
+
 
 		//pt.beginFirstTask ();
 

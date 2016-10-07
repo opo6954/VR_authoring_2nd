@@ -161,6 +161,7 @@
      <Compile Include="Assets\Script\Task\FireNotice\FireNotice.cs" />
      <Compile Include="Assets\Script\Task\FireReport\FireReport.cs" />
      <Compile Include="Assets\Script\Task\TaskModuleTemplate.cs" />
+     <Compile Include="Assets\Script\XmlReader\XmlReader.cs" />
      <Compile Include="Assets\TurnTheGameOn\Arrow WayPointer\Scripts\STK_Waypoint.cs" />
      <Compile Include="Assets\TurnTheGameOn\Arrow WayPointer\Scripts\STK_WaypointController.cs" />
      <Compile Include="Assets\Ultra_Real_Fire_Effects\Shared\Scripts\HideMouse.cs" />

@@ -171,14 +171,13 @@ public class TaskModuleTemplate : MonoBehaviour {
 		element.SetAttribute ("type", myTaskType);
 		parent.AppendChild (element);
 
-		Debug.Log (myStateList.Count);
+
 
 		for (int i = 0; i < myStateList.Count; i++) {
 			myStateList [i].saveStateXml (document,element);
 		}
 
 
-		Debug.Log ("XML 포맷으로 저장해라");
 	}
 
 	//task xml 불러오기

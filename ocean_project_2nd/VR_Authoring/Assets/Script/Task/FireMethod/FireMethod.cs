@@ -85,6 +85,7 @@ public class FireMethod : TaskModuleTemplate {
 		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
 		methodForm = myUIInfo.getUIPrefab ("MethodForm");
 
+		//firemethod task만의 고유한 부분이니까 이렇게 hard coding해도 됨... 근데 state로 task를 저작하는 단계로 진입하면 힘들듯...
 		myStateList[0].setUI(defaultForm);
 		myStateList [1].setUI (defaultForm);
 		myStateList [2].setUI (methodForm);

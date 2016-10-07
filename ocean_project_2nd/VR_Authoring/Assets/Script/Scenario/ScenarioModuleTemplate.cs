@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
-
+//scenario 자체는 걍 module만 있고 xml로만 저장할 수 있도록 하자
 public class ScenarioModuleTemplate {
 	
 	//task seq가 저장된 task list
@@ -74,7 +74,37 @@ public class ScenarioModuleTemplate {
 	//xml로터 불러올 시 task단 역시 제대로 불러와야 한다
 	public void loadScenariofromXml(string scenarioName)
 	{
-		
+		Debug.Log ("load xml");
+		XmlDocument xmldoc = new XmlDocument ();
+		xmldoc.Load (scenarioName + ".xml");
+
+		XmlElement itemListElement = xmldoc ["Scenario"];
+		//scenario단에서의 정보
+		setMyPeriodTime(double.Parse(itemListElement.GetAttribute ("Time")));
+		setMyDifficulty(int.Parse(itemListElement.GetAttribute ("difficulty")));
+		setMyScenarioName(itemListElement.GetAttribute ("name"));
+
+		XmlNodeList nodeList = xmldoc.GetElementsByTagName ("Task");
+
+		foreach (XmlNode xnode in nodeList) {
+
+
+			XmlNodeList xnodeChList = xnode.ChildNodes;
+
+			foreach (XmlNode xnodeCh in xnodeChList) {
+
+				XmlNodeList xnodeChStateList = xnodeCh.ChildNodes;
+
+				foreach (XmlNode xnodeChState in xnodeChStateList) {
+					XmlAttributeCollection xac = xnodeChState.Attributes;
+
+					foreach (XmlAttribute xa in xac) {
+						Debug.Log (xa.Name + ": " + xa.InnerText);
+					}
+
+				}
+			}
+		}
 	}
 
 
