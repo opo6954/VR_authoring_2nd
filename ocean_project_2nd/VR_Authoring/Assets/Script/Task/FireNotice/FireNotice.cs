@@ -22,6 +22,11 @@ public class FireNotice : TaskModuleTemplate  {
 
 	GameObject defaultForm=null;
     
+	public FireNotice()
+	{
+		myTaskType = "FireNotice";
+	}
+
 
 
     public override void TaskInit()
@@ -55,12 +60,12 @@ public class FireNotice : TaskModuleTemplate  {
 		//defaultForm.GetComponent<DefaultForm>().changeCurrTaskInfo(getProperty<string>("Patrol_Contents"));
 
 		//아마 추후에 이 부분도 저작할 수 있을 듯 합니다
-		ApproachObjState a = new ApproachObjState(this, defaultForm);
+		ApproachObjState a = new ApproachObjState(this);
 		a.setProperty (getProperties ());
 		a.setObject (getObjects ());
 
 		// ,getProperty<string>("Patrol_Contents"), getObject<GameObject>("WakeUpObject"));
-		ButtonPressState b = new ButtonPressState(this, defaultForm);
+		ButtonPressState b = new ButtonPressState(this);
 		b.setProperty (getProperties ());
 		b.setObject (getObjects ());
 
@@ -74,6 +79,8 @@ public class FireNotice : TaskModuleTemplate  {
     public override void TaskStart()
     {
 		base.TaskStart();
+		myStateList [0].setUI (defaultForm);
+		myStateList [1].setUI (defaultForm);
     }
 
 

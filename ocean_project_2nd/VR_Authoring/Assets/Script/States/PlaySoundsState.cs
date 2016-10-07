@@ -14,9 +14,9 @@ using System.Collections;
 public class PlaySoundsState : StateModuleTemplate {
 
 
-	public PlaySoundsState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
+	public PlaySoundsState(TaskModuleTemplate _myModule) : base(_myModule)
 	{
-		myStateName = "소리 파일 재생";
+		myStateName = "PlaySoundsState";
 	}
 
 

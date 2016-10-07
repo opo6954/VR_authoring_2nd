@@ -37,9 +37,9 @@ public class QuestioningState : StateModuleTemplate {
 	string moveButton="";
 
 
-	public QuestioningState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
+	public QuestioningState(TaskModuleTemplate _myModule) : base(_myModule)
 	{
-		myStateName = "문제 풀기 State";
+		myStateName = "QuestioningState";
 	}
 
 

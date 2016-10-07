@@ -33,6 +33,10 @@ public class FireMethod : TaskModuleTemplate {
 	GameObject defaultForm = null;
 
 	GameObject methodForm = null;
+	public FireMethod()
+	{
+		myTaskType = "FireMethod";
+	}
 
 	public override void TaskInit ()
 	{
@@ -48,6 +52,29 @@ public class FireMethod : TaskModuleTemplate {
 		base.TaskProcess ();
 	}
 
+	public override void readyTask ()
+	{
+		
+		ApproachObjState a = new ApproachObjState (this);
+		a.setProperty (getProperties ());
+		a.setObject (getObjects ());
+
+		ButtonPressState b = new ButtonPressState (this);
+		b.setProperty (getProperties ());
+		b.setObject (getObjects ());
+
+
+		MethodLearnState c = new MethodLearnState (this);
+		c.setProperty (getProperties ());
+		c.setObject (getObjects ());
+
+		myStateList.Add (a); 
+		myStateList.Add (b);
+		myStateList.Add (c);
+
+
+	}
+
 	public override void TaskStart ()
 	{
 		base.TaskStart ();
@@ -58,36 +85,13 @@ public class FireMethod : TaskModuleTemplate {
 		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
 		methodForm = myUIInfo.getUIPrefab ("MethodForm");
 
-		ApproachObjState a = new ApproachObjState (this, defaultForm);
-		a.setProperty (getProperties ());
-		a.setObject (getObjects ());
-
-		ButtonPressState b = new ButtonPressState (this, defaultForm);
-		b.setProperty (getProperties ());
-		b.setObject (getObjects ());
-
-
-		MethodLearnState c = new MethodLearnState (this, methodForm);
-		c.setProperty (getProperties ());
-		c.setObject (getObjects ());
-
-
-
-
-
-
-		myStateList.Add (a); 
-		myStateList.Add (b);
-		myStateList.Add (c);
-
+		myStateList[0].setUI(defaultForm);
+		myStateList [1].setUI (defaultForm);
+		myStateList [2].setUI (methodForm);
 
 		for (int i = 0; i < myStateList.Count; i++) {
 			myStateList [i].turnOffMyUI ();
 		}
-
-
-
-
 	}
 
 

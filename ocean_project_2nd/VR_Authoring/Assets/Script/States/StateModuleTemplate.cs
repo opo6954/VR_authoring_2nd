@@ -133,6 +133,7 @@ public class StateModuleTemplate {
 
 	public void saveStateXml(XmlDocument document, XmlElement parent)
 	{
+		//state 종류도 기억해야 할듯
 		//state에서 저장할 부분:
 		XmlElement element = document.CreateElement("State");
 		XmlElement propElement = document.CreateElement ("Properties");
@@ -141,7 +142,97 @@ public class StateModuleTemplate {
 		element.SetAttribute ("name", myStateName);
 
 		foreach (KeyValuePair<string, object> kv in propertyGroup) {
-			propElement.SetAttribute (kv.Key, kv.Value.ToString ());			
+
+			string typeName = kv.Value.ToString ();
+
+			if (typeName.Length - 2 > 0) {
+				string test = typeName.Substring (typeName.IndexOf(".")+1);
+
+				//1차원 배열
+				if (test.LastIndexOf ("[") == test.IndexOf ("[")) {
+					if (test.Contains ("String")) {
+						string[] strArray = (string[])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < strArray.Length; i++) {
+							if (i == 0)
+								compactStr = strArray [i];
+							else
+								compactStr += "," + strArray [i];
+						}
+
+						propElement.SetAttribute (kv.Key, compactStr);
+					} else if (test.Contains ("Int32")) {
+						int[] intArray = (int[])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < intArray.Length; i++) {
+							if (i == 0)
+								compactStr = intArray [i].ToString();
+							else
+								compactStr += "," + intArray [i].ToString();
+						}
+						propElement.SetAttribute (kv.Key, compactStr);
+					}
+				}
+				//2차원 배열
+				else if (test.LastIndexOf("[") > test.IndexOf("[")){
+					if (test.Contains ("String")) {
+						string[][] strArray = (string[][])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < strArray.GetLength (0); i++) {
+							
+							for (int j = 0; j < strArray [i].GetLength (0); j++) {
+								if (i == 0 && j == 0)
+									compactStr = strArray [i] [j];
+								else
+									compactStr += "," + strArray [i] [j];
+							}
+							compactStr = compactStr + " /";
+						}
+
+						propElement.SetAttribute (kv.Key, compactStr);
+
+					} else if (test.Contains ("Int32")) {
+						int[][] intArray = (int[][])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < intArray.GetLength (0); i++) {
+
+							for (int j = 0; j < intArray [i].GetLength (0); j++) {
+								if (i == 0 && j == 0)
+									compactStr = intArray [i] [j].ToString();
+								else
+									compactStr += "," + intArray [i] [j].ToString();
+							}
+							compactStr = compactStr + " /";
+						}
+
+						propElement.SetAttribute (kv.Key, compactStr);
+					}
+
+					
+				} else {
+					//[] 안 들어 있을시 array 아닌 걍 string이므로 그대로 저장하기
+					propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
+				}
+			} else {
+				propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
+			}
+
+			//propElement.SetAttribute (kv.Key, kv.Value.ToString ());			
+
+
+
+
+
+
+
 		}
 
 		foreach (KeyValuePair<string, object> kv in objectGroup) {
@@ -253,13 +344,14 @@ public class StateModuleTemplate {
 	/// 
 	//생성자
 
-	public StateModuleTemplate(TaskModuleTemplate _myModule, GameObject _UI)
+	public StateModuleTemplate(TaskModuleTemplate _myModule)
 	{
 		setMyModule(_myModule);
 		setMyPosition(myModuleInfo.getMyPosition());
 		setMyPlayer(myModuleInfo.getMyPlayer());
-		setUI(_UI);
 	}
+
+
 
 
 	// Update is called once per frame

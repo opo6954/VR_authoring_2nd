@@ -1,12 +1,50 @@
 <Scenario name="Fire" difficulty="13" Time="111.303">
-  <Task name="FireNotice">
-    <State name="특정 Obj에 다가가기">
-      <Properties Patrol_Contents="선박 내부를 순찰하세요" />
+  <Task name="FireNotice" type="FireNotice">
+    <State name="ApproachObjState">
+      <Properties />
       <Objects Approach_to_Object="Wake" />
     </State>
-    <State name="화면이 멈춘 상태에서 특정 키 누르기">
-      <Properties Notice_Contents="화재를 발견했습니다." Guide_Contents="X버튼: 다음 task 진행" Select_Button_Info="x" />
+    <State name="ButtonPressState">
+      <Properties Select_Button_Info="x" />
       <Objects />
+    </State>
+  </Task>
+  <Task name="FireReport" type="FireReport">
+    <State name="ApproachObjState">
+      <Properties />
+      <Objects Approach_to_Object="ShipPhone" />
+    </State>
+    <State name="QuestioningState">
+      <Properties Report_Count="3" Report_Question="화재 장소,화재 종류,화재 크기" Report_Answer="기관실,선장실,객실A,객실B /,일반화재,유류화재,전기화재 /,대형,중형,소형 /" Report_TrueAns="0,2,1" Select_Button_Info="x" Move_Button_Info="z" />
+      <Objects />
+    </State>
+  </Task>
+  <Task name="FireAlarm" type="FireAlarm">
+    <State name="ApproachObjState">
+      <Properties />
+      <Objects Approach_to_Object="FireAlarm" />
+    </State>
+    <State name="ButtonPressState">
+      <Properties Select_Button_Info="x" />
+      <Objects />
+    </State>
+    <State name="PlaySoundsState">
+      <Properties />
+      <Objects Sound_from_Object="FireAlarm" />
+    </State>
+  </Task>
+  <Task name="FireMethod" type="FireMethod">
+    <State name="ApproachObjState">
+      <Properties Approach_Distance="3" Approach_Angle="3" />
+      <Objects Approach_to_Object="FireExtinguisher_Segment" />
+    </State>
+    <State name="ButtonPressState">
+      <Properties Select_Button_Info="x" />
+      <Objects />
+    </State>
+    <State name="MethodLearnState">
+      <Properties PartCount="4" VideoName="4,2,3,1" PartAnswer="3,1,2,0" Select_Button_Info="x" Skip_Button_Info="z" />
+      <Objects Interaction_to_Object="FireExtinguisher_Segment" />
     </State>
   </Task>
 </Scenario>

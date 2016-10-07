@@ -13,9 +13,9 @@ using System.Collections.Generic;
 
 public class ApproachObjState : StateModuleTemplate {
 
-	public ApproachObjState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
+	public ApproachObjState(TaskModuleTemplate _myModule) : base(_myModule)
 	{
-		myStateName = "특정 Obj에 다가가기";
+		myStateName = "ApproachObjState";
 	}
 
 

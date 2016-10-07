@@ -16,7 +16,8 @@ public class TaskModuleTemplate : MonoBehaviour {
     protected PlayerTemplate myPlayerInfo;//선택된 player 종류
     protected UIModuleTemplate myUIInfo;//선택된 UI 종류
     
-    public string myTaskName;
+    public string myTaskName;//customized name
+	public string myTaskType;//type of task: pre-defined
 
 	private bool isPropertyEditEnd = false;
 	private bool isObjectEditEnd = false;
@@ -167,6 +168,7 @@ public class TaskModuleTemplate : MonoBehaviour {
 	{
 		XmlElement element = document.CreateElement ("Task");
 		element.SetAttribute ("name", myTaskName);
+		element.SetAttribute ("type", myTaskType);
 		parent.AppendChild (element);
 
 		Debug.Log (myStateList.Count);

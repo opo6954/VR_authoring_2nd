@@ -77,7 +77,7 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 
 
-		smt.saveScenario2Xml ();
+
         
         
 		//fire Report
@@ -115,10 +115,12 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 		task2.addObject ("Approach_to_Object", GameObject.Find ("ShipPhone"));
 
+		task2.setMyUI (pt.myUIInfo);
+		task2.setMyPlayer (pt);
 
-		pt.insertTask ("FireNotice", task2);
+		task2.readyTask ();
 
-
+		smt.taskList.Add (task2);
 
 
 		//fire Alarm
@@ -140,7 +142,13 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task3.addObject ("Sound_from_Object", GameObject.Find ("FireAlarm"));
 		task3.addObject ("Approach_to_Object", GameObject.Find ("FireAlarm"));
 
-		pt.insertTask ("FireReport", task3);
+		task3.setMyUI (pt.myUIInfo);
+		task3.setMyPlayer (pt);
+
+		task3.readyTask ();
+		smt.taskList.Add (task3);
+
+
 
 
 
@@ -177,12 +185,19 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task4.addObject ("Approach_to_Object", GameObject.Find ("FireExtinguisher_Segment"));
 		task4.addObject ("Interaction_to_Object", GameObject.Find ("FireExtinguisher_Segment"));
 
-		pt.insertTask ("FireAlarm", task4);
+		task4.setMyUI (pt.myUIInfo);
+		task4.setMyPlayer (pt);
+
+		task4.readyTask ();
+
+		smt.taskList.Add (task4);
 
 
 
 
 
+
+		smt.saveScenario2Xml ();
 
 
 		//pt.beginFirstTask ();
