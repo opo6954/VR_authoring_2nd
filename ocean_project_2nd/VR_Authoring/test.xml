@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Root>
+  <Scenario difficulty="2" Time="450">
+    <Task name="FireNotice" type="FireNotice">
+      <State name="ApproachObjState">
+        <Properties Patrol_Contents="선박 내부를 순찰하세요" />
+        <Objects Approach_to_Object="Wake" />
+      </State>
+      <State name="ButtonPressState">
+        <Properties Notice_Contents="화재를 발견했습니다." Guide_Contents="X버튼: 다음 task 진행" Select_Button_Info="x" />
+      </State>
+    </Task>
+    <Task name="FireReport" type="FireReport">
+      <State name="ApproachObjState">
+        <Properties Patrol_Contents="선박 전화기를 통해 화재 내용을 보고하세요pojkl" />
+        <Objects Approach_to_Object="ShipPhone" />
+      </State>
+      <State name="QuestioningState">
+        <Properties Report_Count="3" Report_Question="화재 장소,화재 종류,화재 크기" Report_Answer="기관실,선장실,객실A,객실B /,일반화재,유류화재,전기화재 /,대형,중형,소형 /" Report_TrueAns="0,2,1" Select_Button_Info="x" Move_Button_Info="z" />
+      </State>
+    </Task>
+    <Task name="FireAlarm" type="FireAlarm">
+      <State name="ApproachObjState">
+        <Properties Patrol_Contents="화재 경보기를 찾으세요" />
+        <Objects Approach_to_Object="FireAlarm" />
+      </State>
+      <State name="ButtonPressState">
+        <Properties Notice_Contents="화재 경보기를 발견했습니다." Guide_Contents="x버튼: 화재 경보기 동작" Select_Button_Info="x" />
+      </State>
+      <State name="PlaySoundsState">
+        <Properties SoundName="Whistling" Loop="True" />
+        <Objects Sound_from_Object="FireAlarm" />
+      </State>
+    </Task>
+  </Scenario>
+  <Scenario notadded="notadded" />
+  <Scenario notadded="notadded" />
+</Root>

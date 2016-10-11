@@ -2,8 +2,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Text;
 
-public class MainWindow : EditorWindow {
+public class MainWindow : EditorWindow
+{
 
     public static MainWindow window;
 
@@ -11,15 +14,19 @@ public class MainWindow : EditorWindow {
     //private static Texture2D tex;
     private static Dictionary<string, Texture2D> tex_dict;
 
-    public int tab = 0;
-
+    private int tab = 0, tab2 = 0, tab3_1 = 0, tab3_2 = 0;
+    private int selected_scene_in_task_tab = 0;
 
     private bool doRepaint = false;
-    private List<DataObject> DataObjects = new List<DataObject>();
+    private List<Scenario_object> scenario_list = new List<Scenario_object>();
+    //private List<Task_object> task_list = new List<Task_object>();
 
-    [MenuItem ("Tools/marine_editor")]
+    // [TODO] state는 그냥 task에 정보를 포함 시켜 버리는 쪽으로 생각 해보자.
+    private List<State_object> state_list = new List<State_object>();
 
-    /* 윈도우 열릴 때 실행 되는 부분, resource 로딩은 여기에 밀어 넣는다. */
+    [MenuItem("Tools/marine_editor")]
+
+    /* 윈도우 열릴 때 실행 되는 부분, 모든 resource 로딩은 여기에 밀어 넣는다. */
     public static void OpenWindow()
     {
         window = (MainWindow)EditorWindow.GetWindowWithRect(typeof(MainWindow), new Rect(0, 0, 1400, 900)); // create window
@@ -46,23 +53,40 @@ public class MainWindow : EditorWindow {
     }
 
     // Update is called once per frame
-	void Update () {
-	    if (doRepaint)
+    void Update()
+    {
+        if (doRepaint)
         {
             Repaint();
         }
-	}
+    }
 
     /* 추가하기에서 선택했을 때, Callback */
     void Callback(object obj)
     {
-        string[] result = obj.ToString().Split('/');
+        // result tab/task(scenario)(state)/information(name)(ex. Fire/Task1/State2)
+        string[] result = obj.ToString().Split('#');
         Debug.Log("tab: " + result[0] + " name: " + result[1]);
 
         string tab = result[0]; // ex) Task
         string name = result[1]; // ex) Fire Recognition
 
-        DataObjects.Add(new DataObject(tab, name, new Vector2(200.0f + Random.Range(-10.0f, 10.0f), 200.0f + Random.Range(-10.0f, 10.0f))));
+        if (tab == "Scenario")
+        {
+            scenario_list.Add(new Scenario_object(name, new Vector2(200.0f + Random.Range(-10.0f, 10.0f), 200.0f + Random.Range(-10.0f, 10.0f))));
+        }
+        else if (tab == "Task")
+        {
+            scenario_list[tab2].task_list.Add(new Task_object(name, new Vector2(200.0f + Random.Range(-10.0f, 10.0f), 200.0f + Random.Range(-10.0f, 10.0f))));
+        }
+        else if (tab == "State")
+        {
+            Debug.Log("State");
+        }
+        else
+        {
+            Debug.Log("wrong tab");
+        }
     }
 
     void OnGUI()
@@ -72,15 +96,22 @@ public class MainWindow : EditorWindow {
         if (window == null)
             OpenWindow();
 
+
         ShowMenu(tab);
 
-        //[TODO] 나중에 설명 이미지로 대체하는 부분. 탭에 따라 다르게.
-        /* Texture */
-        EditorGUI.DrawPreviewTexture(new Rect(Screen.width-200, 500, 50, 50), tex_dict["box_img"]);
-        EditorGUI.DrawPreviewTexture(new Rect(Screen.width-250, 35, 200, 50), tex_dict["kaist_logo"]);
+
+        /* 기본 배경 */
+        EditorGUI.DrawPreviewTexture(new Rect(Screen.width - 200, 500, 50, 50), tex_dict["box_img"]);
+        EditorGUI.DrawPreviewTexture(new Rect(Screen.width - 250, 35, 200, 50), tex_dict["kaist_logo"]);
         EditorGUI.DrawPreviewTexture(new Rect(50, 35, 200, 50), tex_dict["kriso_logo"]);
         EditorGUI.DrawPreviewTexture(new Rect(300, 35, 800, 50), tex_dict["title"]);
+        /**/
+
+        /* 오른쪽 설명 이미지 */
+        //[TODO] 나중에 설명 이미지로 대체하는 부분. "탭에 따라 다르게."
         EditorGUI.DrawPreviewTexture(new Rect(Screen.width - 400, 100, 400, 800), tex_dict["explain"]);
+        /**/
+
         /* tab */
         tab = GUILayout.Toolbar(tab, new string[] { "Scenario", "Task", "State" });
         Dictionary<int, string> tab_dict = new Dictionary<int, string>();
@@ -88,114 +119,267 @@ public class MainWindow : EditorWindow {
         tab_dict.Add(1, "Task");
         tab_dict.Add(2, "State");
 
-
+        /***********************************/
+        // 하얀색 구분선
+        // [TODO]
+        /* 아래 부분 하드코딩한거 고쳐야 함. 윈도우 크기를 키우고 줄여도 잘 되게 해야함.*/
         Handles.BeginGUI();
         Handles.color = Color.white;
-
-        // [TODO]
-        /* 아래 부분 하드코딩한거 고쳐야 함.*/
         Handles.DrawLine(new Vector3(0, 100), new Vector3(Screen.width, 100));
-        Handles.DrawLine(new Vector3(Screen.width-400, 100), new Vector3(Screen.width - 400, Screen.height));
+        Handles.DrawLine(new Vector3(Screen.width - 400, 100), new Vector3(Screen.width - 400, Screen.height));
         Handles.DrawLine(new Vector3(1, 100), new Vector3(1, Screen.height));
-        Handles.DrawLine(new Vector3(Screen.width-1, 100), new Vector3(Screen.width-1, Screen.height));
-        Handles.DrawLine(new Vector3(0, Screen.height-23), new Vector3(Screen.width, Screen.height-23));
+        Handles.DrawLine(new Vector3(Screen.width - 1, 100), new Vector3(Screen.width - 1, Screen.height));
+        Handles.DrawLine(new Vector3(0, Screen.height - 23), new Vector3(Screen.width, Screen.height - 23));
         Handles.EndGUI();
+        /*************************************/
 
+        /* xml로 저장하기 버튼 */
+        if (GUI.Button(new Rect(Screen.width - 500, Screen.height - 75, 100, 50), new GUIContent("저장하기")))
+        {
+            save_xml();
+        }
 
+    }
+
+    /* 탭에 따라 다른 메뉴를 보여 준다. */
+    void ShowMenu(int tab)
+    {
         bool PreviousState;
         Color color;
 
-        foreach(DataObject data in DataObjects)
+        switch (tab)
         {
-            if (data.get_tab() == tab_dict[tab])
-            {
-                PreviousState = data.Dragging;
-                color = GUI.color;
 
-                data.OnGUI();
-                GUI.color = color;
-                if (data.Dragging)
+            case 0: // Scenario
+                Event currentEvent = Event.current;
+                Rect contextRect = new Rect(1, 100, 125, 30);
+                EditorGUI.DrawRect(contextRect, Color.green);
+                GUI.Label(contextRect, "시나리오 추가하기");
+                /* 추가하기에 마우스 올리고 클릭 하면 */
+                if (currentEvent.type == EventType.ContextClick)
                 {
-                    doRepaint = true;
-                }
-            }
-        }
-        //Debug.Log(DrawLine.windows.Count);
-        /*DrawLine TESTING*/
-        // 이거는 임시 코드일 뿐이고, 제대로 작동할 수 있는 버전으로 고쳐야 함....
-        if (DrawLine.windows.Count == 2)
-        {
-            DrawLine.connections.Add(new Rect_Pair(DrawLine.windows[0], DrawLine.windows[1]));
-        }
-        else if (DrawLine.windows.Count == 3)
-        {
-            DrawLine.connections.Add(new Rect_Pair(DrawLine.windows[0], DrawLine.windows[1]));
-            DrawLine.connections.Add(new Rect_Pair(DrawLine.windows[1], DrawLine.windows[2]));
-        }
-
-        foreach (Rect_Pair connection in DrawLine.connections)
-        {
-            //Debug.Log(connection.start);
-            DrawLine.DrawNodeCurve(connection.start, connection.end);
-            DrawLine.DrawArrowHead(connection.start, connection.end, new Vector2(0.25f, 1.0f), new Vector2(0.0f, 0.5f), 50f, 30f, 10f);
-        }
-        DrawLine.windows.Clear();
-        DrawLine.connections.Clear();
-        /**/
-        
-        DataObjects.RemoveAll(data => data.remove == true);
-    }
-
-    /* 추가하기 누르면 열리는 메뉴창 */
-    void ShowMenu(int tab)
-    {
-        Event currentEvent = Event.current;
-
-        Rect contextRect = new Rect(1, 100, 125, 30);
-        EditorGUI.DrawRect(contextRect, Color.green);
-        GUI.Label(contextRect, "추가하기");
-        
-        if (currentEvent.type == EventType.ContextClick)
-        {
-            Vector2 mousePos = currentEvent.mousePosition;
-            string result = "";
-
-            if (contextRect.Contains(mousePos))
-            {
-                switch (tab)
-                {
-                    case 0: // Scenario
-                        result = "Scenario/";
+                    Vector2 mousePos = currentEvent.mousePosition;
+                    string result = "";
+                    if (contextRect.Contains(mousePos))
+                    {
+                        result = "Scenario#";
                         GenericMenu menu_0 = new GenericMenu();
-                        menu_0.AddItem(new GUIContent("화재발생훈련"), false, Callback, result + "Fire/");
-                        menu_0.AddItem(new GUIContent("선박침수훈련"), false, Callback, result + "Water/");
-                        menu_0.AddItem(new GUIContent("선박대피훈련"), false, Callback, result + "Escape/");
+                        menu_0.AddItem(new GUIContent("화재발생훈련"), false, Callback, result + "Fire");
+                        menu_0.AddItem(new GUIContent("선박침수훈련"), false, Callback, result + "Water");
+                        menu_0.AddItem(new GUIContent("선박대피훈련"), false, Callback, result + "Escape");
                         menu_0.ShowAsContext();
                         currentEvent.Use();
-                        break;
-                    case 1: // Task
-                        result = "Task/";
+                    }
+                }
+
+                /* 시나리오 리스트 GUI에 보여주고 드래깅 시키기 */
+                /* 시나리오 리스트 순서가 화살표 순서랑 같음. */
+                foreach (Scenario_object data in scenario_list)
+                {
+                    PreviousState = data.Dragging;
+                    color = GUI.color;
+
+                    data.OnGUI();
+                    GUI.color = color;
+                    if (data.Dragging)
+                    {
+                        doRepaint = true;
+                    }
+                }
+                DrawLine.Draw();
+                /* 삭제하기 눌러진 애들은 리스트에서 삭제 */
+                scenario_list.RemoveAll(data => data.remove == true);
+                break;
+
+
+            case 1: // Task
+                /* 앞에서 정해진 시나리오 중 한 개를 선택 하는 메뉴 */
+
+                if (scenario_list.Count <= 0) break;
+
+                List<string> scenario_name_list = new List<string>();
+                foreach (Scenario_object data in scenario_list)
+                {
+                    scenario_name_list.Add(data.get_name());
+                }
+                
+                tab2 = GUI.Toolbar(new Rect(1, 100, Screen.width-400, 30), tab2, scenario_name_list.ToArray());
+                if (tab2 >= scenario_list.Count) tab2 = 0;
+
+                List<Task_object> task_list = scenario_list[tab2].task_list;
+
+                Event currentEvent_task = Event.current;
+                Rect contextRect_task = new Rect(1, 130, 125, 30);
+                EditorGUI.DrawRect(contextRect_task, Color.green);
+                GUI.Label(contextRect_task, "태스크 추가하기");
+                /* 추가하기에 마우스 올리고 클릭 하면 */
+                if (currentEvent_task.type == EventType.ContextClick)
+                {
+                    Vector2 mousePos = currentEvent_task.mousePosition;
+                    string result = "Task#" + scenario_name_list[tab2] + "/";
+                    if (contextRect_task.Contains(mousePos))
+                    {
                         GenericMenu menu_1 = new GenericMenu();
-                        menu_1.AddItem(new GUIContent("Task_0"), false, Callback, result + "0/");
-                        menu_1.AddItem(new GUIContent("Task_1"), false, Callback, result + "1/");
-                        menu_1.AddItem(new GUIContent("Task_2"), false, Callback, result + "2/");
-                        menu_1.ShowAsContext();
-                        currentEvent.Use();
-                        break;
-                    case 2: // State
-                        result = "State/";
-                        GenericMenu menu_2 = new GenericMenu();
-                        menu_2.AddItem(new GUIContent("State_0"), false, Callback, result + "0/");
-                        menu_2.AddItem(new GUIContent("State_1"), false, Callback, result + "1/");
-                        menu_2.AddItem(new GUIContent("State_2"), false, Callback, result + "2/");
-                        menu_2.ShowAsContext();
-                        currentEvent.Use();
-                        break;
-                    default:
-                        Debug.LogError("tab selection error!");
-                        break;
+                        /* 현재 선택중인 시나리오에 따라 다른 태스크 보여줌 */
+                        if (scenario_name_list[tab2] == "Fire")
+                        {
+                            menu_1.AddItem(new GUIContent("화재 인식 태스크"), false, Callback, result + "FireNotice");
+                            menu_1.AddItem(new GUIContent("화재 보고 태스크"), false, Callback, result + "FireReport");
+                            menu_1.AddItem(new GUIContent("화재 경보 태스크"), false, Callback, result + "FireAlarm");
+                            menu_1.AddItem(new GUIContent("화재 진화 태스크"), false, Callback, result + "FireMethod");
+                            menu_1.ShowAsContext();
+                        }
+                        else
+                        {
+                            menu_1.AddItem(new GUIContent("TEST"), false, Callback, result + "TEST/");
+                            menu_1.ShowAsContext();
+                        }
+
+                        currentEvent_task.Use();
+                    }
+                }
+
+                /* 시나리오에 해당되는 태스크 리스트 GUI에 보여주고 드래깅 시키기 */
+                /* 태스크 리스트 순서가 화살표 순서랑 같음. */
+                /* 현재 selec중인 시나리오의 태스크만 gui에 보여줌 */
+                foreach (Task_object data in task_list)
+                {
+                    PreviousState = data.Dragging;
+                    color = GUI.color;
+
+                    data.OnGUI(scenario_name_list[tab2]);
+                    GUI.color = color;
+                    if (data.Dragging)
+                    {
+                        doRepaint = true;
+                    }
+                }
+                DrawLine.Draw();
+                /* 삭제하기 눌러진 애들은 리스트에서 삭제 */
+                task_list.RemoveAll(data => data.remove == true);
+                break;
+
+
+
+
+            case 2: // State
+                /* 앞에서 정해진 시나리오+태스크 중 한 개를 선택 하는 메뉴 */
+                if (scenario_list.Count <= 0) break;
+
+                List<string> scenario_name_list_ = new List<string>();
+                foreach (Scenario_object data in scenario_list)
+                {
+                    scenario_name_list_.Add(data.get_name());
+                }
+
+                tab3_1 = GUI.Toolbar(new Rect(1, 100, Screen.width-400, 30), tab3_1, scenario_name_list_.ToArray());
+                if (tab3_1 >= scenario_list.Count) tab3_1 = 0;
+
+                List<Task_object> task_list_ = scenario_list[tab3_1].task_list;
+                if (task_list_.Count <= 0) break;
+                List<string> task_name_list_ = new List<string>();
+                foreach (Task_object data in task_list_)
+                {
+                    task_name_list_.Add(data.get_task());
+                }
+
+                tab3_2 = GUI.Toolbar(new Rect(1, 130, Screen.width - 400, 30), tab3_2, task_name_list_.ToArray());
+
+                task_list_[tab3_2].state_object.OnGUI();
+
+
+                break;
+
+
+
+            default:
+                Debug.LogError("tab selection error!");
+                break;
+        }
+    }
+
+    void save_xml(string xml_path="./test.xml")
+    {
+        Debug.Log("save xml");
+        XmlDocument doc = new XmlDocument(); // Document 객체 인스턴스
+
+        XmlElement root = doc.CreateElement("Root"); // 루트 설정
+        doc.AppendChild(root);
+        // [TODO] 시나리오와 태스크 스테이트 등의 변수명들이 다 다르고 경우에 따라서 달라지니까, 그냥 필요한 애들 달라고 하면 dict에 넣어서 주는 함수를 만들어야 겠다.
+        // 시나리오
+        foreach (Scenario_object scenario in scenario_list)
+        {
+            Dictionary<string, string> xml_dict = scenario.get_xml_dict();
+            XmlElement scene_xml = doc.CreateElement("Scenario");
+
+            foreach (KeyValuePair<string, string> items in xml_dict)
+            {
+                XmlAttribute sceneAttr = doc.CreateAttribute(items.Key);
+                sceneAttr.Value = items.Value;
+                scene_xml.Attributes.Append(sceneAttr);
+            }
+
+            root.AppendChild(scene_xml);
+
+            // 태스크
+            foreach (Task_object task in scenario.task_list)
+            {
+                xml_dict = task.get_xml_dict();
+
+                XmlElement task_xml = doc.CreateElement("Task");
+
+                foreach (KeyValuePair<string, string> items in xml_dict)
+                {
+                    XmlAttribute taskAttr = doc.CreateAttribute(items.Key);
+                    taskAttr.Value = items.Value;
+                    task_xml.Attributes.Append(taskAttr);
+                }
+
+                scene_xml.AppendChild(task_xml);
+
+                // 스테이트
+                foreach (State state in task.state_object.state_list)
+                {
+                    // State name 넣기
+                    XmlElement state_xml = doc.CreateElement("State");
+                    XmlAttribute stateAttr = doc.CreateAttribute("name");
+                    stateAttr.Value = state.name;
+                    state_xml.Attributes.Append(stateAttr);
+                    task_xml.AppendChild(state_xml);
+
+                    // property 넣기
+                    XmlElement Properties = doc.CreateElement("Properties");
+                    foreach (KeyValuePair<string, string> items in state.Properties)
+                    {
+                        XmlAttribute PropertiesAttr = doc.CreateAttribute(items.Key);
+                        PropertiesAttr.Value = items.Value;
+                        Properties.Attributes.Append(PropertiesAttr);
+                        state_xml.AppendChild(Properties);
+                    }
+                    // object 넣기
+                    XmlElement Objects = doc.CreateElement("Objects");
+                    foreach (KeyValuePair<string, string> items in state.Objects)
+                    {
+                        XmlAttribute ObjectsAttr = doc.CreateAttribute(items.Key);
+                        ObjectsAttr.Value = items.Value;
+                        Objects.Attributes.Append(ObjectsAttr);
+                        state_xml.AppendChild(Objects);
+                    }
                 }
             }
         }
+
+        using (XmlTextWriter writer = new XmlTextWriter(xml_path, Encoding.UTF8))
+        {
+            writer.Formatting = Formatting.Indented;
+            doc.Save(writer);
+        }
     }
+
+    void load_xml(string xml_path)
+    {
+        Debug.Log("load xml");
+        // xml 파싱해서 scenario list, task list, state list에 추가 해주기
+    }
+
 }
