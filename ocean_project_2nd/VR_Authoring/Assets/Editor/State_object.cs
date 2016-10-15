@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 public class string_pair
 {
@@ -208,6 +209,56 @@ public class State_object : EditorWindow {
             state_list.Add(new State(state_name, prop_list, obj_list));
         }
         else Debug.LogError("task name error at state!");
+
+    }
+
+    public State_object(XmlNode task)
+    {
+        task_name = task.Attributes["name"].Value;
+        string state_name;
+        List<string> key_list = new List<string> { };
+        List<string> value_list = new List<string> { };
+        List<string_pair> prop_list = new List<string_pair> { };
+        List<string_pair> obj_list = new List<string_pair> { };
+
+        XmlNodeList states = task.ChildNodes;
+       
+        foreach (XmlNode state in states)
+        {
+            /*
+            <State name="ApproachObjState">
+                <Properties Patrol_Contents="초기 진화를 위한 소화기를 찾으세요" Approach_Distance="3" Approach_Angle="3" />
+                <Objects Approach_to_Object="FireExtinguisher_Segment" />
+            </State>
+
+            위의 형식을 parsing해서 state 클래스로 만들어서 집어넣쟈앙.
+            */
+            state_name = state.Attributes["name"].Value;
+
+            // properties나 objects가 존재하지 않는 경우도 존재함.
+            foreach (XmlNode prop_or_obj in state.ChildNodes)
+            {
+                foreach (XmlAttribute attr in prop_or_obj.Attributes)
+                {
+                    key_list.Clear();
+                    value_list.Clear();
+                    key_list.Add(attr.LocalName.ToString());
+                    value_list.Add(attr.Value.ToString());
+                }
+                if (prop_or_obj.Name.ToString() == "Properties")
+                {
+                    prop_list = make_string_pair_list(key_list, value_list);
+                }
+                else if (prop_or_obj.Name.ToString() == "Objects")
+                {
+                    obj_list = make_string_pair_list(key_list, value_list);
+                }
+                else Debug.LogError("attribute not exist(State)");
+            }
+
+            // add to state list
+            state_list.Add(new State(state_name, prop_list, obj_list));
+        }
 
     }
 

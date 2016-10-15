@@ -2,11 +2,13 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
+using System.Text;
 
 class Fire_scene
 {
-    public int limit_time = 450; // 제한 시간
-    public int level = 2; // 난이도 1, 2, 3
+    public int Time = 450; // 제한 시간
+    public int difficulty = 2; // 난이도 1, 2, 3
     public int fire_size = 2; // 화재 크기 1, 2, 3
     public int device = 2; // 상호작용기기 1, 2, 3
     public bool FireRecognition = true; // 화재 발견 태스크
@@ -18,8 +20,8 @@ class Fire_scene
 
 class Water_scene
 {
-    public int limit_time = 450; // 제한 시간
-    public int level = 2; // 난이도 1, 2, 3
+    public int Time = 450; // 제한 시간
+    public int difficulty = 2; // 난이도 1, 2, 3
     public int water_size = 2; // 침수 크기 1, 2, 3
     public int device = 2; // 상호작용기기 1, 2, 3
     public bool WaterRecognition = true; // 침수 발견 태스크
@@ -31,8 +33,8 @@ class Water_scene
 
 class Escape_scene
 {
-    public int limit_time = 450; // 제한 시간
-    public int level = 2; // 난이도 1, 2, 3
+    public int Time = 450; // 제한 시간
+    public int difficulty = 2; // 난이도 1, 2, 3
     public int ship_size = 2; // 선박 크기 1, 2, 3
     public int device = 2; // 상호작용기기 1, 2, 3
     public bool EscapeRecognition = true; // 대피상황 인식 태스크
@@ -61,6 +63,31 @@ public class Scenario_object : GUIDraggableObject {
         else Debug.LogError("wrong scenario name!");
     }
 
+    public Scenario_object(XmlNode scenario, Vector2 position) : base(position)
+    {
+        name = scenario.Attributes["name"].Value;
+        if (name == "Fire")
+        {
+            fire_status = new Fire_scene();
+            fire_status.difficulty = System.Convert.ToInt32(scenario.Attributes["difficulty"].Value);
+            fire_status.Time = System.Convert.ToInt32(scenario.Attributes["Time"].Value);
+        }
+        else if (name == "Water")
+        {
+            water_status = new Water_scene();
+            water_status.difficulty = System.Convert.ToInt32(scenario.Attributes["difficulty"].Value);
+            water_status.Time = System.Convert.ToInt32(scenario.Attributes["Time"].Value);
+        }
+        else if (name == "Escape")
+        {
+            escape_status = new Escape_scene();
+            escape_status.difficulty = System.Convert.ToInt32(scenario.Attributes["difficulty"].Value);
+            escape_status.Time = System.Convert.ToInt32(scenario.Attributes["Time"].Value);
+        }
+        else Debug.LogError("wrong scenario name!");
+    }
+
+
     public string get_name()
     {
         return name;
@@ -71,10 +98,12 @@ public class Scenario_object : GUIDraggableObject {
     public Dictionary<string, string> get_xml_dict()
     {
         Dictionary<string, string> xml_dict = new Dictionary<string, string>();
+
+        xml_dict.Add("name", name);
         if (name == "Fire")
         {
-            xml_dict.Add("difficulty", fire_status.level.ToString());
-            xml_dict.Add("Time", fire_status.limit_time.ToString());
+            xml_dict.Add("difficulty", fire_status.difficulty.ToString());
+            xml_dict.Add("Time", fire_status.Time.ToString());
         }
         else if (name == "Water")
         {
@@ -109,8 +138,8 @@ public class Scenario_object : GUIDraggableObject {
             dragRect = new Rect(dragRect.x + m_Position.x, dragRect.y + m_Position.y, dragRect.width, dragRect.height);
 
             GUILayout.Label("화재발생훈련 편집창 입니다.");
-            fire_status.limit_time = EditorGUILayout.IntField("제한시간(초)", fire_status.limit_time, GUILayout.ExpandWidth(true));
-            fire_status.level = EditorGUILayout.IntPopup("난이도", fire_status.level, new string[]{ "상", "중", "하" }, new int[]{ 1, 2, 3}, GUILayout.ExpandWidth(true));
+            fire_status.Time = EditorGUILayout.IntField(new GUIContent("제한시간", "제한시간을 정해주세염"), fire_status.Time, GUILayout.ExpandWidth(true));
+            fire_status.difficulty = EditorGUILayout.IntPopup("난이도", fire_status.difficulty, new string[]{ "상", "중", "하" }, new int[]{ 1, 2, 3}, GUILayout.ExpandWidth(true));
             fire_status.fire_size = EditorGUILayout.IntPopup("화재 발생 정도", fire_status.fire_size, new string[]{"대형", "중형", "소형"}, new int[]{ 1, 2, 3}, GUILayout.ExpandWidth(true));
             fire_status.device = EditorGUILayout.IntPopup("상호작용기기 선택", fire_status.device, new string[]{"조이스틱", "립모션", "vive" }, new int[]{ 1, 2, 3}, GUILayout.ExpandWidth(true));
             GUILayout.Label("Task 포함시키기");
@@ -146,8 +175,8 @@ public class Scenario_object : GUIDraggableObject {
             dragRect = new Rect(dragRect.x + m_Position.x, dragRect.y + m_Position.y, dragRect.width, dragRect.height);
 
             GUILayout.Label("선박침수훈련 편집창 입니다.");
-            water_status.limit_time = EditorGUILayout.IntField("제한시간(초)", water_status.limit_time, GUILayout.ExpandWidth(true));
-            water_status.level = EditorGUILayout.IntPopup("난이도", water_status.level, new string[] { "상", "중", "하" }, new int[] { 1, 2, 3 }, GUILayout.ExpandWidth(true));
+            water_status.Time = EditorGUILayout.IntField("제한시간(초)", water_status.Time, GUILayout.ExpandWidth(true));
+            water_status.difficulty = EditorGUILayout.IntPopup("난이도", water_status.difficulty, new string[] { "상", "중", "하" }, new int[] { 1, 2, 3 }, GUILayout.ExpandWidth(true));
             water_status.water_size = EditorGUILayout.IntPopup("화재 발생 정도", water_status.water_size, new string[] { "대형", "중형", "소형" }, new int[] { 1, 2, 3 }, GUILayout.ExpandWidth(true));
             water_status.device = EditorGUILayout.IntPopup("상호작용기기 선택", water_status.device, new string[] { "조이스틱", "립모션", "vive" }, new int[] { 1, 2, 3 }, GUILayout.ExpandWidth(true));
             GUILayout.Label("Task 포함시키기");
@@ -182,8 +211,8 @@ public class Scenario_object : GUIDraggableObject {
             dragRect = new Rect(dragRect.x + m_Position.x, dragRect.y + m_Position.y, dragRect.width, dragRect.height);
 
             GUILayout.Label("선박대피훈련 편집창 입니다.");
-            escape_status.limit_time = EditorGUILayout.IntField("제한시간(초)", escape_status.limit_time, GUILayout.ExpandWidth(true));
-            escape_status.level = EditorGUILayout.IntPopup("난이도", escape_status.level, new string[] {"상", "중", "하" }, new int[] {1, 2, 3}, GUILayout.ExpandWidth(true));
+            escape_status.Time = EditorGUILayout.IntField("제한시간(초)", escape_status.Time, GUILayout.ExpandWidth(true));
+            escape_status.difficulty = EditorGUILayout.IntPopup("난이도", escape_status.difficulty, new string[] {"상", "중", "하" }, new int[] {1, 2, 3}, GUILayout.ExpandWidth(true));
             escape_status.ship_size = EditorGUILayout.IntPopup("선박 크기 설정", escape_status.ship_size, new string[] { "소형", "중형", "대형" }, new int[] { 1, 2, 3 }, GUILayout.ExpandWidth(true));
             escape_status.device = EditorGUILayout.IntPopup("상호작용기기 선택", escape_status.device, new string[] { "조이스틱", "립모션", "vive" }, new int[] { 1, 2, 3 }, GUILayout.ExpandWidth(true));
             GUILayout.Label("Task 포함시키기");
