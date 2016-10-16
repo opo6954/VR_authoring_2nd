@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 class FireNotice
 {
     public int limit_time = 450;
@@ -49,9 +50,39 @@ public class Task_object : GUIDraggableObject {
             else if (task_name == "FireMethod") fire_method = new FireMethod();
             else Debug.LogError("wrong task name!");
         }
-        
+
         else Debug.LogError("wrong scenario name!");
 
+    }
+
+    public Task_object(XmlNode task, string scenario ,Vector2 position) : base(position)
+    {
+        this.scenario = scenario;
+        task_name = task.Attributes["name"].Value;
+
+        state_object = new State_object(task_name);
+
+        if (scenario == "Fire")
+        {
+            if (task_name == "FireNotice")
+            {
+                fire_notice = new FireNotice();
+            }
+            else if (task_name == "FireReport")
+            {
+                fire_report = new FireReport();
+            }
+            else if (task_name == "FireAlarm")
+            {
+                fire_alarm = new FireAlarm();
+            }
+            else if (task_name == "FireMethod")
+            {
+                fire_method = new FireMethod();
+            }
+            else Debug.LogError("wrong task_name!");
+        }
+        else Debug.LogError("wrong scenario name!");
     }
     
     public Dictionary<string, string> get_xml_dict()

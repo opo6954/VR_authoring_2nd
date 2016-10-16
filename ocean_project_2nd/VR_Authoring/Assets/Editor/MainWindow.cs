@@ -16,6 +16,7 @@ public class MainWindow : EditorWindow
 
     private int tab = 0, tab2 = 0, tab3_1 = 0, tab3_2 = 0;
     private int selected_scene_in_task_tab = 0;
+    public string xml_path = "test.xml";
 
     private bool doRepaint = false;
     private List<Scenario_object> scenario_list = new List<Scenario_object>();
@@ -134,9 +135,15 @@ public class MainWindow : EditorWindow
         /*************************************/
 
         /* xml로 저장하기 버튼 */
-        if (GUI.Button(new Rect(Screen.width - 500, Screen.height - 75, 100, 50), new GUIContent("저장하기")))
+        if (GUI.Button(new Rect(Screen.width - 500, Screen.height - 75, 100, 50), new GUIContent("저장하기", "이거슨 저장을 위한 버튼입니다.")))
         {
-            save_xml();
+            string save_path = EditorUtility.SaveFilePanel("Save xml", "", "settings" + ".xml", "xml");
+            save_xml(xml_path = save_path);
+        }
+        /* xml 불러오기 버튼 */
+        if (GUI.Button(new Rect(Screen.width - 600, Screen.height - 75, 100, 50), new GUIContent("불러오기", "이거슨 불러오기를 위한 버튼입니다.")))
+        {
+            load_xml();
         }
 
     }
@@ -376,10 +383,45 @@ public class MainWindow : EditorWindow
         }
     }
 
-    void load_xml(string xml_path)
+    void load_xml()
     {
-        Debug.Log("load xml");
-        // xml 파싱해서 scenario list, task list, state list에 추가 해주기
-    }
+        initialize();
+        // 파일 불러오기 창 띄우기
+        xml_path = EditorUtility.OpenFilePanel("load xml file", Application.streamingAssetsPath, "xml");
+        Debug.Log(xml_path);
+        // xml 파싱
 
+        XmlDocument doc = new XmlDocument();
+        doc.Load(xml_path);
+        XmlElement root = doc.DocumentElement;
+
+        // 노드 요소들
+        XmlNodeList scenarios = root.ChildNodes; // 시나리오 리스트
+
+        // 시나리오 추가
+        foreach(XmlNode scenario in scenarios)
+        {
+            Scenario_object scenario_object = new Scenario_object(scenario, new Vector2(200.0f + Random.Range(-10.0f, 10.0f), 200.0f + Random.Range(-10.0f, 10.0f)));
+            scenario_list.Add(scenario_object);
+            string scenario_name = scenario.Attributes["name"].Value;
+            // 태스크 추가
+            XmlNodeList tasks = scenario.ChildNodes;
+            foreach(XmlNode task in tasks)
+            {
+                Task_object task_object = new Task_object(task, scenario_name, new Vector2(200.0f + Random.Range(-10.0f, 10.0f), 200.0f + Random.Range(-10.0f, 10.0f)));
+                scenario_object.task_list.Add(task_object);
+                // 스테이트 추가
+                State_object state_object = new State_object(task);
+                task_object.state_object = state_object;
+            }
+        }
+
+    }
+    
+    // 시나리오, 태스크, 스테이트 등의 정보를 초기화 시키는 함수.
+    // 로드 xml 하기 전에 사용한다.
+    void initialize()
+    {
+        scenario_list.Clear();
+    }
 }
