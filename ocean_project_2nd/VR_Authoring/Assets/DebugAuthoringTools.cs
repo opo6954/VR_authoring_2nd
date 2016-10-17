@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 
 public class DebugAuthoringTools : MonoBehaviour {
@@ -31,25 +32,44 @@ public class DebugAuthoringTools : MonoBehaviour {
         pt.setMyUI(df);//적용할 UI임...
 
 
+
+        
 		ScenarioController scenarioController = debugPlayer.AddComponent<ScenarioController>();
 		//xml 저장 check
 
-		ScenarioModuleTemplate smt = new ScenarioModuleTemplate();
+        /*
+        FireExtinguishScenario smt = new FireExtinguishScenario();
 		smt.MyDifficulty = 13;
 		smt.MyTimeout =111.303;
 		smt.MyScenarioName ="Fire";
-        smt.setMyParent(scenarioController);
+        smt.setMyParent(scenarioController);//controller만 parent로 설정해주면 된다
 
-        
+
         smt.insertTask(madeTask1());
-        
         smt.insertTask(madeTask2());
         smt.insertTask(madeTask3());
+ 
         smt.insertTask(madeTask4());
         
 		
 
 		scenarioController.insertScenario (smt);
+         * 
+         * */
+
+        XmlManager xm = new XmlManager();
+
+        xm.setMyPlayer(pt);
+        xm.setMyScenarioController(scenarioController);
+
+        List<ScenarioModuleTemplate> myScList = xm.xmlScenarioGroupLoader("fire.xml");
+
+        for (int i = 0; i < myScList.Count; i++)
+        {
+            scenarioController.insertScenario(myScList[i]);
+        }
+        
+
         
 		scenarioController.triggerScenario ();
         
@@ -65,9 +85,10 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 	} 
 
 	public TaskModuleTemplate madeTask1()

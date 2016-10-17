@@ -55,7 +55,11 @@ public class StateModuleTemplate {
     public T getProperty<T>(string propertyName)
     {
         if (propertyGroup.ContainsKey(propertyName) == true)
+        {
+            
+            
             return (T)propertyGroup[propertyName];
+        }
 
         return default(T);  
     }

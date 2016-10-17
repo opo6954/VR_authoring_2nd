@@ -1,3 +1,4 @@
+<Root>
 <Scenario name="Fire" difficulty="13" Time="111.303">
   <Task name="FireNotice" type="FireNotice">
     <State name="ApproachObjState">
@@ -48,3 +49,4 @@
     </State>
   </Task>
 </Scenario>
+</Root>

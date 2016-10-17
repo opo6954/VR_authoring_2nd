@@ -8,6 +8,19 @@ public class ScenarioController : MonoBehaviour{
 
 	private List<ScenarioModuleTemplate> scenarioSeq = new List<ScenarioModuleTemplate> ();
 
+
+    //player info...
+    public PlayerTemplate pt = null;
+
+
+    public void setPlayerInfo(PlayerTemplate _pt)
+    {
+        pt = _pt;
+    }
+
+
+    public TaskModuleTemplate currTaskExecute = null;
+
 	//scenario를 list에 넣는 함수, 단 중복된 scenario 이름을 가질 수 없다
 	public bool insertScenario(ScenarioModuleTemplate scenario)
 	{
@@ -50,14 +63,13 @@ public class ScenarioController : MonoBehaviour{
 		if (scenarioIdx > 0) {
 			if (scenarioSeq.Count < scenarioIdx) {
 				Debug.Log ("Trigger scenario : " + scenarioSeq [scenarioIdx + 1].MyScenarioName);
-				scenarioSeq [scenarioIdx + 1].triggerTask ();
+				scenarioSeq [scenarioIdx].triggerTask ();
 			} else {
 				Debug.Log ("No Next Scenario Found");
 			}
 		} else if(scenarioIdx == 0) {
 			if(scenarioSeq.Count > scenarioIdx){
-
-                
+                                
 				Debug.Log ("First scenario Triger: " + scenarioSeq [scenarioIdx].MyScenarioName);
 				scenarioSeq [scenarioIdx].triggerTask ();				
 			}
@@ -71,8 +83,18 @@ public class ScenarioController : MonoBehaviour{
     }
 
     //이 부분에서 scenario 관련 core가 돌아가도록 하자
+    //Scenario controller에서 task의 process를 넣는 queue 존재, 이 queue를 계속 확인하자
     void Update()
     {
+        if (currTaskExecute != null)
+        {
+            currTaskExecute.OnUpdate();
+            
+        }
+        else
+        {
+            
+        }
         
     }
 }

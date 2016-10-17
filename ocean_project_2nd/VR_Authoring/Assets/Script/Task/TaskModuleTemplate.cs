@@ -15,7 +15,7 @@ public class TaskModuleTemplate{
 	//이 task를 가지고 있는 scenario instance
 	ScenarioModuleTemplate myParent;
 
-
+     
     protected PlayerTemplate myPlayerInfo;//선택된 player 종류
     protected UIModuleTemplate myUIInfo;//선택된 UI 종류
     
@@ -90,7 +90,12 @@ public class TaskModuleTemplate{
 
     public void addProperty(string propertyName, object o)
     {
-        propertyGroup.Add(propertyName, o);
+        if (propertyGroup.ContainsKey(propertyName) == true)
+        {
+            
+        }
+        else
+            propertyGroup.Add(propertyName, o);
     }
     
 
@@ -105,8 +110,10 @@ public class TaskModuleTemplate{
     //각 task별로 특정 property를 가져오기
     public T getProperty<T>(string propertyName)
     {
+        
         if (propertyGroup.ContainsKey(propertyName))
             return (T)propertyGroup[propertyName];
+        
         return default(T);
     }
 
@@ -136,9 +143,7 @@ public class TaskModuleTemplate{
     public void setStartTrigger()
     {
         isTaskStart = true;
-        OnUpdate();
-        
-        
+        getMyParent().getMyParent().currTaskExecute = this;
     }
 
     public void setEndTrigger()
@@ -148,14 +153,10 @@ public class TaskModuleTemplate{
 
     public bool setNextTaskStartTrigger()
     {
-        if ( myPlayerInfo.isTaskContains(nextTaskName) == true)
-        {
-            
-            myPlayerInfo.getTask(nextTaskName).setStartTrigger();//start trigger 발동시키기
-            return true;
-        }
+        
+        myParent.triggerTask(myTaskIdx+1);
 
-        return false;
+        return true;
     }
 
      
@@ -243,8 +244,12 @@ public class TaskModuleTemplate{
         for (int i = 0; i < myStateList.Count; i++)
         {
             myStateList[i].setMyPosition(getMyPosition());
+            myStateList[i].turnOffMyUI();
+            
             
         }
+
+        
 
         //state에 대한 모든 초기화를 하자
 
@@ -299,9 +304,8 @@ public class TaskModuleTemplate{
     }
 
     //이 부분을 scenarioController의 update에서 불러야 한다
-    void OnUpdate()
+    public void OnUpdate()
     {
-
             if (isTaskStart == true)
             {
 
@@ -309,22 +313,19 @@ public class TaskModuleTemplate{
                 isTaskStart = false;
                 isTaskDoing = true;
 
-                Debug.Log("start?");
+                
 
 
             }
             else if (isTaskDoing == true && isTaskEnd == false)
             {
-                Debug.Log("process?");
                 TaskProcess();
+                
             }
             else if (isTaskDoing == true && isTaskEnd == true)
             {
                 TaskFinish();
                 isTaskDoing = false;
-
-
-
             }
         }
 }

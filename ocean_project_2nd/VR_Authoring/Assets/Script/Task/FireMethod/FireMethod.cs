@@ -77,7 +77,7 @@ public class FireMethod : TaskModuleTemplate {
 
 	public override void TaskStart ()
 	{
-		base.TaskStart ();
+		
 
 		myUIInfo.loadUIPrefab ("DefaultForm");
 		myUIInfo.loadUIPrefab ("MethodForm");
@@ -90,9 +90,8 @@ public class FireMethod : TaskModuleTemplate {
 		myStateList [1].setUI (defaultForm);
 		myStateList [2].setUI (methodForm);
 
-		for (int i = 0; i < myStateList.Count; i++) {
-			myStateList [i].turnOffMyUI ();
-		}
+
+        base.TaskStart();
 	}
 
 

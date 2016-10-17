@@ -79,7 +79,12 @@ public class FireReport : TaskModuleTemplate
 		myStateList [0].setUI (defaultForm);
 		myStateList [1].setUI (questionForm);
 
+        
+
         base.TaskStart();
+
+        
+
     }
 
     public override void TaskFinish()

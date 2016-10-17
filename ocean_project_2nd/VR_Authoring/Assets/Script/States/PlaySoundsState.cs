@@ -48,9 +48,16 @@ public class PlaySoundsState : StateModuleTemplate {
 			audioSource.clip = Resources.Load ("Sound/" + getProperty<string> ("SoundName")) as AudioClip;
 
 
-		
+            string loopStatus = getProperty<string>("Loop");
+            bool loopFlag;
 
-			audioSource.loop = getProperty<bool> ("Loop");
+            if (loopStatus == "True")
+                loopFlag = true;
+            else
+                loopFlag = false;
+
+
+            audioSource.loop = loopFlag;
 
 			audioSource.Play ();
 

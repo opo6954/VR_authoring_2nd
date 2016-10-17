@@ -58,7 +58,7 @@ public class FireAlarm : TaskModuleTemplate
 
 	public override void TaskStart ()
 	{
-		base.TaskStart ();
+		
 		myUIInfo.loadUIPrefab ("DefaultForm");
 		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
 
@@ -67,6 +67,7 @@ public class FireAlarm : TaskModuleTemplate
 		myStateList [2].setUI (defaultForm);
 
 
+        base.TaskStart();
 	}
 
 	public override void TaskProcess ()

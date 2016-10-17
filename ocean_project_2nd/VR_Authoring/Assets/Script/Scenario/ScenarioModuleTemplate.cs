@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 //scenario 자체는 걍 module만 있고 xml로만 저장할 수 있도록 하자
-public class ScenarioModuleTemplate {
+public class ScenarioModuleTemplate { 
 
 	//scenarioSeq의 instance를 가지고 오자
 
@@ -91,6 +91,7 @@ public class ScenarioModuleTemplate {
         _task.setMyParent(this);
 
         taskList.Add(_task);
+        _task.setMyTaskIdx(taskList.Count-1);
 
 
 	}
@@ -107,6 +108,12 @@ public class ScenarioModuleTemplate {
         myPosition = _myParent.transform.GetChild(0).transform;
 
 	}
+
+    public ScenarioController getMyParent()
+    {
+        return myParent;
+    }
+
     
 
 
@@ -116,8 +123,8 @@ public class ScenarioModuleTemplate {
 	public void triggerTask(int taskIdx=0)
 	{
 		if (taskIdx > 0) {
-			if (taskList.Count < taskIdx) {
-				taskList [taskIdx + 1].setStartTrigger ();//다음 task를 실행하기
+			if (taskList.Count > taskIdx) {
+				taskList [taskIdx].setStartTrigger ();//다음 task를 실행하기
 			} else {
 				Debug.Log ("No Next Task Found");
 

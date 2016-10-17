@@ -74,13 +74,17 @@ public class FireNotice : TaskModuleTemplate  {
 		//myStateList에 차례대로 넣습니다.
 		myStateList.Add(a);
 		myStateList.Add(b);
+
+        
 	}
 
     public override void TaskStart()
     {
-		base.TaskStart();
+		
 		myStateList [0].setUI (defaultForm);
 		myStateList [1].setUI (defaultForm);
+
+        base.TaskStart();
     }
 
 

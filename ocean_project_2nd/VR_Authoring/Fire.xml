@@ -1,4 +1,5 @@
-<Scenario name="Fire" difficulty="13" Time="111.303">
+<Root>
+<Scenario name="Fire" difficulty="13" Time="111.303" type="FireExtinguishScenario">
   <Task name="FireNotice" type="FireNotice">
     <State name="ApproachObjState">
       <Properties Patrol_Contents="선박 내부를 순찰하세요" />
@@ -35,7 +36,7 @@
   </Task>
   <Task name="FireMethod" type="FireMethod">
     <State name="ApproachObjState">
-      <Properties Patrol_Contents="초기 진화를 위한 소화기를 찾으세요" Approach_Distance="3" Approach_Angle="3" />
+      <Properties Patrol_Contents="초기 진화를 위한 소화기를 찾으세요" Approach_Distance="3.0" Approach_Angle="3.0" />
       <Objects Approach_to_Object="FireExtinguisher_Segment" />
     </State>
     <State name="ButtonPressState">
@@ -43,8 +44,9 @@
       <Objects />
     </State>
     <State name="MethodLearnState">
-      <Properties PartCount="4" isVideo="True" VideoName="4,2,3,1" PartAnswer="3,1,2,0" Select_Button_Info="x" Skip_Button_Info="z" />
+      <Properties PartCount="4" isVideo="True" VideoName="video4,video2,video3,video1" PartAnswer="3,1,2,0" Select_Button_Info="x" Skip_Button_Info="z" />
       <Objects Interaction_to_Object="FireExtinguisher_Segment" />
     </State>
   </Task>
 </Scenario>
+</Root>
