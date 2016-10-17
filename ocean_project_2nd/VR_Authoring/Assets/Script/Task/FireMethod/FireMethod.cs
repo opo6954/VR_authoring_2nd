@@ -101,8 +101,8 @@ public class FireMethod : TaskModuleTemplate {
 	{
 		base.TaskFinish ();
 
-		Destroy (defaultForm);
-		Destroy (methodForm);
+		GameObject.Destroy (defaultForm);
+		GameObject.Destroy (methodForm);
 
 		myUIInfo.deleteUIPrefab ("DefaultForm");
 		myUIInfo.deleteUIPrefab ("MethodForm");

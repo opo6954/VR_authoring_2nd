@@ -102,7 +102,7 @@ public class FireNotice : TaskModuleTemplate  {
         
 
 
-        Destroy(defaultForm);
+        GameObject.Destroy(defaultForm);
 
         
 

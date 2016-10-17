@@ -97,6 +97,9 @@
      <None Include="Assets\Objectify\Shaders\Outline_Fresnel_Pulse.shader" />
      <None Include="Assets\Ultra_Real_Fire_Effects\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
      <None Include="Assets\Ultra_Real_Fire_Effects\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
+ <Reference Include="Assembly-UnityScript">
+ <HintPath>D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>D:/unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>
@@ -139,8 +142,6 @@
       <Project>{80A11C6F-5B33-3C73-30B6-BF4F4E2EBCE9}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{E6524F11-3231-0B08-82CD-B6F0019B1BE9}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
-    <ProjectReference Include="Assembly-UnityScript.unityproj">
-      <Project>{F8306C6F-E36D-1E6F-EDE0-1B8C35C0799B}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

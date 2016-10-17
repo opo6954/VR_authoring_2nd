@@ -76,7 +76,10 @@ public class FireAlarm : TaskModuleTemplate
 	public override void TaskFinish ()
 	{
 		base.TaskFinish ();
-		Destroy (defaultForm);
+
+        GameObject.Destroy(defaultForm);
+
+		
 	}
 
 }

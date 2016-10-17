@@ -4,17 +4,26 @@ using System.Collections.Generic;
 
 public class PlayerTemplate : MonoBehaviour {
 
-    //task가 순서대로 실행됩니다
+    
     private Dictionary<string, TaskModuleTemplate> taskList;
+
     GameObject canvas_ui;
     public UIModuleTemplate myUIInfo;
 
+	//가상 현실 장비 관련 옵션
     public bool isJoystick = false;
     public bool isLeapMotion = false;
 
     private string startTaskName = "";
 
 	public float myWalkSpeed=0.0f;
+
+
+
+
+
+
+
 
 
     //prevTaskName 뒤에 붙이기, prevTaskName이 ""일 경우 제일 처음에 붙인다

@@ -13,7 +13,7 @@ using System.Xml;
  * Goal: State를 완료하기 위한 조건
  * Res: State가 종료될 때의 수행작업, Goal이 true이면 계속 수행
  * 
- * 
+ *  
  * 
  * 
  * //state, task간의 property나 object의 이름을 똑같이 통일하자
@@ -145,11 +145,19 @@ public class StateModuleTemplate {
 
 			string typeName = kv.Value.ToString ();
 
+
+
+
 			if (typeName.Length - 2 > 0) {
 				string test = typeName.Substring (typeName.IndexOf(".")+1);
 
+
+
 				//1차원 배열
-				if (test.LastIndexOf ("[") == test.IndexOf ("[")) {
+				if (test.LastIndexOf ("[") == test.IndexOf ("[") && test.LastIndexOf("[") > 0 ) {
+
+
+
 					if (test.Contains ("String")) {
 						string[] strArray = (string[])kv.Value;
 
@@ -216,12 +224,13 @@ public class StateModuleTemplate {
 						propElement.SetAttribute (kv.Key, compactStr);
 					}
 
-					
 				} else {
 					//[] 안 들어 있을시 array 아닌 걍 string이므로 그대로 저장하기
+
 					propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
 				}
 			} else {
+				
 				propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
 			}
 
@@ -398,6 +407,7 @@ public class StateModuleTemplate {
     //초기화, 1번만 수행
     public virtual void Init()
     {
+        
         Debug.Log(myStateName +  " state 시작");
 		turnOnMyUI ();
     }

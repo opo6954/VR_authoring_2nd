@@ -4,9 +4,18 @@ using System.Collections.Generic;
 using System.Xml;
 //scenario 자체는 걍 module만 있고 xml로만 저장할 수 있도록 하자
 public class ScenarioModuleTemplate {
+
+	//scenarioSeq의 instance를 가지고 오자
+
+    private Transform myPosition;
+
+	private ScenarioController myParent;
+
+	//myParent에서의 scenarioList에서의 나의 순서
+	private int myScenarioIdx;
 	
 	//task seq가 저장된 task list
-	public List<TaskModuleTemplate> taskList = new List<TaskModuleTemplate>();
+	private List<TaskModuleTemplate> taskList = new List<TaskModuleTemplate>();
 
 	//sceanrio의 이름
 	private string myScenarioName="";
@@ -17,33 +26,115 @@ public class ScenarioModuleTemplate {
 	//scenario의 시간
 	private double timeout = 0;
 
-	//scenario관련 공통 resource의 설정 및 불러오기
-	public void setMyScenarioName(string _myName)
+    public Transform MyPosition
+    {
+        get
+        {
+            return myPosition;
+        }
+        set
+        {
+            myPosition = value;
+        }
+    }
+
+    public int MyScenarioIdx
+    {
+        get
+        {
+            return myScenarioIdx;
+        }
+        set
+        {
+            myScenarioIdx = value;
+        }
+    }
+
+    public string MyScenarioName
+    {
+        get
+        {
+            return myScenarioName;
+        }
+        set
+        {
+            myScenarioName = value;
+        }
+    }
+
+    public int MyDifficulty
+    {
+        get
+        {
+            return difficulty;
+        }
+        set
+        {
+            difficulty = value;
+        }
+    }
+
+    public double MyTimeout
+    {
+        get
+        {
+            return timeout;
+        }
+        set
+        {
+            timeout = value;
+        }
+    }
+
+	public void insertTask(TaskModuleTemplate _task)
 	{
-		myScenarioName = _myName;
-	}
-	public string getMyScenarioName()
-	{
-		return myScenarioName;
-	}
-	public void setMyDifficulty(int _difficulty)
-	{
-		difficulty = _difficulty;
-	}
-	public int getMyDifficult()
-	{
-		return difficulty;
+        _task.setMyParent(this);
+
+        taskList.Add(_task);
+
+
 	}
 
-	public void setMyPeriodTime(double _time)
+
+
+
+
+
+	public void setMyParent(ScenarioController _myParent)
 	{
-		timeout = _time; 
+        
+		myParent = _myParent;
+        myPosition = _myParent.transform.GetChild(0).transform;
+
+	}
+    
+
+
+	//build 관련
+
+	//주어진 task idx 이후의 task를 시작한다. 만일 없을시 제일 처음 task부터 실행한다
+	public void triggerTask(int taskIdx=0)
+	{
+		if (taskIdx > 0) {
+			if (taskList.Count < taskIdx) {
+				taskList [taskIdx + 1].setStartTrigger ();//다음 task를 실행하기
+			} else {
+				Debug.Log ("No Next Task Found");
+
+				myParent.triggerScenario (myScenarioIdx + 1);
+			}
+		} else if (taskIdx == 0) {
+			if (taskList.Count > taskIdx) {
+                Debug.Log("First Task is triggered " + taskList[taskIdx].myTaskName);
+				taskList [taskIdx].setStartTrigger ();//처음 task 실행하기
+
+				
+			}
+		}
 	}
 
-	public double getMyTimeOut()
-	{
-		return timeout;
-	}
+
+
 
 
 
@@ -53,12 +144,14 @@ public class ScenarioModuleTemplate {
 	//xml로 저장시 task단 역시 저장 필요
 	public void saveScenario2Xml()
 	{
+		
 		XmlDocument document = new XmlDocument();
 		XmlElement element = document.CreateElement ("Scenario");
 		element.SetAttribute ("name", myScenarioName);
 		element.SetAttribute ("difficulty", difficulty.ToString());
 		element.SetAttribute ("Time", timeout.ToString());
 		document.AppendChild (element);
+
 
 
 		//이 후에 밑단(task, state단) 하자
@@ -80,9 +173,9 @@ public class ScenarioModuleTemplate {
 
 		XmlElement itemListElement = xmldoc ["Scenario"];
 		//scenario단에서의 정보
-		setMyPeriodTime(double.Parse(itemListElement.GetAttribute ("Time")));
-		setMyDifficulty(int.Parse(itemListElement.GetAttribute ("difficulty")));
-		setMyScenarioName(itemListElement.GetAttribute ("name"));
+		MyTimeout = double.Parse(itemListElement.GetAttribute ("Time"));
+		MyDifficulty = int.Parse(itemListElement.GetAttribute ("difficulty"));
+		MyScenarioName = itemListElement.GetAttribute ("name");
 
 		XmlNodeList nodeList = xmldoc.GetElementsByTagName ("Task");
 

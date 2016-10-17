@@ -86,8 +86,8 @@ public class FireReport : TaskModuleTemplate
     {
         base.TaskFinish();
 
-		Destroy (defaultForm);
-		Destroy (questionForm);
+		GameObject.Destroy (defaultForm);
+		GameObject.Destroy (questionForm);
 
 		//UIPrefab dic에서 제거해주기
     }
