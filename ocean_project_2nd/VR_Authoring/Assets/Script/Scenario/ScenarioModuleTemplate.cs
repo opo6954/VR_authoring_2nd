@@ -5,8 +5,8 @@ using System.Xml;
 //scenario 자체는 걍 module만 있고 xml로만 저장할 수 있도록 하자
 public class ScenarioModuleTemplate { 
 
-	//scenarioSeq의 instance를 가지고 오자
-
+	//scenarioSeq의 instance를 가지고 오자sadf
+ 
     private Transform myPosition;
 
 	private ScenarioController myParent;

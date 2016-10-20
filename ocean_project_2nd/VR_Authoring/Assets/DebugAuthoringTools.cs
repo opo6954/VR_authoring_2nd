@@ -18,7 +18,7 @@ public class DebugAuthoringTools : MonoBehaviour {
 	 * dictionary 순회 가능, keys형식의 list로 주는
 	 * */
 
-
+ 
 
 	void Start () {
 
@@ -30,6 +30,10 @@ public class DebugAuthoringTools : MonoBehaviour {
 
         df.loadUIPrefab("BackgroundForm");//global UI라서 걍 넣음
         pt.setMyUI(df);//적용할 UI임...
+
+
+		ScenarioModuleTemplate myScenario = new ScenarioModuleTemplate ();
+
 
 
 
@@ -77,10 +81,6 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 		 
         //처음 task를 시작하자 이 부분은 나중에 재생버튼(만든 플랫폼 실행)과 연관될 듯
-        
-
-        //순서: ShipPatrol -->whelming --> PowerOver
-        //ShipPatrol --> PowerOver
         
 
 
@@ -134,7 +134,7 @@ public class DebugAuthoringTools : MonoBehaviour {
 				"중형",
 				"소형"
 			}
-		};
+		}; 
 
 		int[] trueAns = new int[] {0,2,1};
 
@@ -153,10 +153,13 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 		task2.addObject ("Approach_to_Object", GameObject.Find ("ShipPhone"));
 
+
 		task2.setMyUI (pt.myUIInfo);
 		task2.setMyPlayer (pt);
 
 		task2.readyTask ();
+
+
 
 		return task2;
 	}

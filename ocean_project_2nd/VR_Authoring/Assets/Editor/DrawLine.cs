@@ -23,6 +23,21 @@ public class DrawLine : EditorWindow {
     public static List<Rect> windows = new List<Rect>();
     public static List<Rect_Pair> connections = new List<Rect_Pair>();
 
+    public static void Draw()
+    {
+        for (int i = 0; i < windows.Count - 1; i++)
+        {
+            connections.Add(new Rect_Pair(windows[i], windows[i + 1]));
+        }
+        foreach (Rect_Pair connection in connections)
+        {
+            DrawNodeCurve(connection.start, connection.end);
+            DrawArrowHead(connection.start, connection.end, new Vector2(0.25f, 1.0f), new Vector2(0.0f, 0.5f), 50f, 30f, 10f);
+        }
+        windows.Clear();
+        connections.Clear();
+    }
+
 
     public static void DrawNodeCurve(Rect start, Rect end)
     {
