@@ -2,27 +2,64 @@
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 
 //module은 항상 1인칭 플레이어한테 붙도록 하자
-public class TaskModuleTemplate : MonoBehaviour {
+public class TaskModuleTemplate{
 
     //이 모듈을 가지고 있는 player임
 
     Transform myPosition;
 
+	//이 task를 가지고 있는 scenario instance
+	ScenarioModuleTemplate myParent;
 
+     
     protected PlayerTemplate myPlayerInfo;//선택된 player 종류
     protected UIModuleTemplate myUIInfo;//선택된 UI 종류
     
-    public string myTaskName;
+    public string myTaskName;//customized name
+	public string myTaskType;//type of task: pre-defined
+
+	private bool isPropertyEditEnd = false;
+	private bool isObjectEditEnd = false;
 
     
     private bool isTaskStart;
     private bool isTaskEnd;
     private bool isTaskDoing;
 
+	private int myTaskIdx = 0;//
+
     protected int stateIdx = 0;
+
+	//task idx 설정 및 가져오기
+	public void setMyTaskIdx(int idx)
+	{
+		myTaskIdx = idx;
+	}
+
+	public int getMyTaskIdx()
+	{
+		return myTaskIdx;
+	}
+	//이 task를 소유한 부모(scenario) 설정 및 가져오기
+	public void setMyParent(ScenarioModuleTemplate _scenario)
+	{
+		myParent = _scenario;
+        myPosition = _scenario.MyPosition;
+
+        
+
+	}
+
+	public ScenarioModuleTemplate getMyParent()
+	{
+		return myParent;
+	}
+
+
 
     /*
      * 시작하는 trigger: isTaskStart --> true로 설정
@@ -42,14 +79,23 @@ public class TaskModuleTemplate : MonoBehaviour {
 	public string[] objectsList;
 
     protected List<StateModuleTemplate> myStateList = new List<StateModuleTemplate>();
-    
 
     //property관련 함수
+	//Property, Obj 설정 함수
 
+	public virtual void readyTask()
+	{
+		Debug.Log ("ready for task");
+	}
 
     public void addProperty(string propertyName, object o)
     {
-        propertyGroup.Add(propertyName, o);
+        if (propertyGroup.ContainsKey(propertyName) == true)
+        {
+            
+        }
+        else
+            propertyGroup.Add(propertyName, o);
     }
     
 
@@ -64,8 +110,10 @@ public class TaskModuleTemplate : MonoBehaviour {
     //각 task별로 특정 property를 가져오기
     public T getProperty<T>(string propertyName)
     {
+        
         if (propertyGroup.ContainsKey(propertyName))
             return (T)propertyGroup[propertyName];
+        
         return default(T);
     }
 
@@ -95,6 +143,7 @@ public class TaskModuleTemplate : MonoBehaviour {
     public void setStartTrigger()
     {
         isTaskStart = true;
+        getMyParent().getMyParent().currTaskExecute = this;
     }
 
     public void setEndTrigger()
@@ -104,14 +153,10 @@ public class TaskModuleTemplate : MonoBehaviour {
 
     public bool setNextTaskStartTrigger()
     {
-        if ( myPlayerInfo.isTaskContains(nextTaskName) == true)
-        {
-            
-            myPlayerInfo.getTask(nextTaskName).setStartTrigger();//start trigger 발동시키기
-            return true;
-        }
+        
+        myParent.triggerTask(myTaskIdx+1);
 
-        return false;
+        return true;
     }
 
      
@@ -129,6 +174,11 @@ public class TaskModuleTemplate : MonoBehaviour {
     public void setMyUI(UIModuleTemplate uimodule)
     {
         myUIInfo = uimodule;
+    }
+
+    public void setMyPosition(Transform _position)
+    {
+        myPosition = _position;
     }
 
     public Transform getMyPosition()
@@ -152,16 +202,28 @@ public class TaskModuleTemplate : MonoBehaviour {
         TaskInit();
 	}
 
-	//task xml 저장
 
-	public virtual void savexml()
+	//task xml 저장
+	//document에 붙여라
+	public void saveTaskXml(XmlDocument document, XmlElement parent)
 	{
-		Debug.Log ("XML 포맷으로 저장");
+		XmlElement element = document.CreateElement ("Task");
+		element.SetAttribute ("name", myTaskName);
+		element.SetAttribute ("type", myTaskType);
+		parent.AppendChild (element);
+
+
+
+		for (int i = 0; i < myStateList.Count; i++) {
+			myStateList [i].saveStateXml (document,element);
+		}
+
+
 	}
 
 	//task xml 불러오기
 
-	public virtual void loadxml()
+	public void loadTaskXml()
 	{		
 		Debug.Log ("XML 포맷 불러오기");
 	}
@@ -171,20 +233,24 @@ public class TaskModuleTemplate : MonoBehaviour {
     //최초 task가 생성될 때의 초기화
     public virtual void TaskInit()
     {
-        
-        if(gameObject.transform.childCount>0)
-            myPosition = gameObject.transform.GetChild(0);
-        
         //이 부분에서 state를 추가합시다
-
-        
-
     }
     
     //task가 시작하려 할때
     public virtual void TaskStart()
     {
         Debug.Log(myTaskName + " 훈련 시작~!");
+
+        for (int i = 0; i < myStateList.Count; i++)
+        {
+            myStateList[i].setMyPosition(getMyPosition());
+            myStateList[i].turnOffMyUI();
+            
+            
+        }
+
+        
+
         //state에 대한 모든 초기화를 하자
 
     }
@@ -236,28 +302,30 @@ public class TaskModuleTemplate : MonoBehaviour {
 
 
     }
-	
-	
-	void Update () {
 
-        
+    //이 부분을 scenarioController의 update에서 불러야 한다
+    public void OnUpdate()
+    {
+            if (isTaskStart == true)
+            {
 
-        if (isTaskStart == true)
-        {
+                TaskStart();
+                isTaskStart = false;
+                isTaskDoing = true;
 
-            TaskStart();
-            isTaskStart = false;
-            isTaskDoing = true;
+                
+
+
+            }
+            else if (isTaskDoing == true && isTaskEnd == false)
+            {
+                TaskProcess();
+                
+            }
+            else if (isTaskDoing == true && isTaskEnd == true)
+            {
+                TaskFinish();
+                isTaskDoing = false;
+            }
         }
-        else if (isTaskDoing == true && isTaskEnd == false)
-        {
-            TaskProcess();
-        }
-        else if (isTaskDoing == true && isTaskEnd == true)
-        {
-            TaskFinish();
-            isTaskDoing = false;
-        }
-	}
-
 }

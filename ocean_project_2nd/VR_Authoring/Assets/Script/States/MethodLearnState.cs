@@ -5,7 +5,7 @@ using System.Collections;
  * method state, 3D 물체의 각 부분을 인식하고 관련 영상 재생하기
  * 3D object를 확인하고 선택하는 효과는 일단 바꿀 수 없게 하는데 바꾸는 게 저작도구에는 넣어야 하지 않을까?
  * */
-
+//method 각 부분 시야로 인식하는 거 좀 향상이 필요할듯 그리고 정답 판정을 넓혀야 할듯
 
 
 public class MethodLearnState : StateModuleTemplate {
@@ -15,7 +15,7 @@ public class MethodLearnState : StateModuleTemplate {
 
 	float originHeight;
 
-	float objOffsetRot=70.0f;
+	float objOffsetRot=30.0f;
 
 	Transform[] objParts;
 
@@ -42,9 +42,9 @@ public class MethodLearnState : StateModuleTemplate {
 
 
 
-	public MethodLearnState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
+	public MethodLearnState(TaskModuleTemplate _myModule) : base(_myModule)
 	{
-
+		myStateName = "MethodLearnState";
 	}
 
 	public override void setProperty (System.Collections.Generic.Dictionary<string, object> properties)
@@ -89,7 +89,7 @@ public class MethodLearnState : StateModuleTemplate {
 	{
 		//scale 조절
 		Vector3 myScale = cloneObj.transform.localScale;
-		myScale = myScale * 2.0f;
+		myScale = myScale * 4.0f;
 		cloneObj.transform.localScale = myScale;
 	}
 
@@ -100,9 +100,10 @@ public class MethodLearnState : StateModuleTemplate {
 		//Debug.DrawRay (ray.origin, ray.direction * 1000, Color.yellow);
 
 		Vector3 objPosition = new Vector3 ();
-		objPosition = ray.origin +  ray.direction * 2.0f;
+		objPosition = ray.origin +  ray.direction * 3.0f;
 
-		objPosition.y = objPosition.y - cloneObj.GetComponent<MeshFilter> ().mesh.bounds.max.z / 100.0f;
+		objPosition.y = objPosition.y - cloneObj.GetComponent<MeshFilter> ().mesh.bounds.max.z / 100.0f - 0.5f;
+
 
 		cloneObj.transform.localPosition = objPosition;
 	}
@@ -124,7 +125,7 @@ public class MethodLearnState : StateModuleTemplate {
 
 	public override void Init ()
 	{
-		myStateName = "Method 숙지 - 3D 모델 인식 및 영상 교육";
+		
 		base.Init ();
 
 

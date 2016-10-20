@@ -17,9 +17,9 @@ public class ButtonPressState : StateModuleTemplate {
 	string button = "";
 
 
-	public ButtonPressState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
+	public ButtonPressState(TaskModuleTemplate _myModule) : base(_myModule)
 	{
-		
+		myStateName = "ButtonPressState";
 	}
 	 
 
@@ -40,7 +40,7 @@ public class ButtonPressState : StateModuleTemplate {
 
     public override void Init()
     {
-		myStateName = "화면이 멈춘 상태에서 특정 키 누르기";
+		
 
         base.Init();
 

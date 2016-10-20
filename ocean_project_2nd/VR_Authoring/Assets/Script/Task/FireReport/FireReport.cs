@@ -30,7 +30,11 @@ public class FireReport : TaskModuleTemplate
 	GameObject defaultForm = null;
 	GameObject questionForm = null;
 
+	public FireReport()
+	{
+		myTaskType = "FireReport";
 
+	}
 
 
     
@@ -47,40 +51,48 @@ public class FireReport : TaskModuleTemplate
     public override void TaskProcess()
     {
         base.TaskProcess();
-      
     }
 
-    public override void TaskStart()
-    {
-        base.TaskStart();
+	public override void readyTask()
+	{
+		
 
-		myUIInfo.loadUIPrefab ("DefaultForm");
-		myUIInfo.loadUIPrefab ("ReportForm");
-
-		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
-		questionForm = myUIInfo.getUIPrefab ("ReportForm");
-		 
-		ApproachObjState a = new ApproachObjState (this, defaultForm);
+		ApproachObjState a = new ApproachObjState (this);
 		a.setProperty (getProperties ());
 		a.setObject (getObjects ());
-		QuestioningState b = new QuestioningState (this, questionForm);
+		QuestioningState b = new QuestioningState (this);
 		b.setProperty (getProperties ());
 		b.setObject (getObjects ());
 
 		myStateList.Add (a);
 		myStateList.Add (b);
+	}
 
-		//questionForm.GetComponent<ReportForm> ().turnOnOffMyPart (false);
+    public override void TaskStart()
+    {
+		myUIInfo.loadUIPrefab ("DefaultForm");
+		myUIInfo.loadUIPrefab ("ReportForm");
 
-		questionForm.gameObject.SetActive (false);
+		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
+		questionForm = myUIInfo.getUIPrefab ("ReportForm");
+
+		myStateList [0].setUI (defaultForm);
+		myStateList [1].setUI (questionForm);
+
+        
+
+        base.TaskStart();
+
+        
+
     }
 
     public override void TaskFinish()
     {
         base.TaskFinish();
 
-		Destroy (defaultForm);
-		Destroy (questionForm);
+		GameObject.Destroy (defaultForm);
+		GameObject.Destroy (questionForm);
 
 		//UIPrefab dic에서 제거해주기
     }

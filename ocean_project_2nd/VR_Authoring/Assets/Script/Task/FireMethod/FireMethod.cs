@@ -33,6 +33,10 @@ public class FireMethod : TaskModuleTemplate {
 	GameObject defaultForm = null;
 
 	GameObject methodForm = null;
+	public FireMethod()
+	{
+		myTaskType = "FireMethod";
+	}
 
 	public override void TaskInit ()
 	{
@@ -48,9 +52,32 @@ public class FireMethod : TaskModuleTemplate {
 		base.TaskProcess ();
 	}
 
+	public override void readyTask ()
+	{
+		
+		ApproachObjState a = new ApproachObjState (this);
+		a.setProperty (getProperties ());
+		a.setObject (getObjects ());
+
+		ButtonPressState b = new ButtonPressState (this);
+		b.setProperty (getProperties ());
+		b.setObject (getObjects ());
+
+
+		MethodLearnState c = new MethodLearnState (this);
+		c.setProperty (getProperties ());
+		c.setObject (getObjects ());
+
+		myStateList.Add (a); 
+		myStateList.Add (b);
+		myStateList.Add (c);
+
+
+	}
+
 	public override void TaskStart ()
 	{
-		base.TaskStart ();
+		
 
 		myUIInfo.loadUIPrefab ("DefaultForm");
 		myUIInfo.loadUIPrefab ("MethodForm");
@@ -58,36 +85,13 @@ public class FireMethod : TaskModuleTemplate {
 		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
 		methodForm = myUIInfo.getUIPrefab ("MethodForm");
 
-		ApproachObjState a = new ApproachObjState (this, defaultForm);
-		a.setProperty (getProperties ());
-		a.setObject (getObjects ());
-
-		ButtonPressState b = new ButtonPressState (this, defaultForm);
-		b.setProperty (getProperties ());
-		b.setObject (getObjects ());
+		//firemethod task만의 고유한 부분이니까 이렇게 hard coding해도 됨... 근데 state로 task를 저작하는 단계로 진입하면 힘들듯...
+		myStateList[0].setUI(defaultForm);
+		myStateList [1].setUI (defaultForm);
+		myStateList [2].setUI (methodForm);
 
 
-		MethodLearnState c = new MethodLearnState (this, methodForm);
-		c.setProperty (getProperties ());
-		c.setObject (getObjects ());
-
-
-
-
-
-
-		myStateList.Add (a); 
-		myStateList.Add (b);
-		myStateList.Add (c);
-
-
-		for (int i = 0; i < myStateList.Count; i++) {
-			myStateList [i].turnOffMyUI ();
-		}
-
-
-
-
+        base.TaskStart();
 	}
 
 
@@ -96,8 +100,8 @@ public class FireMethod : TaskModuleTemplate {
 	{
 		base.TaskFinish ();
 
-		Destroy (defaultForm);
-		Destroy (methodForm);
+		GameObject.Destroy (defaultForm);
+		GameObject.Destroy (methodForm);
 
 		myUIInfo.deleteUIPrefab ("DefaultForm");
 		myUIInfo.deleteUIPrefab ("MethodForm");

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml;
 
 /*
  * State module을 위한 template, State는 UIForm과 1대1로 매칭될 수 있습니다. 
@@ -12,7 +13,7 @@ using System.Collections.Generic;
  * Goal: State를 완료하기 위한 조건
  * Res: State가 종료될 때의 수행작업, Goal이 true이면 계속 수행
  * 
- * 
+ *  
  * 
  * 
  * //state, task간의 property나 object의 이름을 똑같이 통일하자
@@ -54,7 +55,11 @@ public class StateModuleTemplate {
     public T getProperty<T>(string propertyName)
     {
         if (propertyGroup.ContainsKey(propertyName) == true)
+        {
+            
+            
             return (T)propertyGroup[propertyName];
+        }
 
         return default(T);  
     }
@@ -128,6 +133,136 @@ public class StateModuleTemplate {
         myPosition = _myPos;
     }
 
+	//XML 저장 및 로드 함수
+
+	public void saveStateXml(XmlDocument document, XmlElement parent)
+	{
+		//state 종류도 기억해야 할듯
+		//state에서 저장할 부분:
+		XmlElement element = document.CreateElement("State");
+		XmlElement propElement = document.CreateElement ("Properties");
+		XmlElement objElement = document.CreateElement ("Objects");
+
+		element.SetAttribute ("name", myStateName);
+
+		foreach (KeyValuePair<string, object> kv in propertyGroup) {
+
+			string typeName = kv.Value.ToString ();
+
+
+
+
+			if (typeName.Length - 2 > 0) {
+				string test = typeName.Substring (typeName.IndexOf(".")+1);
+
+
+
+				//1차원 배열
+				if (test.LastIndexOf ("[") == test.IndexOf ("[") && test.LastIndexOf("[") > 0 ) {
+
+
+
+					if (test.Contains ("String")) {
+						string[] strArray = (string[])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < strArray.Length; i++) {
+							if (i == 0)
+								compactStr = strArray [i];
+							else
+								compactStr += "," + strArray [i];
+						}
+
+						propElement.SetAttribute (kv.Key, compactStr);
+					} else if (test.Contains ("Int32")) {
+						int[] intArray = (int[])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < intArray.Length; i++) {
+							if (i == 0)
+								compactStr = intArray [i].ToString();
+							else
+								compactStr += "," + intArray [i].ToString();
+						}
+						propElement.SetAttribute (kv.Key, compactStr);
+					}
+				}
+				//2차원 배열
+				else if (test.LastIndexOf("[") > test.IndexOf("[")){
+					if (test.Contains ("String")) {
+						string[][] strArray = (string[][])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < strArray.GetLength (0); i++) {
+							
+							for (int j = 0; j < strArray [i].GetLength (0); j++) {
+								if (i == 0 && j == 0)
+									compactStr = strArray [i] [j];
+								else
+									compactStr += "," + strArray [i] [j];
+							}
+							compactStr = compactStr + " /";
+						}
+
+						propElement.SetAttribute (kv.Key, compactStr);
+
+					} else if (test.Contains ("Int32")) {
+						int[][] intArray = (int[][])kv.Value;
+
+						string compactStr = "";
+
+						for (int i = 0; i < intArray.GetLength (0); i++) {
+
+							for (int j = 0; j < intArray [i].GetLength (0); j++) {
+								if (i == 0 && j == 0)
+									compactStr = intArray [i] [j].ToString();
+								else
+									compactStr += "," + intArray [i] [j].ToString();
+							}
+							compactStr = compactStr + " /";
+						}
+
+						propElement.SetAttribute (kv.Key, compactStr);
+					}
+
+				} else {
+					//[] 안 들어 있을시 array 아닌 걍 string이므로 그대로 저장하기
+
+					propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
+				}
+			} else {
+				
+				propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
+			}
+
+			//propElement.SetAttribute (kv.Key, kv.Value.ToString ());			
+
+
+
+
+
+
+
+		}
+
+		foreach (KeyValuePair<string, object> kv in objectGroup) {
+			//obj는 그 obj의 gameobject의 이름으로 저장하자, 이름은 중복하면 안된다는 가정을 하자
+			objElement.SetAttribute (kv.Key, getObject<GameObject> (kv.Key).name);
+		}
+
+		element.AppendChild (propElement);
+		element.AppendChild (objElement);
+		parent.AppendChild (element);
+
+
+	}
+	public void loadStateXml()
+	{
+		Debug.Log ("State를 xml로 저장하는 부분");
+	}
 
 
 
@@ -222,13 +357,14 @@ public class StateModuleTemplate {
 	/// 
 	//생성자
 
-	public StateModuleTemplate(TaskModuleTemplate _myModule, GameObject _UI)
+	public StateModuleTemplate(TaskModuleTemplate _myModule)
 	{
 		setMyModule(_myModule);
 		setMyPosition(myModuleInfo.getMyPosition());
 		setMyPlayer(myModuleInfo.getMyPlayer());
-		setUI(_UI);
 	}
+
+
 
 
 	// Update is called once per frame
@@ -275,6 +411,7 @@ public class StateModuleTemplate {
     //초기화, 1번만 수행
     public virtual void Init()
     {
+        
         Debug.Log(myStateName +  " state 시작");
 		turnOnMyUI ();
     }

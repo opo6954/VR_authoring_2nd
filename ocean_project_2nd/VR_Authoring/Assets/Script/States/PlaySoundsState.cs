@@ -14,9 +14,9 @@ using System.Collections;
 public class PlaySoundsState : StateModuleTemplate {
 
 
-	public PlaySoundsState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
+	public PlaySoundsState(TaskModuleTemplate _myModule) : base(_myModule)
 	{
-
+		myStateName = "PlaySoundsState";
 	}
 
 
@@ -35,7 +35,7 @@ public class PlaySoundsState : StateModuleTemplate {
 	{
 		base.Init ();
 
-		myStateName = "소리 파일 재생";
+
 
 
 
@@ -48,9 +48,16 @@ public class PlaySoundsState : StateModuleTemplate {
 			audioSource.clip = Resources.Load ("Sound/" + getProperty<string> ("SoundName")) as AudioClip;
 
 
-		
+            string loopStatus = getProperty<string>("Loop");
+            bool loopFlag;
 
-			audioSource.loop = getProperty<bool> ("Loop");
+            if (loopStatus == "True")
+                loopFlag = true;
+            else
+                loopFlag = false;
+
+
+            audioSource.loop = loopFlag;
 
 			audioSource.Play ();
 

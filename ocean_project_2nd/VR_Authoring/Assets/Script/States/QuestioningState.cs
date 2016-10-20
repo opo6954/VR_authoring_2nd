@@ -37,9 +37,9 @@ public class QuestioningState : StateModuleTemplate {
 	string moveButton="";
 
 
-	public QuestioningState(TaskModuleTemplate _myModule, GameObject _UI) : base(_myModule, _UI)
+	public QuestioningState(TaskModuleTemplate _myModule) : base(_myModule)
 	{
-
+		myStateName = "QuestioningState";
 	}
 
 
@@ -66,7 +66,7 @@ public class QuestioningState : StateModuleTemplate {
 
 	public override void Init ()
 	{
-		myStateName = "문제 풀기 State";
+		
 		backgroundUI = myModuleInfo.getBackgroundUI ();//추가적인 버튼 및 맞는지 틀렸는지 알려주기 위해 backgroundUI 필요함
 
 		base.Init ();

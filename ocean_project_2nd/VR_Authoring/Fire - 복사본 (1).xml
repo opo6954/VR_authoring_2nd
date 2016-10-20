@@ -1,0 +1,52 @@
+<Root>
+<Scenario name="Fire" difficulty="13" Time="111.303">
+  <Task name="FireNotice" type="FireNotice">
+    <State name="ApproachObjState">
+      <Properties Patrol_Contents="선박 내부를 순찰하세요" />
+      <Objects Approach_to_Object="Wake" />
+    </State>
+    <State name="ButtonPressState">
+      <Properties Notice_Contents="화재를 발견했습니다." Guide_Contents="X버튼: 다음 task 진행" Select_Button_Info="x" />
+      <Objects />
+    </State>
+  </Task>
+  <Task name="FireReport" type="FireReport">
+    <State name="ApproachObjState">
+      <Properties Patrol_Contents="선박 전화기를 통해 화재 내용을 보고하세요" />
+      <Objects Approach_to_Object="ShipPhone" />
+    </State>
+    <State name="QuestioningState">
+      <Properties Report_Count="3" Report_Question="화재 장소,화재 종류,화재 크기" Report_Answer="기관실,선장실,객실A,객실B /,일반화재,유류화재,전기화재 /,대형,중형,소형 /" Report_TrueAns="0,2,1" Select_Button_Info="x" Move_Button_Info="z" />
+      <Objects />
+    </State>
+  </Task>
+  <Task name="FireAlarm" type="FireAlarm">
+    <State name="ApproachObjState">
+      <Properties Patrol_Contents="화재 경보기를 찾으세요" />
+      <Objects Approach_to_Object="FireAlarm" />
+    </State>
+    <State name="ButtonPressState">
+      <Properties Notice_Contents="화재 경보기를 발견했습니다." Guide_Contents="x버튼: 화재 경보기 동작" Select_Button_Info="x" />
+      <Objects />
+    </State>
+    <State name="PlaySoundsState">
+      <Properties SoundName="Whistling" Loop="True" />
+      <Objects Sound_from_Object="FireAlarm" />
+    </State>
+  </Task>
+  <Task name="FireMethod" type="FireMethod">
+    <State name="ApproachObjState">
+      <Properties Patrol_Contents="초기 진화를 위한 소화기를 찾으세요" Approach_Distance="3" Approach_Angle="3" />
+      <Objects Approach_to_Object="FireExtinguisher_Segment" />
+    </State>
+    <State name="ButtonPressState">
+      <Properties Notice_Contents="소화기를 동작하세요" Guide_Contents="X버튼: 소화기 동작 미션 시작" Select_Button_Info="x" />
+      <Objects />
+    </State>
+    <State name="MethodLearnState">
+      <Properties PartCount="4" isVideo="True" VideoName="4,2,3,1" PartAnswer="3,1,2,0" Select_Button_Info="x" Skip_Button_Info="z" />
+      <Objects Interaction_to_Object="FireExtinguisher_Segment" />
+    </State>
+  </Task>
+</Scenario>
+</Root>

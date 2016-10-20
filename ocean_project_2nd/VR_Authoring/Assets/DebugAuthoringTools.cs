@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using System.Xml;
 
 public class DebugAuthoringTools : MonoBehaviour {
@@ -13,9 +14,11 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 	PlayerTemplate pt =  null;
 
+	/*
+	 * dictionary 순회 가능, keys형식의 list로 주는
+	 * */
 
-
-
+ 
 
 	void Start () {
 
@@ -34,30 +37,91 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 
 
+        
+		ScenarioController scenarioController = debugPlayer.AddComponent<ScenarioController>();
+		//xml 저장 check
+
+        /*
+        FireExtinguishScenario smt = new FireExtinguishScenario();
+		smt.MyDifficulty = 13;
+		smt.MyTimeout =111.303;
+		smt.MyScenarioName ="Fire";
+        smt.setMyParent(scenarioController);//controller만 parent로 설정해주면 된다
 
 
+        smt.insertTask(madeTask1());
+        smt.insertTask(madeTask2());
+        smt.insertTask(madeTask3());
+ 
+        smt.insertTask(madeTask4());
+        
+		
+
+		scenarioController.insertScenario (smt);
+         * 
+         * */
+
+        XmlManager xm = new XmlManager();
+
+        xm.setMyPlayer(pt);
+        xm.setMyScenarioController(scenarioController);
+
+        List<ScenarioModuleTemplate> myScList = xm.xmlScenarioGroupLoader("fire.xml");
+
+        for (int i = 0; i < myScList.Count; i++)
+        {
+            scenarioController.insertScenario(myScList[i]);
+        }
+        
+
+        
+		scenarioController.triggerScenario ();
+        
+		 
+
+		 
+        //처음 task를 시작하자 이 부분은 나중에 재생버튼(만든 플랫폼 실행)과 연관될 듯
+        
+
+
+	}
+
+    // Update is called once per frame
+    void Update()
+    {
+	} 
+
+	public TaskModuleTemplate madeTask1()
+	{
 		//fire Notice
-        //task 실제로 적용한 부분
-        TaskModuleTemplate task = debugPlayer.AddComponent<FireNotice>() as TaskModuleTemplate;
+		//task 실제로 적용한 부분
 
-        task.myTaskName = "FireNotice";
-        
+        TaskModuleTemplate task = new FireNotice() as TaskModuleTemplate;
 
-        //property 설정
-              
-        task.addProperty("Patrol_Contents", "선박 내부를 순찰하세요");
-        task.addProperty("Notice_Contents", "화재를 발견했습니다.");
-        task.addProperty("Guide_Contents", "X버튼: 다음 task 진행");
+		task.myTaskName = "FireNotice";
+
+
+		//property 설정                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+
+		task.addProperty("Patrol_Contents", "선박 내부를 순찰하세요");
+		task.addProperty("Notice_Contents", "화재를 발견했습니다.");
+		task.addProperty("Guide_Contents", "X버튼: 다음 task 진행");
 		task.addProperty ("Select_Button_Info", "x");
-        //object 설정
-        task.addObject("Approach_to_Object",GameObject.Find("Wake"));
-
-        pt.insertTask("", task);      
-        
-		//fire Report
+		//object 설정
 
 
-		TaskModuleTemplate task2 = debugPlayer.AddComponent<FireReport> () as TaskModuleTemplate;
+		task.addObject("Approach_to_Object",GameObject.Find("Wake"));
+		task.setMyUI (pt.myUIInfo);
+		task.setMyPlayer (pt);
+
+		task.readyTask ();
+
+		return task;
+	}
+
+	public TaskModuleTemplate madeTask2()
+	{
+		TaskModuleTemplate task2 = new FireReport() as TaskModuleTemplate;
 
 		task2.myTaskName = "FireReport";
 
@@ -89,14 +153,20 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 		task2.addObject ("Approach_to_Object", GameObject.Find ("ShipPhone"));
 
-		pt.insertTask ("FireNotice", task2);
+
+		task2.setMyUI (pt.myUIInfo);
+		task2.setMyPlayer (pt);
+
+		task2.readyTask ();
 
 
 
+		return task2;
+	}
 
-		//fire Alarm
-
-		TaskModuleTemplate task3 = debugPlayer.AddComponent<FireAlarm>() as TaskModuleTemplate;
+	public TaskModuleTemplate madeTask3()
+	{
+		TaskModuleTemplate task3 = new FireAlarm() as TaskModuleTemplate;
 
 		task3.myTaskName = "FireAlarm";
 
@@ -109,22 +179,23 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task3.addProperty ("Notice_Contents", "화재 경보기를 발견했습니다.");
 		task3.addProperty ("Guide_Contents", "x버튼: 화재 경보기 동작");
 		task3.addProperty ("Select_Button_Info", "x");
-		
+
 		task3.addObject ("Sound_from_Object", GameObject.Find ("FireAlarm"));
 		task3.addObject ("Approach_to_Object", GameObject.Find ("FireAlarm"));
 
-		pt.insertTask ("FireReport", task3);
+		task3.setMyUI (pt.myUIInfo);
+		task3.setMyPlayer (pt);
 
+		task3.readyTask ();
 
-
-
-		//fire method(with extinguisher)
-
-
+		return task3;
+	}
+	public TaskModuleTemplate madeTask4()
+	{
 		string[] videos = new string[]{"4","2","3","1"};
 		int[] partAns = new int[]{ 3, 1, 2, 0 };
 
-		TaskModuleTemplate task4 = debugPlayer.AddComponent<FireMethod>() as TaskModuleTemplate;
+		TaskModuleTemplate task4 = new FireMethod() as TaskModuleTemplate;
 
 		task4.myTaskName = "FireMethod";
 
@@ -146,35 +217,16 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task4.addProperty ("isVideo", true);
 		task4.addProperty ("VideoName", videos); 
 		task4.addProperty ("PartAnswer", partAns);
-		 
+
 		task4.addObject ("Approach_to_Object", GameObject.Find ("FireExtinguisher_Segment"));
 		task4.addObject ("Interaction_to_Object", GameObject.Find ("FireExtinguisher_Segment"));
 
-		pt.insertTask ("FireAlarm", task4);
+		task4.setMyUI (pt.myUIInfo);
+		task4.setMyPlayer (pt);
 
+		task4.readyTask ();
 
-
-
-
-
-
-		pt.beginFirstTask ();
-
-
-
-        //처음 task를 시작하자 이 부분은 나중에 재생버튼(만든 플랫폼 실행)과 연관될 듯
-        
-
-        //순서: ShipPatrol -->whelming --> PowerOver
-        //ShipPatrol --> PowerOver
-        
-
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        
+		return task4;
 	}
 
 
