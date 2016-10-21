@@ -141,7 +141,7 @@ public class StateModuleTemplate {
 		//state에서 저장할 부분:
 		XmlElement element = document.CreateElement("State");
 		XmlElement propElement = document.CreateElement ("Properties");
-		XmlElement objElement = document.CreateElement ("Objects");
+		
 
 		element.SetAttribute ("name", myStateName);
 
@@ -248,7 +248,9 @@ public class StateModuleTemplate {
 
 		}
 
-		foreach (KeyValuePair<string, object> kv in objectGroup) {
+        XmlElement objElement = document.CreateElement("Objects");
+
+        foreach (KeyValuePair<string, object> kv in objectGroup) {
 			//obj는 그 obj의 gameobject의 이름으로 저장하자, 이름은 중복하면 안된다는 가정을 하자
 			objElement.SetAttribute (kv.Key, getObject<GameObject> (kv.Key).name);
 		}

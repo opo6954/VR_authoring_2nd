@@ -66,7 +66,7 @@ public class DebugAuthoringTools : MonoBehaviour {
         xm.setMyPlayer(pt);
         xm.setMyScenarioController(scenarioController);
 
-        List<ScenarioModuleTemplate> myScList = xm.xmlScenarioGroupLoader("fire.xml");
+        List<ScenarioModuleTemplate> myScList = xm.xmlScenarioGroupLoader("fire_test.xml");
 
         for (int i = 0; i < myScList.Count; i++)
         {

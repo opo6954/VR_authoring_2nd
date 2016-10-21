@@ -11,11 +11,13 @@ class Fire_scene
     public int difficulty = 2; // 난이도 1, 2, 3
     public int fire_size = 2; // 화재 크기 1, 2, 3
     public int device = 2; // 상호작용기기 1, 2, 3
+    public string type = "FireExtinguishScenario";// scenario의 type, 지금 이 class는 화재 관련 훈련이니까 FireExtinguishScenario라고 이름붙임
     public bool FireRecognition = true; // 화재 발견 태스크
     public bool FireReport = true; // 화재 보고 태스크
     public bool FireExtinguisher = true; // 소화기 태스크
     public bool gathering = true; // 집합 테스크
     public bool evacuation = false; // 승객 대피 테스크
+
 }
 
 class Water_scene
@@ -102,8 +104,10 @@ public class Scenario_object : GUIDraggableObject {
         xml_dict.Add("name", name);
         if (name == "Fire")
         {
+
             xml_dict.Add("difficulty", fire_status.difficulty.ToString());
             xml_dict.Add("Time", fire_status.Time.ToString());
+            xml_dict.Add("type", fire_status.type);
         }
         else if (name == "Water")
         {

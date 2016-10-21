@@ -31,7 +31,7 @@ public class XmlManager {
         //이거는 일단 넘기자
 
 
-        string s = System.IO.File.ReadAllText("fire.xml");
+        string s = System.IO.File.ReadAllText(fileName);
 
         //string s System.IO.StringReader
         

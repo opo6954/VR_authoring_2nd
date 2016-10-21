@@ -361,8 +361,9 @@ public class MainWindow : EditorWindow
                         XmlAttribute PropertiesAttr = doc.CreateAttribute(items.Key);
                         PropertiesAttr.Value = items.Value;
                         Properties.Attributes.Append(PropertiesAttr);
-                        state_xml.AppendChild(Properties);
+                        
                     }
+                    state_xml.AppendChild(Properties);
                     // object 넣기
                     XmlElement Objects = doc.CreateElement("Objects");
                     foreach (KeyValuePair<string, string> items in state.Objects)
@@ -370,8 +371,11 @@ public class MainWindow : EditorWindow
                         XmlAttribute ObjectsAttr = doc.CreateAttribute(items.Key);
                         ObjectsAttr.Value = items.Value;
                         Objects.Attributes.Append(ObjectsAttr);
-                        state_xml.AppendChild(Objects);
+                        
                     }
+                    state_xml.AppendChild(Objects);
+
+
                 }
             }
         }
