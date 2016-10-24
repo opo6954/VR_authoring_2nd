@@ -68,10 +68,15 @@ public class MethodForm : MonoBehaviour {
 	public void playVideo(int currIdx)
 	{
 		RawImage rim = videoRegion.GetComponent<RawImage> ();
-		videoInfo = Resources.Load ("Video/" + fileNames [currIdx], typeof(MovieTexture)) as MovieTexture;
+        Debug.Log("Video/" + fileNames[currIdx]);
+        //videoInfo = Resources.Load ("Video/" + fileNames [currIdx], typeof(MovieTexture)) as MovieTexture;
+        videoInfo = Resources.Load ("Videos/"+fileNames[currIdx] , typeof(MovieTexture)) as MovieTexture;
 
-		audioInfo = videoRegion.GetComponent<AudioSource> ();
 
+
+
+        audioInfo = videoRegion.GetComponent<AudioSource> ();
+        
 		rim.texture = videoInfo as MovieTexture;
 		audioInfo.clip = videoInfo.audioClip;
 

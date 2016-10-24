@@ -173,7 +173,7 @@ public class State_object : EditorWindow {
             state_name = "ApproachObjState";
             // Property
             key_list = new List<string> { "Patrol_Contents", "Approach_Distance", "Approach_Angle" };
-            value_list = new List<string> { "초기 진화를 위한 소화기를 찾으세요", "3", "3" };
+            value_list = new List<string> { "초기 진화를 위한 소화기를 찾으세요", "3.0", "3.0" };
             prop_list = make_string_pair_list(key_list, value_list);
             // Objects
             key_list = new List<string> { "Approach_to_Object" };
@@ -199,7 +199,7 @@ public class State_object : EditorWindow {
             state_name = "MethodLearnState";
             // Property
             key_list = new List<string> { "PartCount", "isVideo", "VideoName" ,"PartAnswer", "Select_Button_Info", "Skip_Button_Info" };
-            value_list = new List<string> { "4", "True", "4,2,3,1", "3,1,2,0", "x", "z" };
+            value_list = new List<string> { "4", "True", "video4,video2,video3,video1", "3,1,2,0", "x", "z" };
             prop_list = make_string_pair_list(key_list, value_list);
             // Objects
             key_list = new List<string> { "Interaction_to_Object" };

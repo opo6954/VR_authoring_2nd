@@ -47,9 +47,9 @@ public class StateModuleTemplate {
     private void mappingJoystickButton()
     {
         joystickMappingTable.Add("a", "joystick button 0");
-        joystickMappingTable.Add("b", "joystick button 1");
+        joystickMappingTable.Add("z", "joystick button 1");
         joystickMappingTable.Add("x", "joystick button 2");
-        joystickMappingTable.Add("z", "joystick button 3");
+        joystickMappingTable.Add("b", "joystick button 3");
         joystickMappingTable.Add("lb", "joystick button 4");
         joystickMappingTable.Add("rb", "joystick button 5");
         joystickMappingTable.Add("lt", "joystick button 6");
@@ -287,7 +287,7 @@ public class StateModuleTemplate {
 
     ///////////////Utility 함수들
     //특정 object에 가까이 가면 true 리턴, 아닐 시 false 리턴
-    public bool amISeeObject(GameObject target, float shout_angle = 3.0f, float shout_range = 5.0f)
+    public bool amISeeObject(GameObject target, float shout_angle = 10.0f, float shout_range = 15.0f)
     {
         float distance = (target.transform.position - myPosition.position).magnitude;
         float angle = Vector3.Dot((target.transform.position - myPosition.position).normalized, Camera.main.transform.forward.normalized);
