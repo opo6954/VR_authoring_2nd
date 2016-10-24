@@ -35,10 +35,27 @@ public class StateModuleTemplate {
     public PlayerTemplate myPlayerInfo;//현재 player 정보
 
 
+    private Dictionary<string, string> joystickMappingTable = new Dictionary<string, string>();
+
 	 
     //property 설정요소와 obj 설정 요소 존재
     private Dictionary<string, object> propertyGroup = new Dictionary<string, object>();
     private Dictionary<string, object> objectGroup = new Dictionary<string, object>();
+
+
+    //joystick 매핑 정보 
+    private void mappingJoystickButton()
+    {
+        joystickMappingTable.Add("a", "joystick button 0");
+        joystickMappingTable.Add("b", "joystick button 1");
+        joystickMappingTable.Add("x", "joystick button 2");
+        joystickMappingTable.Add("z", "joystick button 3");
+        joystickMappingTable.Add("lb", "joystick button 4");
+        joystickMappingTable.Add("rb", "joystick button 5");
+        joystickMappingTable.Add("lt", "joystick button 6");
+        joystickMappingTable.Add("rt", "joystick button 7");
+
+    }
     
     //property 및 obj 관리
 
@@ -326,10 +343,13 @@ public class StateModuleTemplate {
     public bool isKeyDown(string keyName)
     {
         bool isKeyPressed = false;
-
+         
         if (myPlayerInfo.isJoystick == true)
         {
             //조이스틱에 대한 control
+            isKeyPressed = Input.GetKeyDown(joystickMappingTable[keyName]);
+            
+            
         }
         else if (myPlayerInfo.isLeapMotion == true)
         {
@@ -364,6 +384,7 @@ public class StateModuleTemplate {
 		setMyModule(_myModule);
 		setMyPosition(myModuleInfo.getMyPosition());
 		setMyPlayer(myModuleInfo.getMyPlayer());
+        mappingJoystickButton();
 	}
 
 
