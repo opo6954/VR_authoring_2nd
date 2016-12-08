@@ -17,8 +17,7 @@ public class BackgroundForm : MonoBehaviour {
 	}
     void Init()
     {
-        timeInfo = gameObject.transform.FindChild("timeInfo").gameObject;
-        totalTaskInfo = gameObject.transform.FindChild("totalTaskInfo").gameObject;
+        
         buttonInfo = gameObject.transform.FindChild("buttonInfo").gameObject;
 
         isInit = true;

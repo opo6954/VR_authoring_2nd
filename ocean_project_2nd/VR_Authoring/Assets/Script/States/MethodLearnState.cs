@@ -25,6 +25,8 @@ public class MethodLearnState : StateModuleTemplate {
 	Material[] partObjectify;
 	Material partSelectObjectify;
 
+    Ray firstRay;
+
 	string selectButton="";
 	string skipButton="";
 
@@ -89,23 +91,34 @@ public class MethodLearnState : StateModuleTemplate {
 	{
 		//scale 조절
 		Vector3 myScale = cloneObj.transform.localScale;
-		myScale = myScale * 4.0f;
+		myScale = myScale * 1.5f;
 		cloneObj.transform.localScale = myScale;
 	}
 
 	public void setInitPosObj(GameObject cloneObj)
 	{
 		//위치 조절
-		Ray ray = myPlayerInfo.getCamera ().ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2,0));
-		//Debug.DrawRay (ray.origin, ray.direction * 1000, Color.yellow);
+		firstRay = Camera.main.ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2,0));
+		
 
 		Vector3 objPosition = new Vector3 ();
-		objPosition = ray.origin +  ray.direction * 3.0f;
 
+
+        objPosition = firstRay.origin + firstRay.direction * 3;
+
+
+        objPosition.y = objPosition.y - cloneObj.GetComponent<MeshFilter>().mesh.bounds.max.z / 100.0f - 0.5f;
+
+
+        /*
+		objPosition = ray.origin -  ray.direction * 5;
+        objPosition.x = ray.origin.x;
+
+        
 		objPosition.y = objPosition.y - cloneObj.GetComponent<MeshFilter> ().mesh.bounds.max.z / 100.0f - 0.5f;
+        */
 
-
-		cloneObj.transform.localPosition = objPosition;
+        cloneObj.transform.localPosition = objPosition;
 	}
 
 	public void setInitRotObj(GameObject cloneObj)
@@ -156,6 +169,10 @@ public class MethodLearnState : StateModuleTemplate {
 
 			}
 
+        
+
+
+
 		setInitScaleObj (cloneObj);
 		setInitPosObj (cloneObj);
 		setInitRotObj (cloneObj);
@@ -175,7 +192,7 @@ public class MethodLearnState : StateModuleTemplate {
 
 	public void hitTest()
 	{
-		Ray ray = myPlayerInfo.getCamera ().ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
+		Ray ray = Camera.main.ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
 		RaycastHit hitObj;
 
 		var layerMask = 1 << 8;
@@ -246,8 +263,16 @@ public class MethodLearnState : StateModuleTemplate {
 
 	public override void Process ()
 	{
-		Ray ray = myPlayerInfo.getCamera ().ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
-		Debug.DrawRay (ray.origin, ray.direction * 1000, Color.yellow);
+		Ray ray = Camera.main.ScreenPointToRay (new Vector3 (Screen.width / 2, Screen.height / 2, 0));
+        Debug.DrawRay(ray.origin, ray.direction * 1000, Color.yellow);
+        Debug.DrawRay (firstRay.origin, firstRay.direction * 1000, Color.red);
+
+
+        myPlayerInfo.transform.GetChild(0).transform.GetChild(3).transform.position = ray.origin + ray.direction * 5;
+
+
+        
+
 
 
 		videoOptionTest ();

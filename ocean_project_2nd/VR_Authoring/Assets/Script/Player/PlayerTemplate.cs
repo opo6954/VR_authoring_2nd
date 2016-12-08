@@ -2,21 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class PlayerTemplate : MonoBehaviour {
+public class PlayerTemplate : MonoBehaviour
+{
 
-    
+
     private Dictionary<string, TaskModuleTemplate> taskList;
 
     GameObject canvas_ui;
     public UIModuleTemplate myUIInfo;
 
-	//가상 현실 장비 관련 옵션
+    //가상 현실 장비 관련 옵션
     public bool isJoystick = false;
     public bool isLeapMotion = false;
 
     private string startTaskName = "";
 
-	public float myWalkSpeed=0.0f;
+    public float myWalkSpeed = 0.0f;
 
 
 
@@ -98,7 +99,7 @@ public class PlayerTemplate : MonoBehaviour {
             }
             else if (nextTask == "")//제일 마지막 task일 경우
             {
-                
+
                 getTask(prevTask).nextTaskName = "";
             }
 
@@ -110,7 +111,7 @@ public class PlayerTemplate : MonoBehaviour {
             }
             return true;
         }
-        
+
         return false;
     }
 
@@ -131,7 +132,7 @@ public class PlayerTemplate : MonoBehaviour {
 
     public TaskModuleTemplate getTask(string taskname)
     {
-        if(isTaskContains(taskname))
+        if (isTaskContains(taskname))
             return taskList[taskname];
         return null;
     }
@@ -145,25 +146,41 @@ public class PlayerTemplate : MonoBehaviour {
         myUIInfo = uiModule;
     }
 
-	//util function
+    //util function
 
-	public Camera getCamera()
-	{
-		return transform.GetChild (0).GetChild (0).GetComponent<Camera> ();
-	}
+    public Camera getCamera()
+    {
+        return transform.GetChild(0).GetChild(0).GetComponent<Camera>();
+    }
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
-		myWalkSpeed = transform.GetChild (0).transform.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().m_WalkSpeed;
+        myWalkSpeed = transform.GetChild(0).transform.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed;
 
         taskList = new Dictionary<string, TaskModuleTemplate>();
         canvas_ui = GameObject.Find("Canvas_UI");
-        
-	}
 
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        /*
+        RectTransform rt = canvas_ui.GetComponent<RectTransform>();
+        Ray r = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        rt.position = r.origin + r.direction;
+
+        Vector3 tmp = rt.position;
+
+        tmp.z = tmp.z + 1.0f;
+
+        rt.position = tmp;
+        
+        rt.localScale = new Vector3(0.005f, 0.005f, 0.005f);
+
+        Debug.DrawRay(r.origin, r.direction * 1000,Color.black);
+        */
+    }
 }
