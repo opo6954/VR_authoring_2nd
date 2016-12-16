@@ -25,8 +25,19 @@ public class ClientManager : Photon.PunBehaviour {
 
     void Start()
     {
-        //For Client Debugging... LHW
-
+        /*
+         * 
+         * 
+         * 
+         * 
+         * 
+        // For Client Debugging... LHW
+         * 
+         * 
+         * 
+         * 
+         * 
+        */
         Debug.Log("Init Client...");
 
         Initialize();

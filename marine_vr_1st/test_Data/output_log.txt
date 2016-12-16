@@ -1,0 +1,190 @@
+Initialize engine version: 5.3.4f1 (fdbb5133b820)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 6800 Series (ID=0x6738)
+    Vendor:   ATI
+    VRAM:     1011 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.584 seconds
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\1mythings\study\research\ocean_project\demoFilesGit\VRTS\marine_vr\test_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1200 60Hz; virtual: 1920x1200 at 0,0
+<RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
+<RI> Input initialized.
+desktop: 1920x1200 60Hz; virtual: 1920x1200 at 0,0
+<RI> Initialized touch support.
+UnloadTime: 10.251103 ms
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: 16f8 -> priority: 1 
+Player Num : 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+Player_1 Spawned!
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+move button is pressed, 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+what?
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+right part is clicked
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+right part is clicked
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+0
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+right part is clicked
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+right part is clicked
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 2
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 3
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 4
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+work with 5
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
+No obj...
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/UnityEngineDebugBindings.gen.cpp Line: 37)
+
