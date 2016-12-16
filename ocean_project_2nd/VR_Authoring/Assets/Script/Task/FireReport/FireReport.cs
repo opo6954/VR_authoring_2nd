@@ -26,7 +26,7 @@ trueAns[2]: 0
 
 public class FireReport : TaskModuleTemplate
 {
-
+    /*
 	GameObject defaultForm = null;
 	GameObject questionForm = null;
 
@@ -76,8 +76,8 @@ public class FireReport : TaskModuleTemplate
 		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
 		questionForm = myUIInfo.getUIPrefab ("ReportForm");
 
-		myStateList [0].setUI (defaultForm);
-		myStateList [1].setUI (questionForm);
+		//myStateList [0].setUI (defaultForm);
+		//myStateList [1].setUI (questionForm);
 
         
 
@@ -96,4 +96,5 @@ public class FireReport : TaskModuleTemplate
 
 		//UIPrefab dic에서 제거해주기
     }
+     * */
 }

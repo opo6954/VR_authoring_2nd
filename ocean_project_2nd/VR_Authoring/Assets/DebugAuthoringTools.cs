@@ -26,12 +26,7 @@ public class DebugAuthoringTools : MonoBehaviour {
         players = GameObject.FindGameObjectsWithTag("Player");
         debugPlayer = players[0];
         pt =  debugPlayer.GetComponent<PlayerTemplate>();
-        DefaultUI df = debugPlayer.AddComponent<DefaultUI>();
-
-        df.loadUIPrefab("BackgroundForm");//global UI라서 걍 넣음
-        pt.setMyUI(df);//적용할 UI임...
-
-
+        
 		ScenarioModuleTemplate myScenario = new ScenarioModuleTemplate ();
 
 
@@ -93,7 +88,7 @@ public class DebugAuthoringTools : MonoBehaviour {
     void Update()
     {
 	} 
-
+    /*
 	public TaskModuleTemplate madeTask1()
 	{
 		//fire Notice
@@ -114,8 +109,7 @@ public class DebugAuthoringTools : MonoBehaviour {
 
 
 		task.addObject("Approach_to_Object",GameObject.Find("Wake"));
-		task.setMyUI (pt.myUIInfo);
-		task.setMyPlayer (pt);
+		
 
 		task.readyTask ();
 
@@ -157,8 +151,8 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task2.addObject ("Approach_to_Object", GameObject.Find ("ShipPhone"));
 
 
-		task2.setMyUI (pt.myUIInfo);
-		task2.setMyPlayer (pt);
+		
+		
 
 		task2.readyTask ();
 
@@ -186,8 +180,8 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task3.addObject ("Sound_from_Object", GameObject.Find ("FireAlarm"));
 		task3.addObject ("Approach_to_Object", GameObject.Find ("FireAlarm"));
 
-		task3.setMyUI (pt.myUIInfo);
-		task3.setMyPlayer (pt);
+		
+		
 
 		task3.readyTask ();
 
@@ -224,14 +218,14 @@ public class DebugAuthoringTools : MonoBehaviour {
 		task4.addObject ("Approach_to_Object", GameObject.Find ("FireExtinguisher_Segment"));
 		task4.addObject ("Interaction_to_Object", GameObject.Find ("FireExtinguisher_Segment"));
 
-		task4.setMyUI (pt.myUIInfo);
-		task4.setMyPlayer (pt);
+		
+		
 
 		task4.readyTask ();
 
 		return task4;
 	}
-
+    */
 
 	public void SaveData()//scenario내의 task의 property 저장 및 obj 저장
 	{

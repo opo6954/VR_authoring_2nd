@@ -11,9 +11,9 @@ public class ScenarioModuleTemplate {
 
 	private ScenarioController myParent;
 
-	//myParent에서의 scenarioList에서의 나의 순서
-	private int myScenarioIdx;
-	
+    //본 scenario에서의 진행하고 있는 task의 idx를 말함
+    public int currTaskIdx = 0;
+    	
 	//task seq가 저장된 task list
 	private List<TaskModuleTemplate> taskList = new List<TaskModuleTemplate>();
 
@@ -35,18 +35,6 @@ public class ScenarioModuleTemplate {
         set
         {
             myPosition = value;
-        }
-    }
-
-    public int MyScenarioIdx
-    {
-        get
-        {
-            return myScenarioIdx;
-        }
-        set
-        {
-            myScenarioIdx = value;
         }
     }
 
@@ -91,9 +79,6 @@ public class ScenarioModuleTemplate {
         _task.setMyParent(this);
 
         taskList.Add(_task);
-        _task.setMyTaskIdx(taskList.Count-1);
-
-
 	}
 
 
@@ -117,59 +102,16 @@ public class ScenarioModuleTemplate {
     
 
 
-	//build 관련
-
-	//주어진 task idx 이후의 task를 시작한다. 만일 없을시 제일 처음 task부터 실행한다
-	public void triggerTask(int taskIdx=0)
+	
+    //scenario가 가지고 있는 task를 trigger한다.
+	
+	public void triggerTask()
 	{
-		if (taskIdx > 0) {
-			if (taskList.Count > taskIdx) {
-				taskList [taskIdx].setStartTrigger ();//다음 task를 실행하기
-			} else {
-				Debug.Log ("No Next Task Found");
-
-				myParent.triggerScenario (myScenarioIdx + 1);
-			}
-		} else if (taskIdx == 0) {
-			if (taskList.Count > taskIdx) {
-                Debug.Log("First Task is triggered " + taskList[taskIdx].myTaskName);
-				taskList [taskIdx].setStartTrigger ();//처음 task 실행하기
-
-				
-			}
-		}
+        taskList[currTaskIdx].triggerState();
 	}
 
 
 
-
-
-
-
-	//scenario xml 저장 및 불러오기(밑단의 task, state의 저장 및 불러오기도 필요함)
-	//from scenario to xml
-	//xml로 저장시 task단 역시 저장 필요
-	public void saveScenario2Xml()
-	{
-		
-		XmlDocument document = new XmlDocument();
-		XmlElement element = document.CreateElement ("Scenario");
-		element.SetAttribute ("name", myScenarioName);
-		element.SetAttribute ("difficulty", difficulty.ToString());
-		element.SetAttribute ("Time", timeout.ToString());
-		document.AppendChild (element);
-
-
-
-		//이 후에 밑단(task, state단) 하자
-
-		for (int i = 0; i < taskList.Count; i++) {
-			taskList [i].saveTaskXml (document,element);
-		}
-
-		document.Save (myScenarioName + ".xml");
-
-	}
 	//from xml to scenario
 	//xml로터 불러올 시 task단 역시 제대로 불러와야 한다
 	public void loadScenariofromXml(string scenarioName)

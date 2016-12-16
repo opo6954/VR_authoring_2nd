@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
-[InitializeOnLoad]
+//[InitializeOnLoad]
 public class SteamVR_Settings : EditorWindow
 {
 	const bool forceShow = false; // Set to true to get the dialog to show back up in the case you clicked Ignore All.
@@ -59,6 +59,9 @@ public class SteamVR_Settings : EditorWindow
 
 	static void Update()
 	{
+        
+
+
 		bool show =
 			(!EditorPrefs.HasKey(ignore + buildTarget) &&
 				EditorUserBuildSettings.activeBuildTarget != recommended_BuildTarget) ||
@@ -101,10 +104,12 @@ public class SteamVR_Settings : EditorWindow
 		// Switch to native OpenVR support.
 		var updated = false;
 
+        
+
 		if (!PlayerSettings.virtualRealitySupported)
 		{
 			PlayerSettings.virtualRealitySupported = true;
-			updated = true;
+            updated = true;
 		}
 
 		var devices = UnityEditorInternal.VR.VREditor.GetVREnabledDevices(BuildTargetGroup.Standalone);

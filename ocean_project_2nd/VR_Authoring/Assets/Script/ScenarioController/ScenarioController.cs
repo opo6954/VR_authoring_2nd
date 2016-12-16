@@ -1,25 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+/*
+ * 저작도구를 통해 만들어진 xml를 parsing하여 scenario형태로 변환된 정보를 관리 및 진행시키는 함수
+ * Server에서 돌린다.
+ * 일단 지금은 multi-scenario를 넣어도 동작하도록 즉 scenarioModuleTemplate이 List 형태로 저장되고 List를 순회하면서 scenario 진행한다.
+ * 
+ * */
 
-//scenario List를 정의한 class, list 내부의 scenario끼리의 start, end를 담당한다
+
 public class ScenarioController : MonoBehaviour{
 	
-
+    //scenario template이 담긴 list임 이 list를 기준으로 flow가 흘러감
+    
 	private List<ScenarioModuleTemplate> scenarioSeq = new List<ScenarioModuleTemplate> ();
 
+    public int currScanarioIdx = 0;
 
-    //player info...
-    public PlayerTemplate pt = null;
-
-
-    public void setPlayerInfo(PlayerTemplate _pt)
-    {
-        pt = _pt;
-    }
-
-
-    public TaskModuleTemplate currTaskExecute = null;
+    ServerManager serverManager = null;
 
 	//scenario를 list에 넣는 함수, 단 중복된 scenario 이름을 가질 수 없다
 	public bool insertScenario(ScenarioModuleTemplate scenario)
@@ -29,12 +27,7 @@ public class ScenarioController : MonoBehaviour{
 				return false;
 			}
 		}
-
-		scenario.MyScenarioIdx = scenarioSeq.Count;
-        
-		Debug.Log ("Scenario Name: " + scenario.MyScenarioName+ " and idx is " + scenario.MyScenarioIdx);
 		scenarioSeq.Add (scenario); 
-
 
 		return true;
 	}
@@ -57,25 +50,23 @@ public class ScenarioController : MonoBehaviour{
 		return true;
 	}
 
-	//trigger하는 Scenario로서 밑단의 scenarioModuleTemplate으로부터 불려진다
-	public void triggerScenario(int scenarioIdx=0)
+	
+	public void triggerScenario()
 	{
-		if (scenarioIdx > 0) {
-			if (scenarioSeq.Count < scenarioIdx) {
-				Debug.Log ("Trigger scenario : " + scenarioSeq [scenarioIdx + 1].MyScenarioName);
-				scenarioSeq [scenarioIdx].triggerTask ();
-			} else {
-				Debug.Log ("No Next Scenario Found");
-			}
-		} else if(scenarioIdx == 0) {
-			if(scenarioSeq.Count > scenarioIdx){
-                                
-				Debug.Log ("First scenario Triger: " + scenarioSeq [scenarioIdx].MyScenarioName);
-				scenarioSeq [scenarioIdx].triggerTask ();				
-			}
-		}
+        scenarioSeq[currScanarioIdx].triggerTask();
 	}
 
+    public void setServer(ServerManager _serverManager)
+    {
+        serverManager = _serverManager;
+    }
+    public ServerManager getServer()
+    {
+        if (serverManager != null)
+            return serverManager;
+        Debug.Log("No server Found...");
+        return null;
+    }
 
     void Start()
     {
@@ -84,17 +75,8 @@ public class ScenarioController : MonoBehaviour{
 
     //이 부분에서 scenario 관련 core가 돌아가도록 하자
     //Scenario controller에서 task의 process를 넣는 queue 존재, 이 queue를 계속 확인하자
+
     void Update()
     {
-        if (currTaskExecute != null)
-        {
-            currTaskExecute.OnUpdate();
-            
-        }
-        else
-        {
-            
-        }
-        
     }
 }
