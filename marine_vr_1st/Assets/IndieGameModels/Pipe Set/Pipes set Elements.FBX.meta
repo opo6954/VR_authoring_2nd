@@ -1,0 +1,159 @@
+fileFormatVersion: 2
+guid: 813faf1922c31e748b08734d2947e779
+timeCreated: 1457673882
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Between Pipes V1
+    100002: Between Pipes V2
+    100004: End Pipes V1
+    100006: End Pipes V2
+    100008: Pipe 90 Big
+    100010: Pipe 90 Medium
+    100012: Pipe 90 Small
+    100014: Pipe 90 Vsmall
+    100016: Pipe End Valve
+    100018: Pipe fixation
+    100020: Pipe Ring
+    100022: Pipe Straight Big
+    100024: Pipe Straight Medium
+    100026: Pipe Straight Small01
+    100028: Pipe Straight VSmall
+    100030: Pipe Straight XSmall
+    100032: //RootNode
+    100034: Valve Wheel
+    400000: Between Pipes V1
+    400002: Between Pipes V2
+    400004: End Pipes V1
+    400006: End Pipes V2
+    400008: Pipe 90 Big
+    400010: Pipe 90 Medium
+    400012: Pipe 90 Small
+    400014: Pipe 90 Vsmall
+    400016: Pipe End Valve
+    400018: Pipe fixation
+    400020: Pipe Ring
+    400022: Pipe Straight Big
+    400024: Pipe Straight Medium
+    400026: Pipe Straight Small01
+    400028: Pipe Straight VSmall
+    400030: Pipe Straight XSmall
+    400032: //RootNode
+    400034: Valve Wheel
+    2300000: Between Pipes V1
+    2300002: Between Pipes V2
+    2300004: End Pipes V1
+    2300006: End Pipes V2
+    2300008: Pipe 90 Big
+    2300010: Pipe 90 Medium
+    2300012: Pipe 90 Small
+    2300014: Pipe 90 Vsmall
+    2300016: Pipe End Valve
+    2300018: Pipe fixation
+    2300020: Pipe Ring
+    2300022: Pipe Straight Big
+    2300024: Pipe Straight Medium
+    2300026: Pipe Straight Small01
+    2300028: Pipe Straight VSmall
+    2300030: Pipe Straight XSmall
+    2300032: Valve Wheel
+    3300000: Between Pipes V1
+    3300002: Between Pipes V2
+    3300004: End Pipes V1
+    3300006: End Pipes V2
+    3300008: Pipe 90 Big
+    3300010: Pipe 90 Medium
+    3300012: Pipe 90 Small
+    3300014: Pipe 90 Vsmall
+    3300016: Pipe End Valve
+    3300018: Pipe fixation
+    3300020: Pipe Ring
+    3300022: Pipe Straight Big
+    3300024: Pipe Straight Medium
+    3300026: Pipe Straight Small01
+    3300028: Pipe Straight VSmall
+    3300030: Pipe Straight XSmall
+    3300032: Valve Wheel
+    4300000: Pipe Straight Big
+    4300002: Pipe End Valve
+    4300004: Pipe 90 Big
+    4300006: Between Pipes V1
+    4300008: Between Pipes V2
+    4300010: End Pipes V1
+    4300012: End Pipes V2
+    4300014: Pipe 90 Medium
+    4300016: Pipe 90 Small
+    4300018: Pipe Straight XSmall
+    4300020: Pipe Straight VSmall
+    4300022: Pipe Straight Small01
+    4300024: Pipe Straight Medium
+    4300026: Pipe Ring
+    4300028: Valve Wheel
+    4300030: Pipe fixation
+    4300032: Pipe 90 Vsmall
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

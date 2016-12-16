@@ -1,0 +1,439 @@
+fileFormatVersion: 2
+guid: 69cdda3cbb4e5e34bbaaf4bc6ea7d3f2
+timeCreated: 1457673877
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Between Pipes V04
+    100002: Between Pipes V05
+    100004: Between Pipes V06
+    100006: Between Pipes V07
+    100008: Between Pipes V08
+    100010: Between Pipes V09
+    100012: Between Pipes V10
+    100014: Between Pipes V11
+    100016: Between Pipes V12
+    100018: Between Pipes V13
+    100020: Between Pipes V14
+    100022: Between Pipes V16
+    100024: Between Pipes V18
+    100026: Between Pipes V19
+    100028: Between Pipes V20
+    100030: Between Pipes V21
+    100032: Between Pipes V22
+    100034: Between Pipes V23
+    100036: Between Pipes V24
+    100038: Between Pipes V25
+    100040: Between Pipes V26
+    100042: Between Pipes V27
+    100044: Box01
+    100046: Box02
+    100048: Box03
+    100050: End Pipes V05
+    100052: End Pipes V07
+    100054: End Pipes V08
+    100056: Pipe 90 Medium03
+    100058: Pipe 90 Small02
+    100060: Pipe 90 Small04
+    100062: Pipe 90 Small05
+    100064: Pipe 90 Vsmall01a
+    100066: Pipe End Valve02
+    100068: Pipe End Valve03
+    100070: Pipe fixation02
+    100072: Pipe fixation03
+    100074: Pipe fixation04
+    100076: Pipe fixation05
+    100078: Pipe fixation06
+    100080: Pipe fixation07
+    100082: Pipe fixation08
+    100084: Pipe fixation09
+    100086: Pipe fixation10
+    100088: Pipe fixation11
+    100090: Pipe fixation12
+    100092: Pipe Ring02
+    100094: Pipe Ring04
+    100096: Pipe Ring05
+    100098: //RootNode
+    100100: Pipe Straight Big02
+    100102: Pipe Straight Medium02
+    100104: Pipe Straight Medium03
+    100106: Pipe Straight Small02
+    100108: Pipe Straight Small03
+    100110: Pipe Straight Small04
+    100112: Pipe Straight Small05
+    100114: Pipe Straight Small06
+    100116: Pipe Straight Small07
+    100118: Pipe Straight Small08
+    100120: Pipe Straight Small09
+    100122: Pipe Straight Small10
+    100124: Pipe Straight Small11
+    100126: Pipe Straight Small12
+    100128: Pipe Straight Small13
+    100130: Pipe Straight Small14
+    100132: Pipe Straight Small15
+    100134: Pipe Straight VSmall02
+    100136: Pipe Straight XSmall02
+    100138: Pipe Straight XSmall03
+    100140: Pipe Straight XSmall05
+    100142: Plane01
+    100144: Valve Wheel02
+    100146: Valve Wheel03
+    400000: Between Pipes V04
+    400002: Between Pipes V05
+    400004: Between Pipes V06
+    400006: Between Pipes V07
+    400008: Between Pipes V08
+    400010: Between Pipes V09
+    400012: Between Pipes V10
+    400014: Between Pipes V11
+    400016: Between Pipes V12
+    400018: Between Pipes V13
+    400020: Between Pipes V14
+    400022: Between Pipes V16
+    400024: Between Pipes V18
+    400026: Between Pipes V19
+    400028: Between Pipes V20
+    400030: Between Pipes V21
+    400032: Between Pipes V22
+    400034: Between Pipes V23
+    400036: Between Pipes V24
+    400038: Between Pipes V25
+    400040: Between Pipes V26
+    400042: Between Pipes V27
+    400044: Box01
+    400046: Box02
+    400048: Box03
+    400050: End Pipes V05
+    400052: End Pipes V07
+    400054: End Pipes V08
+    400056: Pipe 90 Medium03
+    400058: Pipe 90 Small02
+    400060: Pipe 90 Small04
+    400062: Pipe 90 Small05
+    400064: Pipe 90 Vsmall01a
+    400066: Pipe End Valve02
+    400068: Pipe End Valve03
+    400070: Pipe fixation02
+    400072: Pipe fixation03
+    400074: Pipe fixation04
+    400076: Pipe fixation05
+    400078: Pipe fixation06
+    400080: Pipe fixation07
+    400082: Pipe fixation08
+    400084: Pipe fixation09
+    400086: Pipe fixation10
+    400088: Pipe fixation11
+    400090: Pipe fixation12
+    400092: Pipe Ring02
+    400094: Pipe Ring04
+    400096: Pipe Ring05
+    400098: //RootNode
+    400100: Pipe Straight Big02
+    400102: Pipe Straight Medium02
+    400104: Pipe Straight Medium03
+    400106: Pipe Straight Small02
+    400108: Pipe Straight Small03
+    400110: Pipe Straight Small04
+    400112: Pipe Straight Small05
+    400114: Pipe Straight Small06
+    400116: Pipe Straight Small07
+    400118: Pipe Straight Small08
+    400120: Pipe Straight Small09
+    400122: Pipe Straight Small10
+    400124: Pipe Straight Small11
+    400126: Pipe Straight Small12
+    400128: Pipe Straight Small13
+    400130: Pipe Straight Small14
+    400132: Pipe Straight Small15
+    400134: Pipe Straight VSmall02
+    400136: Pipe Straight XSmall02
+    400138: Pipe Straight XSmall03
+    400140: Pipe Straight XSmall05
+    400142: Plane01
+    400144: Valve Wheel02
+    400146: Valve Wheel03
+    2300000: Between Pipes V04
+    2300002: Between Pipes V05
+    2300004: Between Pipes V06
+    2300006: Between Pipes V07
+    2300008: Between Pipes V08
+    2300010: Between Pipes V09
+    2300012: Between Pipes V10
+    2300014: Between Pipes V11
+    2300016: Between Pipes V12
+    2300018: Between Pipes V13
+    2300020: Between Pipes V14
+    2300022: Between Pipes V16
+    2300024: Between Pipes V18
+    2300026: Between Pipes V19
+    2300028: Between Pipes V20
+    2300030: Between Pipes V21
+    2300032: Between Pipes V22
+    2300034: Between Pipes V23
+    2300036: Between Pipes V24
+    2300038: Between Pipes V25
+    2300040: Between Pipes V26
+    2300042: Between Pipes V27
+    2300044: Box01
+    2300046: Box02
+    2300048: Box03
+    2300050: End Pipes V05
+    2300052: End Pipes V07
+    2300054: End Pipes V08
+    2300056: Pipe 90 Medium03
+    2300058: Pipe 90 Small02
+    2300060: Pipe 90 Small04
+    2300062: Pipe 90 Small05
+    2300064: Pipe 90 Vsmall01a
+    2300066: Pipe End Valve02
+    2300068: Pipe End Valve03
+    2300070: Pipe fixation02
+    2300072: Pipe fixation03
+    2300074: Pipe fixation04
+    2300076: Pipe fixation05
+    2300078: Pipe fixation06
+    2300080: Pipe fixation07
+    2300082: Pipe fixation08
+    2300084: Pipe fixation09
+    2300086: Pipe fixation10
+    2300088: Pipe fixation11
+    2300090: Pipe fixation12
+    2300092: Pipe Ring02
+    2300094: Pipe Ring04
+    2300096: Pipe Ring05
+    2300098: Pipe Straight Big02
+    2300100: Pipe Straight Medium02
+    2300102: Pipe Straight Medium03
+    2300104: Pipe Straight Small02
+    2300106: Pipe Straight Small03
+    2300108: Pipe Straight Small04
+    2300110: Pipe Straight Small05
+    2300112: Pipe Straight Small06
+    2300114: Pipe Straight Small07
+    2300116: Pipe Straight Small08
+    2300118: Pipe Straight Small09
+    2300120: Pipe Straight Small10
+    2300122: Pipe Straight Small11
+    2300124: Pipe Straight Small12
+    2300126: Pipe Straight Small13
+    2300128: Pipe Straight Small14
+    2300130: Pipe Straight Small15
+    2300132: Pipe Straight VSmall02
+    2300134: Pipe Straight XSmall02
+    2300136: Pipe Straight XSmall03
+    2300138: Pipe Straight XSmall05
+    2300140: Plane01
+    2300142: Valve Wheel02
+    2300144: Valve Wheel03
+    3300000: Between Pipes V04
+    3300002: Between Pipes V05
+    3300004: Between Pipes V06
+    3300006: Between Pipes V07
+    3300008: Between Pipes V08
+    3300010: Between Pipes V09
+    3300012: Between Pipes V10
+    3300014: Between Pipes V11
+    3300016: Between Pipes V12
+    3300018: Between Pipes V13
+    3300020: Between Pipes V14
+    3300022: Between Pipes V16
+    3300024: Between Pipes V18
+    3300026: Between Pipes V19
+    3300028: Between Pipes V20
+    3300030: Between Pipes V21
+    3300032: Between Pipes V22
+    3300034: Between Pipes V23
+    3300036: Between Pipes V24
+    3300038: Between Pipes V25
+    3300040: Between Pipes V26
+    3300042: Between Pipes V27
+    3300044: Box01
+    3300046: Box02
+    3300048: Box03
+    3300050: End Pipes V05
+    3300052: End Pipes V07
+    3300054: End Pipes V08
+    3300056: Pipe 90 Medium03
+    3300058: Pipe 90 Small02
+    3300060: Pipe 90 Small04
+    3300062: Pipe 90 Small05
+    3300064: Pipe 90 Vsmall01a
+    3300066: Pipe End Valve02
+    3300068: Pipe End Valve03
+    3300070: Pipe fixation02
+    3300072: Pipe fixation03
+    3300074: Pipe fixation04
+    3300076: Pipe fixation05
+    3300078: Pipe fixation06
+    3300080: Pipe fixation07
+    3300082: Pipe fixation08
+    3300084: Pipe fixation09
+    3300086: Pipe fixation10
+    3300088: Pipe fixation11
+    3300090: Pipe fixation12
+    3300092: Pipe Ring02
+    3300094: Pipe Ring04
+    3300096: Pipe Ring05
+    3300098: Pipe Straight Big02
+    3300100: Pipe Straight Medium02
+    3300102: Pipe Straight Medium03
+    3300104: Pipe Straight Small02
+    3300106: Pipe Straight Small03
+    3300108: Pipe Straight Small04
+    3300110: Pipe Straight Small05
+    3300112: Pipe Straight Small06
+    3300114: Pipe Straight Small07
+    3300116: Pipe Straight Small08
+    3300118: Pipe Straight Small09
+    3300120: Pipe Straight Small10
+    3300122: Pipe Straight Small11
+    3300124: Pipe Straight Small12
+    3300126: Pipe Straight Small13
+    3300128: Pipe Straight Small14
+    3300130: Pipe Straight Small15
+    3300132: Pipe Straight VSmall02
+    3300134: Pipe Straight XSmall02
+    3300136: Pipe Straight XSmall03
+    3300138: Pipe Straight XSmall05
+    3300140: Plane01
+    3300142: Valve Wheel02
+    3300144: Valve Wheel03
+    4300000: Between Pipes V04
+    4300002: Pipe Straight Small02
+    4300004: Between Pipes V05
+    4300006: Pipe Straight Small03
+    4300008: Pipe 90 Small02
+    4300010: Between Pipes V06
+    4300012: Pipe Straight Small04
+    4300014: Pipe Straight Small05
+    4300016: Between Pipes V07
+    4300018: Between Pipes V08
+    4300020: Pipe Ring02
+    4300022: Pipe Straight XSmall02
+    4300024: Valve Wheel02
+    4300026: Pipe End Valve02
+    4300028: Between Pipes V09
+    4300030: Pipe Straight Medium02
+    4300032: Pipe fixation02
+    4300034: Between Pipes V10
+    4300036: Pipe Straight Big02
+    4300038: Pipe fixation03
+    4300040: Pipe fixation04
+    4300042: Pipe fixation05
+    4300044: Pipe fixation06
+    4300046: End Pipes V05
+    4300048: Plane01
+    4300050: Box01
+    4300052: Box02
+    4300054: Valve Wheel03
+    4300056: Pipe End Valve03
+    4300058: Pipe Straight XSmall03
+    4300060: Between Pipes V11
+    4300062: Pipe Straight Small06
+    4300064: Pipe Ring04
+    4300066: Pipe Straight Small07
+    4300068: Between Pipes V12
+    4300070: Pipe 90 Small04
+    4300072: Between Pipes V13
+    4300074: Between Pipes V14
+    4300076: Pipe Straight Small08
+    4300078: Between Pipes V16
+    4300080: Pipe Straight Small09
+    4300082: Pipe Straight Medium03
+    4300084: Between Pipes V18
+    4300086: Between Pipes V19
+    4300088: Pipe Straight Small10
+    4300090: Pipe Straight Small11
+    4300092: Between Pipes V20
+    4300094: Pipe fixation07
+    4300096: Pipe fixation08
+    4300098: Pipe fixation09
+    4300100: Pipe fixation10
+    4300102: Pipe fixation11
+    4300104: Pipe 90 Medium03
+    4300106: Pipe Straight Small12
+    4300108: Between Pipes V21
+    4300110: Between Pipes V22
+    4300112: End Pipes V07
+    4300114: Pipe Straight VSmall02
+    4300116: Pipe Straight Small13
+    4300118: Pipe Straight Small14
+    4300120: Between Pipes V23
+    4300122: Between Pipes V24
+    4300124: Pipe Straight Small15
+    4300126: Pipe 90 Small05
+    4300128: Between Pipes V25
+    4300130: Between Pipes V26
+    4300132: Pipe Straight XSmall05
+    4300134: Between Pipes V27
+    4300136: Pipe Ring05
+    4300138: Box03
+    4300140: Pipe fixation12
+    4300142: Pipe 90 Vsmall01a
+    4300144: End Pipes V08
+    11100000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 1
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
