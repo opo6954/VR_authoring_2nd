@@ -13,74 +13,8 @@ using System.Collections.Generic;
 
 public class ApproachObjState : StateModuleTemplate {
 
-	public ApproachObjState(TaskModuleTemplate _myModule) : base(_myModule)
+	public ApproachObjState()
 	{
 		myStateName = "ApproachObjState";
 	}
-
-
-	public override void setProperty (Dictionary<string, object> properties)
-	{
-		addProperty ("Patrol_Contents", properties ["Patrol_Contents"]);
-
-		if(properties.ContainsKey("Approach_Distance"))
-			addProperty ("Approach_Distance", properties ["Approach_Distance"]);
-
-		if (properties.ContainsKey ("Approach_Angle"))
-			addProperty ("Approach_Angle", properties ["Approach_Angle"]);
-	}
-
-	public override void setObject (Dictionary<string, object> objects)
-	{
-		addObject ("Approach_to_Object", objects ["Approach_to_Object"]);
-	}
-
-
-    public override void Init()
-    {
-		
-
-        base.Init();
-
-        
-        
-        if (isContainProperty("Patrol_Contents") == false || isContainObject("Approach_to_Object") == false)
-        {
-            Debug.Log("Patrol_Contents Property와 Approach_to_Object Object가 설정되지 않았습니다.");
-        }
-        else
-        {
-            myUIInfo.GetComponent<DefaultForm>().changeCurrTaskInfo(getProperty<string>("Patrol_Contents"));
-            
-        }
-
-    }
-
-    public override void Process()
-    {
-        base.Process();
-    }
-
-    public override bool Goal()
-    {
-        if (isContainObject("Approach_to_Object") == true)
-        {
-			if (amISeeObject(getObject<GameObject>("Approach_to_Object"), getProperty<float>("Approach_Angle"), getProperty<float>("Approach_Distance")) == true)
-                return true;
-        }
-        else
-        {
-            Debug.Log("그런거 없시유");
-        }
-         
-        return base.Goal();
-    }
-
-    public override void Res()
-    {
-
-        base.Res();
-    }
-
-
 }

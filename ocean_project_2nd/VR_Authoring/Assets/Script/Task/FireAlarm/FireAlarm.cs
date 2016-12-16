@@ -17,6 +17,7 @@ using System.Collections;
 
 public class FireAlarm : TaskModuleTemplate
 {
+    /*
 	GameObject defaultForm = null;
 
 	public FireAlarm()
@@ -62,9 +63,9 @@ public class FireAlarm : TaskModuleTemplate
 		myUIInfo.loadUIPrefab ("DefaultForm");
 		defaultForm = myUIInfo.getUIPrefab ("DefaultForm");
 
-		myStateList [0].setUI (defaultForm);
-		myStateList [1].setUI (defaultForm);
-		myStateList [2].setUI (defaultForm);
+		//myStateList [0].setUI (defaultForm);
+		//myStateList [1].setUI (defaultForm);
+		//myStateList [2].setUI (defaultForm);
 
 
         base.TaskStart();
@@ -82,5 +83,6 @@ public class FireAlarm : TaskModuleTemplate
 
 		
 	}
+     * */
 
 }

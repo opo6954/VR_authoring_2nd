@@ -18,6 +18,7 @@ using System.Collections;
 
 public class FireNotice : TaskModuleTemplate  {
 
+/*
     bool isNoticeFire = false;
 
 	GameObject defaultForm=null;
@@ -72,50 +73,15 @@ public class FireNotice : TaskModuleTemplate  {
 
 
 		//myStateList에 차례대로 넣습니다.
-		myStateList.Add(a);
-		myStateList.Add(b);
+		StateList.Add(a);
+		StateList.Add(b);
 
         
 	}
-
-    public override void TaskStart()
-    {
-		
-		myStateList [0].setUI (defaultForm);
-		myStateList [1].setUI (defaultForm);
-
-        base.TaskStart();
-    }
-
-
-    public override void TaskProcess()
-    {
-        
-        base.TaskProcess();
+    */
+   
 
 
 
-        
-    }
-
-
-    public override void TaskFinish()
-    {
-        base.TaskFinish();
-
-        
-
-
-        GameObject.Destroy(defaultForm);
-
-        
-
-        
-
-
-
-        //이 부분에서 다음 task에 대한 trigger를 설정해야합니다
-
-    }
 }
 

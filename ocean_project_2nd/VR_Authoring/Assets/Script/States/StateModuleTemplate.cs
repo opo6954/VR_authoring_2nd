@@ -4,57 +4,177 @@ using System.Collections.Generic;
 using System.Xml;
 
 /*
- * State module을 위한 template, State는 UIForm과 1대1로 매칭될 수 있습니다. 
+ * 
+ * NETWORK버전임
+ * //공통된 state 정보임
+ * 
+ * state는 <server>에서만 관장
+ * 
+ * 이 state 전체가 client에게 넘겨지지 않고 따로 다른 client용 state를 만들어야 할 듯
+ * 
+ * 이 state는 server가 관장하기 때문에 playerInfo같은 정보는 필요 없음
+ * server에서 main flow를 돌릴 때의 state가 이 statemodule를 기반으로 돌림
+ * 
+ * 
+ * State module을 위한 template
+ * 
+ * 4가지의 함수로 state 현표
+ * 
  * Init, Process, Goal, Res로 구성
- * 
- * 
  * Init: State가 시작될 때의 초기 수행
  * Process: Goal이 false이면 계속 수행
  * Goal: State를 완료하기 위한 조건
  * Res: State가 종료될 때의 수행작업, Goal이 true이면 계속 수행
  * 
+ * 중요한 파라미터
+ * propertyGroup: 저작 가능한 요소 집합, dictionary로 구성, object형식
+ * ojbectGroup: 상호작용 가능한 물체 집합, dictionary로 구성, object형식
+ * networkPlayer: 현 state에서 필요한 player집합, dictionary로 구성, string으로 찾기
+ * 
+ * mainflow를 server에서 어떻게 돌려야 할까
+ * 일단 기본으로 돌리는 것은 task 기반으로 돌려짐
+ * 이후 task단에서 자신이 가진 state를 돌림
+ * 이 때 server에서의 state는 실행될 때 state-->message로 변환을 하고 client한테 보내면 됨 이후 network player 개수 만큼의 완료가 들어올 경우 state 종료됨 다음 state로 넘어감
+ * 
+ * 
+ * /*
+ * State말단에서 해줘야 할 것은 state를 바탕으로 clientState를 붙여야 한다.
+ * 각 player별로 어떻게 client state가 할당되는 지 관련 table만 만들어서 servermanager한테 건네주면 servermanager가 message를 client한테 보내고 다시 완료 message를 받는 조건에 따라서
+ * 다음 state로 이동을 주사한다. 다시 state에서 다음 state trigger를 해줘야겠지?
+ * 할당 table
+ * CS: ClientState
+ * 
+ * 
+ * Player1 Player2 Player3 Player4
+ * CS1      null     CS3     CS3
+ * null     CS1      CS2     null
+ * null     null     CS7     null
+ * ------------종료--------------
+     
+ * 
+ * 
  *  
- * 
- * 
- * //state, task간의 property나 object의 이름을 똑같이 통일하자
  * */
 
 public class StateModuleTemplate {
 
+    ServerManager _server;
+    
+    //전체 state의 시작, 진행중, 성공 여부
     private bool isStateStart = false;
     private bool isStateDoing = false;
     public bool isStateEnd = false;
 
+    //각 player에서의 시작, 진행중, 성공 여부
+    //만일 isMultiStateDoing의 모든 요소가 true일 경우 전체 state는 완료가 된다
+    private bool[] isMultiStateStart;
+    private bool[] isMultiStateEnd;
+    private bool[] isMultiStateDoing;
+
     
 
-    protected GameObject myUIInfo;//선택된 UI 종류
-    protected TaskModuleTemplate myModuleInfo;//나의 윗단인 moduleINfo임
+    private int playerNumber=-1;
+
+
+
+    private TaskModuleTemplate _myParentTask;//나의 윗단인 moduleINfo임
     protected string myStateName;
+
     
-	public Transform myPosition;//현재 player의 위치
-    public PlayerTemplate myPlayerInfo;//현재 player 정보
+    //각 state별로 필요한 property, object, networkplayer List로 string 형태로 저장해놓자
+    private List<string> propertyList = new List<string>();
+    private List<string> objectList = new List<string>();
+    private List<string> networkPlayerList = new List<string>();
+
+    //state-->clientState로 변환된 정보가 각 player별로 저장된 table
+    private List<List<ClientStateModuleTemplate>> clientStateAssignTable;
 
 
-    private Dictionary<string, string> joystickMappingTable = new Dictionary<string, string>();
 
 	 
     //property 설정요소와 obj 설정 요소 존재
     private Dictionary<string, object> propertyGroup = new Dictionary<string, object>();
     private Dictionary<string, object> objectGroup = new Dictionary<string, object>();
+    private Dictionary<string, string> networkPlayerGroup = new Dictionary<string, string>();
 
 
-    //joystick 매핑 정보 
-    private void mappingJoystickButton()
+
+    //본 state가 속한 task를 생성자의 input으로 넣어줘야 함
+    public StateModuleTemplate()
     {
-        joystickMappingTable.Add("a", "joystick button 0");
-        joystickMappingTable.Add("z", "joystick button 1");
-        joystickMappingTable.Add("x", "joystick button 2");
-        joystickMappingTable.Add("b", "joystick button 3");
-        joystickMappingTable.Add("lb", "joystick button 4");
-        joystickMappingTable.Add("rb", "joystick button 5");
-        joystickMappingTable.Add("lt", "joystick button 6");
-        joystickMappingTable.Add("rt", "joystick button 7");
+    }
 
+    public void setMyParent(TaskModuleTemplate _task)
+    {
+        _myParentTask = _task;
+    }
+    public TaskModuleTemplate getMyParent()
+    {
+        return _myParentTask;
+    }
+
+    //Property, Object, NetworkPlayer List 관리
+
+    public void addPropertyList(string _propertyName)
+    {
+        propertyList.Add(_propertyName);
+    }
+    public void addObjectList(string _objectName)
+    {
+        objectList.Add(_objectName);
+    }
+    public void addNetworkPlayerList(string _playerName)
+    {
+        networkPlayerList.Add(_playerName);
+    }
+
+    public List<string> getPropertyList()
+    {
+        return propertyList;
+    }
+
+    public List<string> getObjectList()
+    {
+        return objectList;
+    }
+
+    public List<string> getNetworkPlayerList()
+    {
+        return networkPlayerList;
+    }
+
+
+
+    //network player 관리
+
+    //network player 추가
+    public void addNetworkPlayer(string playerRole, string playerName)
+    {
+        if (networkPlayerGroup.ContainsKey(playerRole) == false)
+            networkPlayerGroup.Add(playerRole,playerName);
+        else
+            Debug.Log("Same key " + playerRole +  " exist in the networkPlayerGroup");
+    }
+    //network player 이름 있는지 확인
+    public string getNetworkPlayer(string playerRole)
+    {
+        if (networkPlayerGroup.ContainsKey(playerRole) == true)
+        {
+            return networkPlayerGroup[playerRole];
+        }
+        else
+        {
+            Debug.Log("No player Name Exist...");
+            return "No player Name Exist...";
+        }
+    }
+
+    public virtual void setNetworkPlayers(Dictionary<string, string> _networkPlayerGroup)
+    {
+        foreach ( string key in networkPlayerList)
+        {
+            addNetworkPlayer(key, _networkPlayerGroup[key]);
+        }
     }
     
     //property 및 obj 관리
@@ -89,6 +209,15 @@ public class StateModuleTemplate {
         return false;
     }
 
+    //task에서 state으로 property정보를 위임받을 때 사용, List에 있는 얘들만 차례대로 넣는다.
+    public virtual void setProperty(Dictionary<string, object> properties)
+    {
+        foreach (string key in propertyList)
+        {
+            addProperty(key, properties[key]);
+        }
+    }
+
 
     //object 추가하기
     public void addObject(string objectName, object o)
@@ -119,340 +248,65 @@ public class StateModuleTemplate {
         return false;
     }
 
-
-    ///////////State에서의 Ui 관리
-
-	public void setUI(GameObject _UIModule)
+    //task에서 state으로 object 정보를 위임받을 때 사용, List에 있는 얘들만 차례대로 넣는다.
+    public virtual void setObject(Dictionary<string, object> objects)
     {
-        myUIInfo = _UIModule;
-    }
-	public void turnOnMyUI()
-	{
-		myUIInfo.gameObject.SetActive (true);
-	}
-	public void turnOffMyUI()
-	{
-		myUIInfo.gameObject.SetActive (false);
-	}
-
-    public void setMyPlayer(PlayerTemplate player)
-    {
-        myPlayerInfo = player;
-    }
-
-    public void setMyModule(TaskModuleTemplate module)
-    {
-        myModuleInfo = module;
-    }
-
-    public void setMyPosition(Transform _myPos)
-    {
-        myPosition = _myPos;
-    }
-
-	//XML 저장 및 로드 함수
-
-	public void saveStateXml(XmlDocument document, XmlElement parent)
-	{
-		//state 종류도 기억해야 할듯
-		//state에서 저장할 부분:
-		XmlElement element = document.CreateElement("State");
-		XmlElement propElement = document.CreateElement ("Properties");
-		
-
-		element.SetAttribute ("name", myStateName);
-
-		foreach (KeyValuePair<string, object> kv in propertyGroup) {
-
-			string typeName = kv.Value.ToString ();
-
-
-
-
-			if (typeName.Length - 2 > 0) {
-				string test = typeName.Substring (typeName.IndexOf(".")+1);
-
-
-
-				//1차원 배열
-				if (test.LastIndexOf ("[") == test.IndexOf ("[") && test.LastIndexOf("[") > 0 ) {
-
-
-
-					if (test.Contains ("String")) {
-						string[] strArray = (string[])kv.Value;
-
-						string compactStr = "";
-
-						for (int i = 0; i < strArray.Length; i++) {
-							if (i == 0)
-								compactStr = strArray [i];
-							else
-								compactStr += "," + strArray [i];
-						}
-
-						propElement.SetAttribute (kv.Key, compactStr);
-					} else if (test.Contains ("Int32")) {
-						int[] intArray = (int[])kv.Value;
-
-						string compactStr = "";
-
-						for (int i = 0; i < intArray.Length; i++) {
-							if (i == 0)
-								compactStr = intArray [i].ToString();
-							else
-								compactStr += "," + intArray [i].ToString();
-						}
-						propElement.SetAttribute (kv.Key, compactStr);
-					}
-				}
-				//2차원 배열
-				else if (test.LastIndexOf("[") > test.IndexOf("[")){
-					if (test.Contains ("String")) {
-						string[][] strArray = (string[][])kv.Value;
-
-						string compactStr = "";
-
-						for (int i = 0; i < strArray.GetLength (0); i++) {
-							
-							for (int j = 0; j < strArray [i].GetLength (0); j++) {
-								if (i == 0 && j == 0)
-									compactStr = strArray [i] [j];
-								else
-									compactStr += "," + strArray [i] [j];
-							}
-							compactStr = compactStr + " /";
-						}
-
-						propElement.SetAttribute (kv.Key, compactStr);
-
-					} else if (test.Contains ("Int32")) {
-						int[][] intArray = (int[][])kv.Value;
-
-						string compactStr = "";
-
-						for (int i = 0; i < intArray.GetLength (0); i++) {
-
-							for (int j = 0; j < intArray [i].GetLength (0); j++) {
-								if (i == 0 && j == 0)
-									compactStr = intArray [i] [j].ToString();
-								else
-									compactStr += "," + intArray [i] [j].ToString();
-							}
-							compactStr = compactStr + " /";
-						}
-
-						propElement.SetAttribute (kv.Key, compactStr);
-					}
-
-				} else {
-					//[] 안 들어 있을시 array 아닌 걍 string이므로 그대로 저장하기
-
-					propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
-				}
-			} else {
-				
-				propElement.SetAttribute (kv.Key, kv.Value.ToString ());					
-			}
-
-			//propElement.SetAttribute (kv.Key, kv.Value.ToString ());			
-
-
-
-
-
-
-
-		}
-
-        XmlElement objElement = document.CreateElement("Objects");
-
-        foreach (KeyValuePair<string, object> kv in objectGroup) {
-			//obj는 그 obj의 gameobject의 이름으로 저장하자, 이름은 중복하면 안된다는 가정을 하자
-			objElement.SetAttribute (kv.Key, getObject<GameObject> (kv.Key).name);
-		}
-
-		element.AppendChild (propElement);
-		element.AppendChild (objElement);
-		parent.AppendChild (element);
-
-
-	}
-	public void loadStateXml()
-	{
-		Debug.Log ("State를 xml로 저장하는 부분");
-	}
-
-
-
-    ///////////////Utility 함수들
-    //특정 object에 가까이 가면 true 리턴, 아닐 시 false 리턴
-    public bool amISeeObject(GameObject target, float shout_angle = 10.0f, float shout_range = 15.0f)
-    {
-        float distance = (target.transform.position - myPosition.position).magnitude;
-        float angle = Vector3.Dot((target.transform.position - myPosition.position).normalized, Camera.main.transform.forward.normalized);
-		if (shout_range <= 0) {
-			shout_range = 5.0f;
-		}
-		if (shout_angle <= 0) {
-			shout_angle = 3.0f;
-		}
-
-
-        if (distance < shout_range && angle < shout_angle)
+        foreach (string key in objectList)
         {
-			
-            return true;
-        }
-        return false;
-    }
-
-    //1인칭 화면 잠구기, 움직임 X, 시야 변경 X
-    public void lockFPSScreen(bool enableLock)
-    {
-        if (enableLock == true)
-        {
-            setActiveGameComponent( myPlayerInfo.transform.GetChild(0).name, "FirstPersonController", false);
-        }
-        else
-        {
-            setActiveGameComponent(myPlayerInfo.transform.GetChild(0).name, "FirstPersonController", true);
+            addObject(key, objects[key]);
         }
     }
-	//1인칭 움직임 잠구기, 움직임 X, 시야 변경 O
-	public void lockFPSmoveScreen(bool enableLock)
-	{
-		if (enableLock == true) {
+    //설정하는 함수임
 
-			myPlayerInfo.transform.GetChild (0).transform.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().m_WalkSpeed = 0.0f;
 
-		} else {
-			myPlayerInfo.transform.GetChild (0).transform.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController> ().m_WalkSpeed = myPlayerInfo.myWalkSpeed;
-		}
-	}
 
-    //주어진 gameObject의 component를 끄고 켜기
-    public static void setActiveGameComponent(string gameObjectName, string gameComponentName, bool value)
+    //각 player별로 clientState를 배분한다.
+    //걍 clientState에 wait만을 위한 state를 넣는 게 좋을 듯 하다.
+    public virtual void buildClientStateTable()
     {
-        ((MonoBehaviour)(GameObject.Find(gameObjectName).transform.GetComponent(gameComponentName))).enabled = value;
-
-    }
-
-    //입력함수
-
-    public bool isKeyDown(string keyName)
-    {
-        bool isKeyPressed = false;
-         
-        if (myPlayerInfo.isJoystick == true)
-        {
-            //조이스틱에 대한 control
-            isKeyPressed = Input.GetKeyDown(joystickMappingTable[keyName]);
-            
-            
-        }
-        else if (myPlayerInfo.isLeapMotion == true)
-        {
-            //Leap motion의 제스처에 대한 control
-        }
-        else
-        {
-            isKeyPressed = Input.GetKeyDown(keyName);
-            //일반 키보드에 대한 control
-        }
-
-        return isKeyPressed;
-    }
-
-
-	/*
-	 * public PlaySoundsState(TaskModuleTemplate _myModule, GameObject _UI)
-	{
-		
-
-
-	}
-	 * */
-
-    ///////////////State의 실행 조건 및 순서를 위한 함수들.... 건드리지 맙시다
-	/// 
-	/// 
-	//생성자
-
-	public StateModuleTemplate(TaskModuleTemplate _myModule)
-	{
-		setMyModule(_myModule);
-		setMyPosition(myModuleInfo.getMyPosition());
-		setMyPlayer(myModuleInfo.getMyPlayer());
-        mappingJoystickButton();
-	}
-
-
-
-
-	// Update is called once per frame
-	public void OnUpdate () { 
-
+        Debug.Log("각 state별로 clientState를 순서대로 list로 나눠서 줌");
         
+    }
 
-        if (isStateStart == false)
-        {
-            Init();
-            isStateStart = true;
-            isStateDoing = true;
-        }
+
+
+    public void Init()
+    {
+        //server 설정해주기
+        _server = GameObject.FindGameObjectWithTag("ServerUnit").GetComponent<ServerManager>();
+
+        //본 state에 필요한 모든 player의 개수를 설정해야 함
+        if (networkPlayerGroup.Count > 0)
+            playerNumber = networkPlayerGroup.Count;
         else
+            Debug.Log("Variable networkPlayerGroup not setting...");
+
+        isMultiStateStart = new bool[playerNumber];
+        isMultiStateEnd = new bool[playerNumber];
+        isMultiStateDoing = new bool[playerNumber];        
+
+        isMultiStateStart.SetValue(false, playerNumber);
+        isMultiStateDoing.SetValue(false, playerNumber);
+        isMultiStateEnd.SetValue(false, playerNumber);
+
+
+        //clientStateAssignTable 초기화하기
+        for (int i = 0; i < playerNumber; i++)
         {
-            bool flags = Goal();
-
-            if(flags == true && isStateDoing == true)
-            {
-                
-                Res();
-                isStateDoing = false;
-                isStateEnd = true;
-            }
-			else if (flags == false && isStateDoing == true && isStateEnd == false)
-			{
-				Process();
-			}
+            clientStateAssignTable.Add(new List<ClientStateModuleTemplate>());
         }
-	    
-	}
-	//관련 설정 함수
+    } 
 
-	public virtual void setProperty(Dictionary<string, object> properties)
-	{
-		
-	}
 
-	public virtual void setObject(Dictionary<string, object> objects)
-	{
-		
-	}
 
-    //초기화, 1번만 수행
-    public virtual void Init()
+
+
+    //state 시작 부분임
+    //각 state별로 clientState를 바꿔야 합니다.
+    public virtual void initState()
     {
-        
-        Debug.Log(myStateName +  " state 시작");
-		turnOnMyUI ();
+        Init();
     }
-    //Goal이 false일때 계속 수행하는 작업
-    public virtual void Process()
-    {
-    }
-    //State를 종료하기 위한 조건
-    public virtual bool Goal()
-    {
-        return false;
-    }
-    //Goal을 만날 때의 수행되는 것, 
-    //1번만 수행
-    public virtual void Res()
-    {
-        Debug.Log(myStateName + " state 종료");
-		turnOffMyUI ();
-    }
+
 
 }

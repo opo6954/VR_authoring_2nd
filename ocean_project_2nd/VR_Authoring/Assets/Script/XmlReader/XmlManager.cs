@@ -93,7 +93,7 @@ public class XmlManager {
 
 
 
-        taskIns.myTaskName = xac["name"].InnerText;
+        taskIns.taskName = xac["name"].InnerText;
 
         XmlNodeList stateNodes = ScenarioRoot.SelectNodes("State");
 
@@ -186,11 +186,7 @@ public class XmlManager {
             } 
         }
 
-
-        
-
-        taskIns.setMyUI(pt.myUIInfo);
-        taskIns.setMyPlayer(pt);
+        //taskIns.setMyPlayer(pt);
         taskIns.readyTask();
 
 		return taskIns;

@@ -1,186 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+/*
+ * client의 player 고유 설정 정보
+ * 입력 장치 설정 등이 포함됨
+ * */
 public class PlayerTemplate : MonoBehaviour
 {
 
-
-    private Dictionary<string, TaskModuleTemplate> taskList;
-
-    GameObject canvas_ui;
-    public UIModuleTemplate myUIInfo;
-
     //가상 현실 장비 관련 옵션
-    public bool isJoystick = false;
-    public bool isLeapMotion = false;
-
-    private string startTaskName = "";
+    public static bool isJoystick = false;
+    public static bool isLeapMotion = false;
 
     public float myWalkSpeed = 0.0f;
 
+    //player 관련 util 함수
 
-
-
-
-
-
-
-
-    //prevTaskName 뒤에 붙이기, prevTaskName이 ""일 경우 제일 처음에 붙인다
-    public bool insertTask(string prevTaskName, TaskModuleTemplate task)
+    //버튼 입력 관련 함수
+    public static bool isKeyDown(string keyName)
     {
+        bool isKeyPressed = false;
 
-        task.setMyUI(myUIInfo);
-        task.setMyPlayer(this);
-
-        //아직 아무 task도 없을 때
-        if (startTaskName == "")
+        if (isJoystick == true)
         {
-            startTaskName = task.myTaskName;
+            isKeyPressed = Input.GetKeyDown(InputDeviceSettings.Instance().joystickMappingTable[keyName]);
+        }
+        else
+        {
+            isKeyPressed = Input.GetKeyDown(keyName);
         }
 
-
-        else//이미 task 1개라도 존재할 시
-        {
-            if (prevTaskName == "")//만일 처음에 task를 붙일 경우
-            {
-                task.prevTaskName = "";
-                task.nextTaskName = startTaskName;
-
-                getTask(startTaskName).prevTaskName = task.myTaskName;
-
-                startTaskName = task.myTaskName;
-            }
-            else if (isTaskContains(prevTaskName) == true)
-            {
-                TaskModuleTemplate prevTask = getTask(prevTaskName);
-
-                string nextTaskName = prevTask.nextTaskName;
-                string beforeTaskName = prevTask.myTaskName;
-
-                task.prevTaskName = beforeTaskName;
-                task.nextTaskName = nextTaskName;
-
-                prevTask.nextTaskName = task.myTaskName;
-
-                if (nextTaskName != "")
-                {
-                    getTask(nextTaskName).prevTaskName = task.myTaskName;
-                }
-
-            }
-            else
-            {
-                return false;
-            }
-        }
-        taskList.Add(task.myTaskName, task);
-        //prevTask있음
-        return true;
-
+        return isKeyPressed;
     }
 
-
-
-    public bool removeTask(string taskName)
-    {
-        if (isTaskContains(taskName) == true)
-        {
-            string prevTask = getTask(taskName).prevTaskName;
-            string nextTask = getTask(taskName).nextTaskName;
-
-            taskList.Remove(taskName);
-
-            if (prevTask == "")//제일 처음 task일 경우
-            {
-                getTask(nextTask).prevTaskName = "";
-                startTaskName = nextTask;
-            }
-            else if (nextTask == "")//제일 마지막 task일 경우
-            {
-
-                getTask(prevTask).nextTaskName = "";
-            }
-
-
-            if (prevTask != "" && nextTask != "")//중간에 존재하는 task일 경우
-            {
-                getTask(prevTask).nextTaskName = nextTask;
-                getTask(nextTask).prevTaskName = prevTask;
-            }
-            return true;
-        }
-
-        return false;
-    }
-
-
-    public void beginFirstTask()
-    {
-        if (isTaskContains(startTaskName) == true)
-        {
-            getTask(startTaskName).setStartTrigger();
-        }
-    }
-
-
-    public bool isTaskContains(string taskName)
-    {
-        return taskList.ContainsKey(taskName);
-    }
-
-    public TaskModuleTemplate getTask(string taskname)
-    {
-        if (isTaskContains(taskname))
-            return taskList[taskname];
-        return null;
-    }
-
-
-
-
-
-    public void setMyUI(UIModuleTemplate uiModule)
-    {
-        myUIInfo = uiModule;
-    }
-
-    //util function
-
-    public Camera getCamera()
-    {
-        return transform.GetChild(0).GetChild(0).GetComponent<Camera>();
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-
-        myWalkSpeed = transform.GetChild(0).transform.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().m_WalkSpeed;
-
-        taskList = new Dictionary<string, TaskModuleTemplate>();
-        canvas_ui = GameObject.Find("Canvas_UI");
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        RectTransform rt = canvas_ui.GetComponent<RectTransform>();
-        Ray r = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        rt.position = r.origin + r.direction;
-
-        Vector3 tmp = rt.position;
-
-        tmp.z = tmp.z + 1.0f;
-
-        rt.position = tmp;
-        
-        rt.localScale = new Vector3(0.005f, 0.005f, 0.005f);
-
-        Debug.DrawRay(r.origin, r.direction * 1000,Color.black);
-        */
-    }
+    
 }

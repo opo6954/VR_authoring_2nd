@@ -10,10 +10,10 @@ public class DeveloperProperty{
 
     public static void disableVR()
     {
-        Debug.Log("VR support is false");
         //VR support를 일단 false로 해주기
         if (PlayerSettings.virtualRealitySupported == true)
         {
+            Debug.Log("No VR settings exist...");
             PlayerSettings.virtualRealitySupported = false;
         }
     }

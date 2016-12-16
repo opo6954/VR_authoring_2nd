@@ -12,74 +12,10 @@ using System.Collections;
  * 
  * */
 public class PlaySoundsState : StateModuleTemplate {
-
-
-	public PlaySoundsState(TaskModuleTemplate _myModule) : base(_myModule)
+	
+    public PlaySoundsState()
 	{
 		myStateName = "PlaySoundsState";
 	}
 
-
-	public override void setProperty (System.Collections.Generic.Dictionary<string, object> properties)
-	{
-		addProperty ("SoundName", properties["SoundName"]);
-		addProperty ("Loop", properties["Loop"]);
-	}
-
-	public override void setObject (System.Collections.Generic.Dictionary<string, object> objects)
-	{
-		addObject ("Sound_from_Object", objects["Sound_from_Object"]);
-	}
-
-	public override void Init ()
-	{
-		base.Init ();
-
-
-
-
-
-
-		if (isContainObject ("Sound_from_Object") == false || isContainProperty ("SoundName") == false) {
-			Debug.Log ("SoundName과 Sound_from_Object가 설정되지 않았습니다.");
-		} else {
-			AudioSource audioSource = getObject<GameObject> ("Sound_from_Object").AddComponent<AudioSource>();
-
-			audioSource.clip = Resources.Load ("Sound/" + getProperty<string> ("SoundName")) as AudioClip;
-
-
-            string loopStatus = getProperty<string>("Loop");
-            bool loopFlag;
-
-            if (loopStatus == "True")
-                loopFlag = true;
-            else
-                loopFlag = false;
-
-
-            audioSource.loop = loopFlag;
-
-			audioSource.Play ();
-
-		}
-
-
-		//음악 재생하자
-	}
-
-	public override void Process ()
-	{
-		base.Process ();
-	}
-
-	public override void Res ()
-	{
-		base.Res ();
-	}
-
-	public override bool Goal ()
-	{
-		return true;
-	}
-	
 }
