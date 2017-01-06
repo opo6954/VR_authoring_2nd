@@ -64,7 +64,7 @@ public class XmlManager {
         smt.MyDifficulty = int.Parse(xac["difficulty"].InnerText);
         smt.MyTimeout = double.Parse(xac["Time"].InnerText);
 
-        smt.setMyParent(sc);
+        smt.MyController = sc;
 
         XmlNodeList taskNodes = ScenarioGroupRoot.SelectNodes("Task");
 
@@ -93,7 +93,7 @@ public class XmlManager {
 
 
 
-        taskIns.taskName = xac["name"].InnerText;
+        taskIns.MyTaskName = xac["name"].InnerText;
 
         XmlNodeList stateNodes = ScenarioRoot.SelectNodes("State");
 

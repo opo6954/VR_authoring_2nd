@@ -15,7 +15,7 @@ public class PlaySoundsState : StateModuleTemplate {
 	
     public PlaySoundsState()
 	{
-		myStateName = "PlaySoundsState";
+		MyStateName = "PlaySoundsState";
 	}
 
 }

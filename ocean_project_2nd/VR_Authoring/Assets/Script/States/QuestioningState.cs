@@ -28,7 +28,7 @@ public class QuestioningState : StateModuleTemplate {
 	
     public QuestioningState()
 	{
-		myStateName = "QuestioningState";
+		MyStateName = "QuestioningState";
 	}
 
 }

@@ -9,12 +9,13 @@ using System.Xml;
 public class TaskModuleTemplate{
 
 //이 task를 가지고 있는 scenario instance
-	ScenarioModuleTemplate myParent;
+
+    string _myTaskName;//customized name
+    ScenarioModuleTemplate _myParent;//이 task를 소유한 scenario
 
 
-
-    private Dictionary<string, object> propertyGroup = new Dictionary<string, object>();
-    private Dictionary<string, object> objectGroup = new Dictionary<string, object>();
+    Dictionary<string, object> propertyGroup = new Dictionary<string, object>();
+    Dictionary<string, object> objectGroup = new Dictionary<string, object>();
 
     //각 task에서 필요한 property 및 object 이름 list
     public string[] propertiesList;
@@ -23,20 +24,33 @@ public class TaskModuleTemplate{
     protected List<StateModuleTemplate> stateList = new List<StateModuleTemplate>();
 
     public int currStateIdx = 0;
+
     
-    public string taskName;//customized name
-	public string taskType;//type of task: pre-defined
 
-	//이 task를 소유한 부모(scenario) 설정 및 가져오기
-	public void setMyParent(ScenarioModuleTemplate _scenario)
-	{
-		myParent = _scenario;
-	}
+    public string MyTaskName
+    {
+        get
+        {
+            return _myTaskName;
+        }
+        set
+        {
+            _myTaskName = value;
+        }
+    }
 
-	public ScenarioModuleTemplate getMyParent()
-	{
-		return myParent;
-	}
+    public ScenarioModuleTemplate MyParent
+    {
+        get
+        {
+            return _myParent;
+        }
+        set
+        {
+            _myParent = value;
+        }
+    }
+
 
     //property관련 함수
 	//Property, Obj 설정 함수
@@ -100,15 +114,35 @@ public class TaskModuleTemplate{
 
     public void insertState(StateModuleTemplate _state)
     {
-        _state.setMyParent(this);
+        _state.MyParent = this;
         stateList.Add(_state);
     }
 
 
     //task start됨
     //task가 가지고 있는 state를 탐색하면서 시작함
+
+    public void triggerNextState()
+    {
+        currStateIdx++;
+        triggerState();
+
+    }
     public void triggerState()
     {
-        stateList[currStateIdx].initState();
+        //state가 남아있을 경우 그대로 진행
+        if (currStateIdx < stateList.Count)
+        {
+            ServerLogger.Instance().addText("The state " + stateList[currStateIdx].MyStateName + " is triggered...");
+            
+            stateList[currStateIdx].initState();
+        }
+        else//만일 state가 남아있지 않은 경우 다음 task로 넘어가야됨
+        {
+            currStateIdx = 0;
+            
+            _myParent.triggerNextTask();
+        }
+        
     }
 }

@@ -12,16 +12,17 @@ using System.Collections.Generic;
 public class ScenarioController : MonoBehaviour{
 	
     //scenario template이 담긴 list임 이 list를 기준으로 flow가 흘러감
-    
+     
 	private List<ScenarioModuleTemplate> scenarioSeq = new List<ScenarioModuleTemplate> ();
 
     public int currScanarioIdx = 0;
 
-    ServerManager serverManager = null;
+    ServerManager serverManager = null; 
 
 	//scenario를 list에 넣는 함수, 단 중복된 scenario 이름을 가질 수 없다
 	public bool insertScenario(ScenarioModuleTemplate scenario)
 	{
+        scenario.MyController = this;
 		for (int i = 0; i < scenarioSeq.Count; i++) {
 			if (scenarioSeq [i].MyScenarioName != scenario.MyScenarioName) {
 				return false;
@@ -49,11 +50,34 @@ public class ScenarioController : MonoBehaviour{
 		scenarioSeq.RemoveAt (idx);
 		return true;
 	}
+    public void triggerNextScenario()
+    {
+        currScanarioIdx++;
 
+        triggerScenario();
+    }
 	
 	public void triggerScenario()
 	{
-        scenarioSeq[currScanarioIdx].triggerTask();
+        if (currScanarioIdx < scenarioSeq.Count)
+        {
+            ServerLogger.Instance().addText("The scenario " + scenarioSeq[currScanarioIdx].MyScenarioName + " is triggered...");
+
+            serverManager.passScenarioInfo(scenarioSeq[currScanarioIdx].MyScenarioName);
+            scenarioSeq[currScanarioIdx].triggerTask();
+        }
+        else
+        {
+            currScanarioIdx = 0;
+
+            //training END임
+            //Server한테 training END임을 보여줘야 함
+
+            serverManager.setTrainingEnd();
+            
+            
+
+        }
 	}
 
     public void setServer(ServerManager _serverManager)

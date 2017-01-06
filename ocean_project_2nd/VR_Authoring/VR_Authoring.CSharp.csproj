@@ -317,7 +317,9 @@
     <Compile Include="Assets\Script\ClientState\ClientStateController.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateExample.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateModuleTemplate.cs" />
+    <Compile Include="Assets\Script\ClientState\EquipmentOrderClientState.cs" />
     <Compile Include="Assets\Script\ClientState\SenderTurnRadiosClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\WaitClientState.cs" />
     <Compile Include="Assets\Script\DeviceSettings\InputDeviceSettings.cs" />
     <Compile Include="Assets\Script\Etc\TurnRadiationObject.cs" />
     <Compile Include="Assets\Script\Etc\TurnVentilationFan.cs" />
@@ -325,6 +327,7 @@
     <Compile Include="Assets\Script\NetworkController\ClientManager.cs" />
     <Compile Include="Assets\Script\NetworkController\InitNetwork.cs" />
     <Compile Include="Assets\Script\NetworkController\MessageProtocol.cs" />
+    <Compile Include="Assets\Script\NetworkController\RPCController.cs" />
     <Compile Include="Assets\Script\NetworkController\ServerLogger.cs" />
     <Compile Include="Assets\Script\NetworkController\ServerManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerTemplate.cs" />
@@ -385,6 +388,8 @@
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Shared\Scripts\Showcase\DemoSwitcher.cs" />
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Shared\Scripts\flicker.cs" />
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\photonview.cs" />
+    <Compile Include="Assets\tmp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Modern Interior Pack\Shaders\Glass.shader" />

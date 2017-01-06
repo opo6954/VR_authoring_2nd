@@ -16,7 +16,10 @@ public class ClientManager : Photon.PunBehaviour {
      
     ClientStateController clientStateController = null;
     PlayerTemplate myPlayerInfo = null;
+    RPCController rpcController=null;
 
+    
+    
 
     void Awake()
     {
@@ -25,6 +28,11 @@ public class ClientManager : Photon.PunBehaviour {
 
     void Start()
     {
+        
+         
+
+
+
         /*
          * 
          * 
@@ -38,6 +46,9 @@ public class ClientManager : Photon.PunBehaviour {
          * 
          * 
         */
+
+        
+        /*
         Debug.Log("Init Client...");
 
         Initialize();
@@ -47,41 +58,335 @@ public class ClientManager : Photon.PunBehaviour {
         cse.setParameter1("r");
         cse.setParameter2(20);
 
+        cse.MyClientManager = this;
+         
+        
+
         clientStateController.setCurrClientState(cse);
+        */
 
 
     }
+
+    void Update()
+    {
+        
+    }
+
     //client 초기화부분 joystick input 정보 등을 초기화할 수 있음
     //client일 시 자신만의 player 소환해야 함
     void Initialize()
     {
         myPlayerInfo = gameObject.GetComponent<PlayerTemplate>();
 
+
         InputDeviceSettings.Instance().mappingJoystickButton();
 
         clientStateController = gameObject.AddComponent<ClientStateController>();
 
         GameObject canvas = GameObject.FindGameObjectWithTag("Server_Canvas");
+
         if(canvas != null)
             canvas.SetActive(false);//server를 위한 canvas는 제거
+
+        
+        //server한테 connect message 보내기
+        sendMessage(new MessageProtocol(MessageProtocol.MESSAGETYPE.CONNECT, PhotonNetwork.playerName, PhotonNetwork.masterClient.name, 1, new string[1] { PhotonNetwork.playerName }));
     }
 
     //network 입장 종료 후 callback 불림
     //server한테도 알려주기
-    public void Callback_initNetwork(string playerName)
+    public void Callback_initNetwork(string playerName, RPCController _rpcController)
     {
         Debug.Log("Callback, my name is " + playerName);
+        //rpc controller 등록
+        rpcController = _rpcController;
 
         Initialize();
     }
 
+
+    public void setScenarioNameText(string text)
+    {
+        Debug.Log("Current scenario is " + text);
+    }
+
+    public void setTaskNameText(string text)
+    {
+        Debug.Log("Current task is " + text);
+    }
+
+    
+
+
+    /*
+     * parameter의 구성:
+     *      * object[] 형태
+     * object[0]: type: int
+     * object[1]: sender: string
+     * object[2]: receiver: string
+     * object[3]: name: string(clientstate의 이름이 들어감)
+     * object[4]: number of parameters: int
+     * object[5]~: parameters: object...
+     * */
+    //messageProtocol로부터 clientstate만들기
+    public void buildClientState(MessageProtocol mp)
+    {
+        //client state를 instantiate 한 후에 ClientStateController에 setCurr~~ 메소드 호출해서 만든 client state 등록하면 됨
+           //그리고 client state에서 파라미터로 보내는 거 생각해야 함 그 부분은 여기서 
+        
+
+
+
+
+
+    //이 부분이 제일 중요함d
+    }
+    //역할 정보 설정기능
+    public void controlRoleInfo(MessageProtocol mp)
+    {
+        string[] roleList = new string[mp.numOfParameter - 1];
+
+        for (int i = 0; i < mp.numOfParameter - 1; i++)
+        {
+            roleList[i] = mp.getParameterValue(i + 1);
+        }
+        StartCoroutine("chooseRoleInfo", roleList);
+    }
+    //server로부터 scenario 정보나 task 정보를 받아서 표시하기
+    public void controlTrainInfo(MessageProtocol mp)
+    {
+        string infoType = mp.getParameterValue(0);
+
+        //null 아닐경웅
+        if(infoType != null)
+        {
+            if (infoType == "Scenario")
+            {
+                setScenarioNameText(mp.getParameterValue(1));
+            }
+
+            else if (infoType == "Task")
+            {
+                setTaskNameText(mp.getParameterValue(1));
+            }
+
+        }
+        
+    }
+    //모든 training 종료
+    public void finishiTraining(MessageProtocol mp)
+    {
+        int score = int.Parse(mp.getParameterValue(0));
+        myPlayerInfo.MyScore = score;
+
+        Debug.Log("Training end... my final score is " + score.ToString());
+        //이 부분에서 score 화면 보여주기 해야함
+    }
+
+    //현재 clientstate 종료될 시 sendMessage로 server한테 완료 flag와 보낼 정보 설정해서 보내기
+    public void passClientStateInfo(MessageProtocol mp)
+    {
+        sendMessage(mp);
+    }
+
+    
+    
+    
+
+
+
+
+
+
+
+
+   
+
+    public void turnOffClientCamera_Client(string playerName)
+    {
+        //모든 player 가져오기
+
+        Debug.Log("In TurnOffClientCamera_Client...");
+
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        Debug.Log("현재 player: " + players.Length);
+
+        Debug.Log("my name is " + myPlayerName);
+        Debug.Log("my network name is " + PhotonNetwork.playerName);
+
+        Debug.Log("In turnOffRPC, network player length: " + PhotonNetwork.playerList.Length);
+
+
+        //다른 player의 관련 요소 끄기
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].GetPhotonView().name != myPlayerName)
+            {
+                players[i].GetComponent<ClientManager>().enabled = false;
+                players[i].GetComponent<PlayerTemplate>().enabled = false;
+                players[i].transform.FindChild("FPSController").gameObject.SetActive(false);
+            }
+        }
+    }
+
+
+    //role 고르는 부분인데 일단은 걍 r버튼 누르면 제일 처음 role을 선택하는 거로 하자
+    IEnumerator chooseRoleInfo(string[] roleList)
+    {
+        Debug.Log("In the choose role process...");
+
+        while (true)
+        {
+            if (Input.GetKey("r") == true)
+            {
+                myPlayerInfo.MyRoleName = roleList[0];
+
+                Debug.Log("My role is choosing...");
+                Debug.Log("My role name is " + myPlayerInfo.MyRoleName);
+
+                //이 부분에서 message 보내자
+                sendMessage(new MessageProtocol(MessageProtocol.MESSAGETYPE.ROLEINFO, PhotonNetwork.playerName, PhotonNetwork.masterClient.name, 2, new string[2] { PhotonNetwork.playerName, myPlayerInfo.MyRoleName}));
+
+                yield break;
+            }
+            yield return null;
+        }
+    }
+
+
+    //message 보내기 rpc 호출하면 됨
+    public void sendMessage(MessageProtocol mp)
+    {
+        //client에서의 message관련 logging...
+        Debug.Log("Send message...");
+        Debug.Log(mp.ToString());
+        rpcController.photonView.RPC("sendMessage", PhotonTargets.All, mp.getParameters());
+    }
+
+
+
+    //message 받기 이후 message type에 따라 처리하면 됨
+    public void receiveMessage(MessageProtocol mp)
+    {
+        Debug.Log("Receive message...");
+        Debug.Log(mp.ToString());
+
+        switch (mp.type)
+        {
+            case MessageProtocol.MESSAGETYPE.CONNECT:
+                //client-->server 통신이기 때문에 필요 없음 만일 일로 msg가 오면 잘못 온거임
+                Debug.Log("Client doesn't get the connect message.. please check your code...");
+                break;
+            case MessageProtocol.MESSAGETYPE.CLIENTSTATE:
+                //새로운 clientState를 만들기
+                //이 부분 구현하
+
+                buildClientState(mp);
+
+                break;
+            case MessageProtocol.MESSAGETYPE.ROLEINFO:
+                //server로부터 role List를 받게 됨
+
+                controlRoleInfo(mp);
+
+                
+
+                break;
+            case MessageProtocol.MESSAGETYPE.TRAININGEND:
+                finishiTraining(mp);
+                //이 부분 구현하기
+                break;
+            case MessageProtocol.MESSAGETYPE.TRAININGINFO:
+                controlTrainInfo(mp);
+                //이 부분 구현하기
+                break;
+        }
+    }
+
+
+
+
+    /*
+    *     [PunRPC]
+   public void sendRoleInfo(string[] roleInfo)
+   {
+       string type = roleInfo[0];
+
+       if (type == "connect")
+       {
+           if (PhotonNetwork.isMasterClient == false)
+           {
+               string sender = roleInfo[1];
+               string receiver = roleInfo[2];
+
+               if (PhotonNetwork.playerName == receiver)
+               {
+                   int numberofRole = int.Parse(roleInfo[3]);
+
+                   string[] roleList = new string[numberofRole];
+
+                   for (int i = 0; i < numberofRole; i++)
+                   {
+                       roleList[i] = roleInfo[i + 4];
+                   }
+
+                   localClientManager.chooseRoleInfo(roleList);
+               }
+           }
+       }
+       else if (type == "request")
+       {
+           string sender = roleInfo[1];
+           string receiver = roleInfo[2];
+
+           if (PhotonNetwork.isMasterClient == true)
+           {
+               string playerName = roleInfo[3];
+               string roleName = roleInfo[4];
+
+               localServerManager.addRolePlayer(playerName, roleName);
+           }
+       }
+   }
+    * */
+
+    /*
+     * 이 부분은 TRAININGINFO에서 처리해야 함
+     *  [PunRPC]
+    public void sendScenarioInfoToClient(object[] parameters)
+    {
+        //client한테만 해당
+        if (PhotonNetwork.isMasterClient == false)
+        {
+
+            string sender = parameters[0].ToString(); ;
+            string scenarioName = parameters[1].ToString();
+
+            localClientManager.setScenarioNameText(scenarioName);
+        }
+    }
+
+    [PunRPC]
+    public void sendTaskInfoToClient(object[] parameters)
+    {
+        //client한테만 해당
+        if (PhotonNetwork.isMasterClient == false)
+        {
+            string sender = parameters[0].ToString();
+            string taskName = parameters[1].ToString();
+
+            localClientManager.setTaskNameText(taskName);
+        }
+    }
+
+     * */
+
+
     //network 관련 함수, server로의 message를 보내거나 받는다 이 부분을 통해서만 server와 통신이 가능하다
-    [PunRPC]
-    void MsgReceiver()
-    {
-    }
-    [PunRPC]
-    void MsgSender()
-    {
-    }
+
+    //Server-->Client로의 message를 수신한다.
+
+   
 }

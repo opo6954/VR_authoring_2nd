@@ -14,6 +14,6 @@ public class ButtonPressState : StateModuleTemplate {
 
     public ButtonPressState()
 	{
-		myStateName = "ButtonPressState";
+		MyStateName = "ButtonPressState";
 	}
 }

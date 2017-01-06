@@ -9,7 +9,7 @@ public class ScenarioModuleTemplate {
  
     private Transform myPosition;
 
-	private ScenarioController myParent;
+	private ScenarioController _myController;
 
     //본 scenario에서의 진행하고 있는 task의 idx를 말함
     public int currTaskIdx = 0;
@@ -25,18 +25,6 @@ public class ScenarioModuleTemplate {
 
 	//scenario의 시간
 	private double timeout = 0;
-
-    public Transform MyPosition
-    {
-        get
-        {
-            return myPosition;
-        }
-        set
-        {
-            myPosition = value;
-        }
-    }
 
     public string MyScenarioName
     {
@@ -74,40 +62,52 @@ public class ScenarioModuleTemplate {
         }
     }
 
+    public ScenarioController MyController
+    {
+        get
+        {
+            return _myController;
+        }
+        set
+        {
+            _myController = value;
+        }
+    }
+
 	public void insertTask(TaskModuleTemplate _task)
 	{
-        _task.setMyParent(this);
+        _task.MyParent = this;
 
         taskList.Add(_task);
 	}
 
 
+    //list에 있는 다음 task를 trigger한다d
 
-
-
-
-	public void setMyParent(ScenarioController _myParent)
-	{
-        
-		myParent = _myParent;
-        myPosition = _myParent.transform.GetChild(0).transform;
-
-	}
-
-    public ScenarioController getMyParent()
+    public void triggerNextTask()
     {
-        return myParent;
+        currTaskIdx++;
+
+        triggerTask();
+
     }
 
-    
 
-
-	
     //scenario가 가지고 있는 task를 trigger한다.
-	
 	public void triggerTask()
 	{
-        taskList[currTaskIdx].triggerState();
+        if (currTaskIdx < taskList.Count)
+        {
+            ServerLogger.Instance().addText("The task " + taskList[currTaskIdx].MyTaskName + " is triggered...");
+            MyController.getServer().passTaskInfo(taskList[currTaskIdx].MyTaskName);
+
+            taskList[currTaskIdx].triggerState();
+        }
+        else
+        {
+            currTaskIdx = 0;
+            MyController.triggerNextScenario();
+        }
 	}
 
 

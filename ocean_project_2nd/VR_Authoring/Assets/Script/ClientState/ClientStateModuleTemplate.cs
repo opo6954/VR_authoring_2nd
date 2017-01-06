@@ -15,9 +15,25 @@ public class ClientStateModuleTemplate {
 
     private bool isStateStart = false;
     private bool isStateDoing = false;
-    public bool isStateEnd = false; 
+    public bool isStateEnd = false;
+
+    ClientManager _cm = null;
 
     protected string myClientState = "";
+
+    public ClientManager MyClientManager
+    {
+        get
+        {
+            return _cm;
+        }
+        set
+        {
+            _cm = value;
+        }
+    }
+
+    
     
 
     //초기 client State시작후 1번만 불림
@@ -38,6 +54,13 @@ public class ClientStateModuleTemplate {
     public virtual void Res()
     {
         Debug.Log(myClientState + " client state 종료");
+        convertRes2Msg();
+    }
+
+    //server한테 보낼 파라미터를 설정하는 함수
+    public virtual void convertRes2Msg()
+    {
+        Debug.Log(myClientState + " client state 정보 server한테 보내기");
     }
 
 

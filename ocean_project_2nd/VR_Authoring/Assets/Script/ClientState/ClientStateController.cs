@@ -32,7 +32,12 @@ public class ClientStateController : MonoBehaviour{
         return null;
     }
 
-     
+    public bool isCurrClientStateExist()
+    {
+        if (currClientState != null)
+            return true;
+        return false;
+    }
 
     public void setCurrClientState(ClientStateModuleTemplate csm)
     {
@@ -49,6 +54,7 @@ public class ClientStateController : MonoBehaviour{
 
     void Update()
     {
+        
         if (currClientState != null)
         {
             if (currClientState.isStateEnd == false)
