@@ -60,11 +60,14 @@ public class DialogueTalkClientState : ClientStateModuleTemplate {
 	{
 		answer = dialogue.GetComponent<DialogueAnswerContainer> ().answer;
 		if (answer >= 0) {
-			Debug.Log ("DialogueTalkClientState Ended...");
-			GameObject.Destroy (dialogue);
+			//Debug.Log ("DialogueTalkClientState Ended...");
 			return true;
 		}
-		base.Res ();
 		return false;
+	}
+	public override void Res()
+	{
+		GameObject.Destroy (dialogue);
+		base.Res();
 	}
 }

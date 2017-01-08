@@ -76,8 +76,8 @@ public class DialogueStartClientState : ClientStateModuleTemplate {
 	public override bool Goal()
 	{
 		if (finished) {
-			Debug.Log ("DialogueStartClientState Ended...");
-			GameObject.Destroy (tooltip);
+			//Debug.Log ("DialogueStartClientState Ended...");
+
 			//Destroy (this);
 			return true;
 		}
@@ -86,6 +86,7 @@ public class DialogueStartClientState : ClientStateModuleTemplate {
 	//마지막 ClientState가 종료된 후 1번 불림
 	public override void Res()
 	{
+		GameObject.Destroy (tooltip);
 		base.Res();
 	}
 
