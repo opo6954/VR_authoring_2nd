@@ -34,6 +34,9 @@ public class MethodLearnState : StateModuleTemplate {
         addObjectList("FireExtinguisher_Segment");
         addNetworkPlayerList("First_Extinguisher");
 
+        //현 state에 필요한 clientState의 이름을 list형태로 저장하기
+        clientStateList.Add("EuipmentOrderClientState");
+
         //network에서의 role도 역시 파라미터로 넘겨주는 형태로 만들자
         
 	}
@@ -66,25 +69,8 @@ public class MethodLearnState : StateModuleTemplate {
 
             string[] playerList = getNetworkPlayerList().ToArray();
             
-            int numOfProperty = propertyList.Count;
-            int numOfObject = objectList.Count;
-            int numOfNetworkPlayer = playerRoleList.Count;
 
-            List<string> parameters  = new List<string>();
-
-            parameters.Add(getProperty<string>("Select_Button"));
-            parameters.Add(getProperty<string>("VideoName"));
-            parameters.Add(getProperty<bool>("isVideo").ToString());
-            parameters.Add(getProperty<int>("PartCount").ToString()); 
-            parameters.Add(getObject<string>("FireExtinguisher_Segment"));
-
-            
-            for(int j=0; j<playerList.Length; j++)
-            {
-                parameters.Add(playerList[j]);
-            }
-
-            MessageProtocol mp = new MessageProtocol(MessageProtocol.MESSAGETYPE.CLIENTSTATE, parameters.Count, parameters.ToArray());
+            MessageProtocol mp = new MessageProtocol(MessageProtocol.MESSAGETYPE.CLIENTSTATE, clientStateList[0], propertyList, propertyGroup, objectList, objectGroup);
 
             _server.addAssignTable(playerName, mp);
         }

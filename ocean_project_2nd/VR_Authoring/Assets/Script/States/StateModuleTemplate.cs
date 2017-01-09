@@ -73,10 +73,17 @@ public class StateModuleTemplate {
 
     
     //각 state별로 필요한 property, object, networkplayer List로 string 형태로 저장해놓자
+    
+    //현 state에 필요한 clientState의 string 형태
+    protected List<string> clientStateList = new List<string>();
+
+    //현 state에 필요한 property의 string 형태
     protected List<string> propertyList = new List<string>();
+
+    //현 state에 필요한 object의 string 형태
     protected List<string> objectList = new List<string>();
 
-    //필요한 role list임
+    //현 state에 필요한 role list임
     protected List<string> playerRoleList = new List<string>();
     
     
@@ -85,8 +92,8 @@ public class StateModuleTemplate {
 
 	 
     //property 설정요소와 obj 설정 요소 존재
-    Dictionary<string, object> propertyGroup = new Dictionary<string, object>();
-    Dictionary<string, object> objectGroup = new Dictionary<string, object>();
+    protected Dictionary<string, string> propertyGroup = new Dictionary<string, string>();
+    protected Dictionary<string, string> objectGroup = new Dictionary<string, string>();
     //player 이름과 role이 포함?
 
     public string MyStateName
@@ -155,26 +162,26 @@ public class StateModuleTemplate {
     //property 및 obj 관리
 
     //property 추가하기
-    public void addProperty(string propertyName, object o)
+    public void addProperty(string propertyName, string value)
     {
         if(propertyGroup.ContainsKey(propertyName) == false)
-            propertyGroup.Add(propertyName, o);
+            propertyGroup.Add(propertyName, value);
 
         return;
     }
 
 
     //property 가져오기
-    public T getProperty<T>(string propertyName)
+    public string getProperty(string propertyName)
     {
         if (propertyGroup.ContainsKey(propertyName) == true)
         {
             
             
-            return (T)propertyGroup[propertyName];
+            return propertyGroup[propertyName];
         }
 
-        return default(T);  
+        return null;
     }
 
     //property 확인하기
@@ -186,7 +193,7 @@ public class StateModuleTemplate {
     }
 
     //task에서 state으로 property정보를 위임받을 때 사용, List에 있는 얘들만 차례대로 넣는다.
-    public virtual void setProperty(Dictionary<string, object> properties)
+    public virtual void setProperty(Dictionary<string, string> properties)
     {
         foreach (string key in propertyList)
         {
@@ -196,7 +203,7 @@ public class StateModuleTemplate {
 
 
     //object 추가하기
-    public void addObject(string objectName, object o)
+    public void addObject(string objectName, string o)
     {
         if (objectGroup.ContainsKey(objectName) == false)
             objectGroup.Add(objectName, o);
@@ -205,15 +212,15 @@ public class StateModuleTemplate {
     }
 
     //object 가져오기
-    public T getObject<T>(string objectName)
+    public string getObject(string objectName)
     {
         if (objectGroup.ContainsKey(objectName) == true)
         {
-            return (T) objectGroup[objectName];
+            return objectGroup[objectName];
         }
 
 
-        return default(T);
+        return null;
     }
 
     //object 확인하기
@@ -225,7 +232,7 @@ public class StateModuleTemplate {
     }
 
     //task에서 state으로 object 정보를 위임받을 때 사용, List에 있는 얘들만 차례대로 넣는다.
-    public virtual void setObject(Dictionary<string, object> objects)
+    public virtual void setObject(Dictionary<string, string> objects)
     {
         foreach (string key in objectList)
         {

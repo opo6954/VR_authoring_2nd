@@ -129,16 +129,30 @@ public class ClientManager : Photon.PunBehaviour {
      * object[4]: number of parameters: int
      * object[5]~: parameters: object...
      * */
+
+
+
+    //clientstate가 완료될 시 완료된 flag와 보낼 파라미터를 가지고 message 보내기
+    public void finishClientState()
+    {
+        //LHWLHWLHW
+    }
+
     //messageProtocol로부터 clientstate만들기
     public void buildClientState(MessageProtocol mp)
     {
-        //client state를 instantiate 한 후에 ClientStateController에 setCurr~~ 메소드 호출해서 만든 client state 등록하면 됨
-           //그리고 client state에서 파라미터로 보내는 거 생각해야 함 그 부분은 여기서 
-        
+        string clientStateName = mp.getClientStateName();
+
+        ClientStateModuleTemplate csmt = System.Activator.CreateInstance(System.Type.GetType(clientStateName)) as ClientStateModuleTemplate;
 
 
+        //clientstate에 필요한 파라미터를 messageprotocol로부터 가져온다.
+        //message protocol로부터 파라미터를 읽어서 clientstate에 저장한다.
+        csmt.convertMP2ClientState(mp.getParameterGroupForClientState());
 
 
+        //이후 그 clientstate를 실행한다
+        clientStateController.setCurrClientState(csmt);
 
     //이 부분이 제일 중요함d
     }

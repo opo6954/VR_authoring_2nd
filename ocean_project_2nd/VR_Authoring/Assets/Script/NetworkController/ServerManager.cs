@@ -163,8 +163,8 @@ public class ServerManager : Photon.PunBehaviour {
 
         tmpState.addProperty("Select_Button", "x");
         tmpState.addProperty("VideoName", "video1,video2,video3,video4");
-        tmpState.addProperty("isVdeo", true);
-        tmpState.addProperty("PartCount", 4);
+        tmpState.addProperty("isVdeo", true.ToString());
+        tmpState.addProperty("PartCount", "4");
         tmpState.addObject("FireExtinguisher_Segment", "Fire");
         tmpState.addNetworkPlayerList("First_Extinguisher");
 
@@ -224,7 +224,7 @@ public class ServerManager : Photon.PunBehaviour {
 
                         //해당하는 client한테 message를 보냄
 
-                        rpcController.photonView.RPC("sendMessageToClient", PhotonTargets.All, mp.getParameters());
+                        sendMessage(mp);
 
                         ServerLogger.Instance().addText("Sending Message to Client" + playerName + "with state name" + "equipmentOrder...");
                     }
@@ -467,7 +467,6 @@ public class ServerManager : Photon.PunBehaviour {
                 {
                     string roleInfo = getRoleInfoByPlayerName(mp.sender);
 
-
                     /*
                      * client로부터 온 파라미터를 저장한다.
                      * client로부터 온 msg는 성공 여부 and (파라미터 이름, 파타미터 값) 형태의 짝 형식으로 들어온다 이거를 그대로 저장하면 된다
@@ -478,7 +477,6 @@ public class ServerManager : Photon.PunBehaviour {
                     {
                         clientTrainInfo[roleInfo].Add(mp.getParameterValue(i), mp.getParameterValue(i + 1));
                     }
-
 
                     if(roleInfo != "")
                     {
@@ -512,12 +510,6 @@ public class ServerManager : Photon.PunBehaviour {
                         executeAssignTable();
                     }
                 }
-
-
-
-                
-                 
-                 
 
                 break;
             case MessageProtocol.MESSAGETYPE.ROLEINFO:

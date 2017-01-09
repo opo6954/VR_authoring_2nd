@@ -17,9 +17,19 @@ public class ClientStateModuleTemplate {
     private bool isStateDoing = false;
     public bool isStateEnd = false;
 
-    ClientManager _cm = null;
+    protected ClientManager _cm = null;
 
     protected string myClientState = "";
+
+    protected List<string> propertyList = new List<string>();
+    protected List<string> objectList = new List<string>();
+
+    protected Dictionary<string, string> propertyGroup = new Dictionary<string, string>();
+    protected Dictionary<string, string> objectGroup = new Dictionary<string, string>();
+
+    //파라미터가 들어있는 dictionary를 만들어야 겠다
+    //property이든 object이든 모두 여기에 저장을 하자
+    
 
     public ClientManager MyClientManager
     {
@@ -55,11 +65,43 @@ public class ClientStateModuleTemplate {
     {
         Debug.Log(myClientState + " client state 종료");
         convertRes2Msg();
+
+    }
+
+    //server로부터 온 message Protocol의 여러 파라미터를 바탕으로 clientState에 넣는다
+
+    public virtual void setParameters()
+    {
+        Debug.Log("Dictionary to single variable");
+    }
+
+    public void convertMP2ClientState(Dictionary<string, string> myDic)
+    {
+        for (int i = 0; i < propertyList.Count; i++)
+        {
+            if (myDic.ContainsKey(propertyList[i]) == true)
+            {
+                propertyGroup.Add(propertyList[i],myDic[propertyList[i]]);
+            }
+        }
+        for (int i = 0; i < objectList.Count; i++)
+        {
+            if (myDic.ContainsKey(objectList[i]) == true)
+            {
+                objectGroup.Add(objectList[i], myDic[objectList[i]]);
+            }
+
+        }
+
+        setParameters();
+
+        Debug.Log(myClientState + " server로부터 온 message Protocol을 본 clientState에 맞게 파라미터 설정하기");
     }
 
     //server한테 보낼 파라미터를 설정하는 함수
     public virtual void convertRes2Msg()
     {
+        //이 부분에서 server로 보낼 information을 message protocol로 변환하고 client manager에서 message를 보내면 됩니다
         Debug.Log(myClientState + " client state 정보 server한테 보내기");
     }
 

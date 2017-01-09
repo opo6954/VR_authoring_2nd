@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 /*
  * MessageProtocol
  * Server와 Client 사이의 message protocol 및 format을 담당함
@@ -33,9 +34,21 @@ using System.Collections;
  * Sender: Server
  * Receiver: Client
  * Message Type: CLIENTSTATE
- * Name: ClientState이름
+ * 
+ * 이렇게만 해줘도 될듯d
+ * 
  * Parameter: clientState에서 쓰일 대사나 obj 이름 등의 저작도구로부터의 정보
- * ExtraInfo: 성공여부 Server->Client로 갈 때는 0, Client->Server로 갈 때 성공일시 1, 실패일 시 0인데 일단 0인 경우는 버그 등으로 멈췄을 때 보내줘야 할 듯
+ * 파라미터의 구성:
+ * [0]: clientState의 이름
+ * [1]: 파라미터 이름
+ * [2]: 파라미터 내용
+ * [3]: 파라미터 이름
+ * [4]: 파라미터 내용
+ * ...
+  * [k]: 오브젝트 이름
+ * [k+1]: 오브젝트 내용
+ * ...
+ 
  * 
  * 임무 성공
  * Sender: Client
@@ -170,6 +183,8 @@ public class MessageProtocol {
         }
     }
 
+    //message 만드는 생성자들
+
     //packing array로부터 messageprotocol만들기
     public MessageProtocol(string[] _packingMessages)
     {
@@ -180,9 +195,13 @@ public class MessageProtocol {
         unpackingMessage();
     }
 
-    public MessageProtocol(MESSAGETYPE _type, int numOfParameter, string[] _parameter)
+    public MessageProtocol(MESSAGETYPE _type, int _numOfParameter, string[] _parameter)
     {
+        numOfParameter = _numOfParameter;
+
         parameters = new string[4 + numOfParameter];
+
+        
 
         parameters[0] = _type.ToString();
 
@@ -200,8 +219,9 @@ public class MessageProtocol {
 
 
 
-    public MessageProtocol(MESSAGETYPE _type, string sender, string receiver, int numOfParameter, string[] _parameter)
+    public MessageProtocol(MESSAGETYPE _type, string sender, string receiver, int _numOfParameter, string[] _parameter)
     {
+        numOfParameter = _numOfParameter;
         parameters = new string[4 + numOfParameter];
 
         parameters[0] = _type.ToString();
@@ -217,6 +237,52 @@ public class MessageProtocol {
             parameters[4 + i] = _parameter[i];
         }
     }
+
+    public MessageProtocol(MESSAGETYPE _type, string clientStateName, List<string> propertyList, Dictionary<string, string> propertyGroup, List<string> objectList, Dictionary<string, string> objectGroup)
+    {
+        List<string> tmpParameters = new List<string>();
+
+        tmpParameters.Add(clientStateName);
+
+        for (int i = 0; i < propertyList.Count; i++)
+        {
+            string propertyName = propertyList[i];
+            string propertyValue = propertyGroup[propertyName];
+
+            tmpParameters.Add(propertyName);
+            tmpParameters.Add(propertyValue);
+        }
+
+        for (int i = 0; i < objectList.Count; i++)
+        {
+            string objectName = objectList[i];
+            string objectValue = objectGroup[objectName];
+
+            tmpParameters.Add(objectName);
+            tmpParameters.Add(objectValue);
+        }
+
+        string [] tmpParametersArray = tmpParameters.ToArray();
+
+        numOfParameter = tmpParameters.Count;
+
+        parameters = new string[4 + numOfParameter];
+
+        parameters[0] = _type.ToString();
+        parameters[1] = "";
+        parameters[2] = "";
+        parameters[3] = numOfParameter.ToString();
+
+        
+
+        for (int i = 0; i < numOfParameter; i++)
+        {
+            parameters[4 + i] = tmpParametersArray[i];
+        }
+
+    }
+
+
 
     public void setSenderPlayer(string _senderPlayer)
     {
@@ -238,4 +304,33 @@ public class MessageProtocol {
 
         return parameters;
     }
+    public string getClientStateName()
+    {
+        if (type == MESSAGETYPE.CLIENTSTATE)
+        {
+            return getParameterValue(0);
+        }
+        return null;
+    }
+
+    public Dictionary<string, string> getParameterGroupForClientState()
+    {
+        if (type == MESSAGETYPE.CLIENTSTATE)
+        {
+            Dictionary<string, string> myDic = new Dictionary<string, string>();
+
+            for (int i = 0; i < numOfParameter; i++)
+            {
+                if (4 + i + 1 < parameters.Length)
+                {
+                    myDic.Add(parameters[4 + i], parameters[4 + i + 1]);
+                }
+            }
+
+            return myDic;
+        }
+
+        return null;
+    }
 }
+

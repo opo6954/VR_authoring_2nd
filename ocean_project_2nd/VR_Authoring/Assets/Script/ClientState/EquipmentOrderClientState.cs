@@ -15,6 +15,8 @@ using System.Collections;
 public class EquipmentOrderClientState : ClientStateModuleTemplate {
 
     //property들
+
+
     public string select_button = "";
     public string[] videoName;
 
@@ -26,58 +28,38 @@ public class EquipmentOrderClientState : ClientStateModuleTemplate {
     //Order를 맞추는 object가 들어가 있음
     public string interact_object;
 
+
+
+
+
     //이 부분은 추후에 parent에서 virtual로 만들어놔야 할듯.......~!~!~!~! 꼭 반드시 해야함
-    public void setParameters(string _button, string _videoName, bool _isVideo, int _partCount, string _object_name)
+
+
+    public override void setParameters()
     {
-        //다른 파라미터 저장해주기
-        select_button = _button;
 
-        
+        //property 설정
+        select_button = propertyGroup[propertyList[0]];
+        videoName = propertyGroup[propertyList[1]].Split(',');
+        isVideo = bool.Parse(propertyGroup[propertyList[2]]);
+        partCount = int.Parse(propertyGroup[propertyList[3]]);
 
-        string[] videoSet = _videoName.Split(',');
+        //object 설정
+        interact_object = objectGroup[objectList[0]];
 
-        videoName = new string[videoSet.Length];
-
-        for (int i = 0; i < videoSet.Length; i++)
-        {
-            videoName[i] = videoSet[i];
-        }
-
-        isVideo = _isVideo;
-
-        partCount = _partCount;
-
-        //object를 이름으로 찾아서 저장해주기
-
-        interact_object = _object_name;
-        
     }
-
-
-
-
-    public object[] getParameters()
-    {
-        object[] parameters = new object[6];
-
-        parameters[0] = this.myClientState;
-
-        parameters[1] = select_button;
-
-        parameters[2] = string.Join(",",videoName);
-
-        parameters[3] = isVideo;
-
-        parameters[4] = partCount;
-
-        parameters[5] = interact_object;
-
-        return parameters;
-    }
+ 
 
     public override void Init()
     {
         base.Init();
+
+        propertyList.Add("Select_Button");
+        propertyList.Add("VideoName");
+        propertyList.Add("isVideo");
+        propertyList.Add("PartCount");
+        objectList.Add("FireExtinguisher_Segment");
+
         //For the test between the server and client~!~!~!~!~!~!~!~!~!~!~!~!
         if(select_button != "")
         {
@@ -116,5 +98,12 @@ public class EquipmentOrderClientState : ClientStateModuleTemplate {
         base.Res();
     }
 
+    //clientstate의 결과물을 message protocol로 변환하는 작업 필요
+    public override void convertRes2Msg()
+    {
+        //완료 메시지 보내는 거임
+        MessageProtocol mp = new MessageProtocol(MessageProtocol.MESSAGETYPE.CLIENTSTATE, 3, new string[] {true.ToString(), propertyList[0],select_button});
+        _cm.passClientStateInfo(mp);
+    }
 
 }
