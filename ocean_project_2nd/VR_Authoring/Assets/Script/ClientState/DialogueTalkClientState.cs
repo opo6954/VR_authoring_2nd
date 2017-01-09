@@ -8,11 +8,16 @@ using UnityEngine.UI;
 */
 
 public class DialogueTalkClientState : ClientStateModuleTemplate {
+	public string question;
 	public string[] options;
 	public int answer;
 
 	private int num_items;
 	private GameObject dialogue;
+
+	public void setquestion(string s) {
+		question = s;
+	}
 	public void setoptions(string[] slist) {
 		options = slist;
 	}
@@ -40,16 +45,17 @@ public class DialogueTalkClientState : ClientStateModuleTemplate {
 			dialogue.active = true;
 		}
 			
-		if (num_items > 0) {
+		if (num_items > 0 && question != null) {
 			;
 		} else {
+			GameObject.Find ("Objective Panel/Dialogue Title").GetComponent<Text> ().text = question;
 			for (int i = 0; i < options.Length; i++) {
-				Text text = GameObject.Find ("Button" + i.ToString() + "/Text").GetComponent<Text>();
+				Text text = GameObject.Find ("Objective Panel/Button" + i.ToString() + "/Text").GetComponent<Text>();
 				text.text = options [i];
 				num_items++;
 			}
 			for (int i = num_items; i < 4; i++) {
-				GameObject.Find ("Button" + i.ToString()).active = false;
+				GameObject.Find ("Objective Panel/Button" + i.ToString()).active = false;
 			}
 		}
 
