@@ -11,7 +11,7 @@ using System.Collections.Generic;
  *  
  * 
  * */
-public class ClientStateModuleTemplate {
+public class ClientStateModuleTemplate{
 
     private bool isStateStart = false;
     private bool isStateDoing = false;
