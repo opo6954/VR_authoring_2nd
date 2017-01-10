@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\DebugAuthoringTools.cs" />
+    <Compile Include="Assets\Demo_tmp.cs" />
     <Compile Include="Assets\LeapAvatarHands\Scripts\IKActioner.cs" />
     <Compile Include="Assets\LeapAvatarHands\Scripts\IKLeapHandController.cs" />
     <Compile Include="Assets\LeapAvatarHands\Scripts\IKOrionActioner.cs" />
@@ -314,14 +315,37 @@
     <Compile Include="Assets\Resources\UserInterface\DefaultUI\Script\UIEffect_AnswerSheet.cs" />
     <Compile Include="Assets\Resources\UserInterface\DefaultUI\Script\UIEffect_child.cs" />
     <Compile Include="Assets\Resources\UserInterface\UIModuleTemplate.cs" />
+    <Compile Include="Assets\Rope\ropeConnectedBody.cs" />
+    <Compile Include="Assets\Score Board\Scripts\ScoreBoardManager.cs" />
+    <Compile Include="Assets\Score Board\Scripts\TaskTimer.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\Origin\Script\AddPoint.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\Origin\Script\DragUICompont.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\Origin\Script\RayCastCheck.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\Origin\Script\VertexLine.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\UGUIMeshLab\DataContainer.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\UGUIMeshLab\Math\Math.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\UGUIMeshLab\UIMeshLine.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\UGUIMeshLab\UIPolygon.cs" />
     <Compile Include="Assets\Script\Animation\CharactorAnimationController.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateController.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateExample.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateModuleTemplate.cs" />
+    <Compile Include="Assets\Script\ClientState\DialogueStartClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\DialogueTalkClientState.cs" />
     <Compile Include="Assets\Script\ClientState\EquipmentOrderClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\RadioCallClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\RadioReceiveClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\RadioTalkClientState.cs" />
     <Compile Include="Assets\Script\ClientState\SenderTurnRadiosClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\SimpleInteractionBalloon.cs" />
+    <Compile Include="Assets\Script\ClientState\SimpleInteractionClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\SimpleInteractionController.cs" />
+    <Compile Include="Assets\Script\ClientState\SimpleInteractionFireAlarm.cs" />
+    <Compile Include="Assets\Script\ClientState\SimpleInteractionModuleTemplate.cs" />
+    <Compile Include="Assets\Script\ClientState\SimpleInteractionVent.cs" />
     <Compile Include="Assets\Script\ClientState\WaitClientState.cs" />
     <Compile Include="Assets\Script\DeviceSettings\InputDeviceSettings.cs" />
+    <Compile Include="Assets\Script\Etc\DialogueAnswerContainer.cs" />
     <Compile Include="Assets\Script\Etc\TurnRadiationObject.cs" />
     <Compile Include="Assets\Script\Etc\TurnVentilationFan.cs" />
     <Compile Include="Assets\Script\IntroScene\IntroManager.cs" />
@@ -420,10 +444,17 @@
     <None Include="Assets\Resources\Shader\Edge_only.shader" />
     <None Include="Assets\Resources\Shader\Highlight_only.shader" />
     <None Include="Assets\Resources\Shader\Highlight_texture.shader" />
+    <None Include="Assets\Score Board\UI Line Drawer\License.txt" />
+    <None Include="Assets\Score Board\UI Line Drawer\Origin\Materials\LineColor.shader" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
     <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ColorOut.shader" />
@@ -450,6 +481,7 @@
     <None Include="Assets\Ultra_Real_Fire_Effects\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableBlur.shader" />
     <None Include="Assets\contributors.txt" />
     <None Include="Assets\modern\materials\glass.shader" />
+    <None Include="Assets\modern\textures\normals\floor\Project.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>

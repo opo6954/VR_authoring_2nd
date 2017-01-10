@@ -52,9 +52,6 @@ public class PlayerTemplate : MonoBehaviour
 
     //player 관련 util 함수
 
-    public void Start()
-    {
-    }
 
     public void Update()
     {

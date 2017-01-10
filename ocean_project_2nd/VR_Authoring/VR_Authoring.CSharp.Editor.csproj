@@ -146,6 +146,10 @@
     <Compile Include="Assets\Photon Unity Networking\Editor\PhotonNetwork\Views\PhotonTransformViewEditor.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PlayerRoomIndexingInspector.cs" />
     <Compile Include="Assets\Photon Unity Networking\UtilityScripts\PhotonPlayer\Editor\PunTeamsInspector.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\Origin\Script\Editor\VertexLineEditor.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\UGUIMeshLab\Editor\MenuExtender.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\UGUIMeshLab\Editor\PropertyDrawerCollection.cs" />
+    <Compile Include="Assets\Score Board\UI Line Drawer\UGUIMeshLab\Editor\UIMeshLineEditor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_Editor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_RenderModelEditor.cs" />
     <Compile Include="Assets\SteamVR\Editor\SteamVR_Settings.cs" />
@@ -179,10 +183,17 @@
     <None Include="Assets\Resources\Shader\Edge_only.shader" />
     <None Include="Assets\Resources\Shader\Highlight_only.shader" />
     <None Include="Assets\Resources\Shader\Highlight_texture.shader" />
+    <None Include="Assets\Score Board\UI Line Drawer\License.txt" />
+    <None Include="Assets\Score Board\UI Line Drawer\Origin\Materials\LineColor.shader" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
+    <None Include="Assets\Standard Assets\Environment\Water (Basic)\Shaders\FXWaterBasic.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
+    <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
     <None Include="Assets\SteamVR\Resources\SteamVR_AlphaOut.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_ColorOut.shader" />
@@ -209,6 +220,7 @@
     <None Include="Assets\Ultra_Real_Fire_Effects\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableBlur.shader" />
     <None Include="Assets\contributors.txt" />
     <None Include="Assets\modern\materials\glass.shader" />
+    <None Include="Assets\modern\textures\normals\floor\Project.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2012\UnityVS.CSharp.targets" />
 </Project>
