@@ -171,6 +171,7 @@ public class InitNetwork : Photon.PunBehaviour{
             rpcController.localPlayerName = player.name;
             //clientmanager instance 잡기
             rpcController.localClientManager = player.GetComponent<ClientManager>();
+            rpcController.localClientAnimator = player.GetComponent<CharactorAnimationController>();
             rpcController.localClientManager.myPlayerName = player.name;
 
 

@@ -29,9 +29,6 @@ public class EquipmentOrderClientState : ClientStateModuleTemplate {
     public string interact_object;
 
 
-
-
-
     //이 부분은 추후에 parent에서 virtual로 만들어놔야 할듯.......~!~!~!~! 꼭 반드시 해야함
 
 

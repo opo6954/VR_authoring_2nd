@@ -314,6 +314,7 @@
     <Compile Include="Assets\Resources\UserInterface\DefaultUI\Script\UIEffect_AnswerSheet.cs" />
     <Compile Include="Assets\Resources\UserInterface\DefaultUI\Script\UIEffect_child.cs" />
     <Compile Include="Assets\Resources\UserInterface\UIModuleTemplate.cs" />
+    <Compile Include="Assets\Script\Animation\CharactorAnimationController.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateController.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateExample.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateModuleTemplate.cs" />

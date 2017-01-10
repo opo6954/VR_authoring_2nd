@@ -19,12 +19,8 @@ public class RPCController : Photon.PunBehaviour {
 
     //client일 경우 localPlayer를 가집니다.
     public ClientManager localClientManager = null;
+    public CharactorAnimationController localClientAnimator = null;
     public ServerManager localServerManager = null;
-
-
-
-
-    
 
     //training과 관련있는 message의 send와 receive를 rpc로 정립한다.
     [PunRPC]
@@ -93,8 +89,23 @@ public class RPCController : Photon.PunBehaviour {
     //아마 player들의 position, rotattion 외의 다른 부분을 sync 맞춰야 할 때 쓰일 예정인 함수들 밑의 message와는 독립적으로 운영되어야 한다
     //이 부분은 각 character가 자신의 clientstate에 맞춰서 animation을 하는 부분을 sync로 맞출 때에 쓰일 예정임
     [PunRPC]
-    public void setState()
+    public void animationSync(int state)
     {
+        CharacterAniState cas = CharacterAniState.IDLE;
+        switch (state)
+        {
+            case 0:
+                cas = CharacterAniState.TALKING;
+                break;
+            case 1:
+                cas = CharacterAniState.PHONE;
+                break;
+            case 2:
+                cas = CharacterAniState.WALK;
+                break;
+        }
+
+        localClientAnimator.checkActionAnimation(cas);
     }
 
 

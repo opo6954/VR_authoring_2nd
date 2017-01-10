@@ -17,10 +17,7 @@ public class ClientManager : Photon.PunBehaviour {
     ClientStateController clientStateController = null;
     PlayerTemplate myPlayerInfo = null;
     RPCController rpcController=null;
-
     
-    
-
     void Awake()
     {
    
@@ -82,7 +79,7 @@ public class ClientManager : Photon.PunBehaviour {
 
         InputDeviceSettings.Instance().mappingJoystickButton();
 
-        clientStateController = gameObject.AddComponent<ClientStateController>();
+        clientStateController = gameObject.AddComponent<ClientStateController>(); 
 
         GameObject canvas = GameObject.FindGameObjectWithTag("Server_Canvas");
 
@@ -231,16 +228,31 @@ public class ClientManager : Photon.PunBehaviour {
         Debug.Log("my network name is " + PhotonNetwork.playerName);
 
         Debug.Log("In turnOffRPC, network player length: " + PhotonNetwork.playerList.Length);
-
+        
 
         //다른 player의 관련 요소 끄기
         for (int i = 0; i < players.Length; i++)
         {
             if (players[i].GetPhotonView().name != myPlayerName)
             {
+                //client Manager 끄기
                 players[i].GetComponent<ClientManager>().enabled = false;
+                //Player Template 끄기
                 players[i].GetComponent<PlayerTemplate>().enabled = false;
-                players[i].transform.FindChild("FPSController").gameObject.SetActive(false);
+
+                Transform fpsController = players[i].transform.FindChild("FPSController");
+
+                //Character Controller 끄기
+                fpsController.GetComponent<CharacterController>().enabled = false;
+                //오디오 소스 끄기
+                fpsController.GetComponent<AudioSource>().enabled = false;
+
+                //1인칭 Controller 끄기
+                fpsController.GetComponent<UnityStandardAssets.Characters.FirstPerson.FirstPersonController>().enabled = false;
+
+                //1인칭 Character 끄기
+                fpsController.FindChild("FirstPersonCharacter").gameObject.SetActive(false);
+
             }
         }
     }
@@ -317,6 +329,25 @@ public class ClientManager : Photon.PunBehaviour {
                 //이 부분 구현하기
                 break;
         }
+    }
+
+    //특정 action에 등장하는 animation을 sync한다
+    public void actionAnimationSync(CharacterAniState aniState)
+    {
+        int state=-1;
+        switch(aniState)
+        {
+            case CharacterAniState.TALKING:
+                state = 0;
+                break;
+            case CharacterAniState.PHONE:
+                state = 1;
+                break;
+            case CharacterAniState.WALK:
+                state = 2;
+                break;
+        }
+        rpcController.photonView.RPC("animationSync", PhotonTargets.All, state);
     }
 
 
