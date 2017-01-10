@@ -40,7 +40,7 @@ public class RadiosP2PState : StateModuleTemplate {
 
 	public RadiosP2PState()
 	{
-		myStateName = "RadiosP2PState";
+		MyStateName = "RadiosP2PState";
 	}
     
 

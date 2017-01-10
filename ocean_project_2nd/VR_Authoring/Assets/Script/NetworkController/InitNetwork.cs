@@ -17,8 +17,12 @@ using System.Collections;
 //component와의 dependent를 연결하는 형태
 public class InitNetwork : Photon.PunBehaviour{
 
+    RPCController rpcController = null;
+
     string _gameVersion = "1";
     public int maxPlayer = 4;
+    private bool isPlayerSetting = false;
+    private bool isJoinRoom = false;
 
     static string myPlayerName = "";
 
@@ -39,6 +43,8 @@ public class InitNetwork : Photon.PunBehaviour{
     void Start()
     {
         GameObject sn = GameObject.Find("SendingName");
+        rpcController = this.GetComponent<RPCController>();
+
         if (sn != null)
         {
             IntroManager im = sn.transform.GetComponent<IntroManager>();
@@ -78,7 +84,17 @@ public class InitNetwork : Photon.PunBehaviour{
         
     }
 
-    
+    private bool isContainSameName(string name)
+    {
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        {
+            if (PhotonNetwork.playerList[i].name == name)
+                return true;
+        }
+        return false;
+    }
+
+
 
     public override void OnJoinedRoom()
     {
@@ -88,32 +104,26 @@ public class InitNetwork : Photon.PunBehaviour{
         PhotonPlayer[] p = PhotonNetwork.playerList;
 
         string playerNameModified = myPlayerName;
-        
-        while (true)
+
+        //무한루프 방지
+        int cnt = 0;
+        int idx = 1;
+        int limit = 100;
+
+        while (cnt < limit)
         {
-            int cnt = 0;
-            int idx = 1;
-            
-            for (int i = 0; i < p.Length; i++)
+            if (isContainSameName(playerNameModified) == true)
             {
-                //일단 이렇게만 하자, 원래 계속 중복되는 이름을 찾아야 하는데...
-                cnt = i;
-                if (p[i].name == playerNameModified)
-                {
-                    Debug.Log("same");
-                    playerNameModified = myPlayerName + "(" + idx.ToString() + ")";
-                    Debug.Log(playerNameModified);
-                    idx++;
-                    break;
-                }
+                playerNameModified = myPlayerName + "(" + idx.ToString() + ")";
+                idx++;
             }
-            if (cnt == p.Length-1)
+            else
             {
                 myPlayerName = playerNameModified;
                 break;
             }
-        }
-        
+        } 
+
         PhotonNetwork.playerName = myPlayerName;
 
         Debug.Log("my player name is " + PhotonNetwork.playerName);
@@ -132,24 +142,72 @@ public class InitNetwork : Photon.PunBehaviour{
         if (PhotonNetwork.isMasterClient == true)
         {
             //server
-            
-            Debug.Log("Server setting...");
 
+            Debug.Log("Server setting...");
+            //local로만 존재함
             GameObject server = GameObject.Instantiate(Resources.Load<GameObject>("Player_Network/Player_Server"));
-            server.GetComponent<ServerManager>().Callback_initNetwork(PhotonNetwork.playerName);
-            
+            //servermanager instance 잡기
+            rpcController.localServerManager = server.GetComponent<ServerManager>();
+            rpcController.localServerManager.Callback_initNetwork(PhotonNetwork.playerName, rpcController);
+
+
+            this.photonView.RPC("turnOffClientCamera", PhotonTargets.All, PhotonNetwork.playerName);
+
         }
         else
         {
+
             //client
-            
+
             Debug.Log("Client setting...");
 
             //player는 network상에서 prefab을 소환해야하니까 일단 photonnetwork로 instantiate를 해야함
             //이후에 player를 훝어서 걍 꺼놓는 거로 하자 그거는 일단 기본 flow를 만든 후에 하자
-
+            //network에서 instantiate됨
             GameObject player = PhotonNetwork.Instantiate("Player_Network/Player_Own_Network", Vector3.zero, Quaternion.identity, 0);
-            player.GetComponent<ClientManager>().Callback_initNetwork(PhotonNetwork.playerName);            
-        }
+            player.GetComponent<ClientManager>().Callback_initNetwork(PhotonNetwork.playerName,rpcController);
+            this.photonView.RPC("changePlayerPrefabName",PhotonTargets.AllBuffered, new object[] { player.name, PhotonNetwork.playerName});
+
+            rpcController.localPlayerName = player.name;
+            //clientmanager instance 잡기
+            rpcController.localClientManager = player.GetComponent<ClientManager>();
+            rpcController.localClientAnimator = player.GetComponent<CharactorAnimationController>();
+            rpcController.localClientManager.myPlayerName = player.name;
+
+
+            this.photonView.RPC("turnOffClientCamera", PhotonTargets.All, PhotonNetwork.playerName);
+        }   
+        //RPC 부르기
+        //이 부분에 있어서 다른 client의 player에서의 clienetManager만 없애주면 된다.
+
+
+        isJoinRoom = true;
+
     }
+
+    
+    
+    public override void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+    {
+        base.OnPhotonPlayerConnected(newPlayer);
+    }
+    
+
+    void Update()
+    {
+        //방에 들어온 후에
+        if (isJoinRoom == true && isPlayerSetting == false && GameObject.FindGameObjectsWithTag("Player").Length > 1)
+        {
+            this.photonView.RPC("turnOffClientCamera", PhotonTargets.All, PhotonNetwork.playerName);
+            
+            isPlayerSetting = true;
+        }
+
+    }
+
+    
+
+
+    
+
 }

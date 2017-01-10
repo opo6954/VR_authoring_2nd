@@ -1,0 +1,724 @@
+Mono path[0] = 'D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/network_server_Data/Managed'
+Mono path[1] = 'D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/network_server_Data/Mono'
+Mono config path = 'D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/network_server_Data/Mono/etc'
+PlayerConnection initialized from D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/network_server_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55131
+Multi-casting "[IP] 143.248.139.27 [Port] 55131 [Flags] 2 [Guid] 2035351858 [EditorId] 984750553 [Version] 1048832 [Id] WindowsPlayer(Narrain-PC) [Debug] 0" to [225.0.0.222:54997]...
+PlayerConnection already initialized - listening to [143.248.139.27:55131]
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 6800 Series (ID=0x6738)
+    Vendor:   ATI
+    VRAM:     1011 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Photon3Unity3D.dll (this message is harmless)
+Loading D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\Photon3Unity3D.dll into Unity Child Domain
+- Completed reload, in  0.082 seconds
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\System.dll (this message is harmless)
+Platform assembly: D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Managed\System.Xml.dll (this message is harmless)
+desktop: 1920x1200 60Hz; virtual: 3200x1200 at -1280,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.314937 ms
+연결부분...
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+InitNetwork:Connect() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:74)
+InitNetwork:Start() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:64)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Script/NetworkController/InitNetwork.cs Line: 74)
+
+SwitchToProtocol: Udp PhotonNetwork.connected: False
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+PhotonNetwork:SwitchToProtocol(ConnectionProtocol) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:1170)
+PhotonNetwork:ConnectUsingSettings(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:1217)
+InitNetwork:Connect() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:76)
+InitNetwork:Start() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:64)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/PhotonNetwork.cs Line: 1170)
+
+Setting up 1 worker threads for Enlighten.
+  Thread -> id: aa60 -> priority: 1 
+OnStatusChanged: Connect current State: ConnectingToNameServer
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.PeerBase:InitCallback()
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OnStatusChanged: EncryptionEstablished current State: ConnectingToNameServer
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.<>c__DisplayClass148_0:<EnqueueStatusCallback>b__0()
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OperationResponse 230: ReturnCode: 0.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1514)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1514)
+
+Received your UserID from server. Updating local value to: bfe3a7a7-0441-4a3e-a013-63c7e3f2be53
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:DebugReturn(DebugLevel, String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1491)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1621)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1491)
+
+OnStatusChanged: Disconnect current State: DisconnectingFromNameServer
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.<>c__DisplayClass148_0:<EnqueueStatusCallback>b__0()
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OnStatusChanged: Connect current State: ConnectingToMasterserver
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.PeerBase:InitCallback()
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OnStatusChanged: EncryptionEstablished current State: Authenticating
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.<>c__DisplayClass148_0:<EnqueueStatusCallback>b__0()
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OnEvent: Event 226.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2187)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 2187)
+
+OperationResponse 230: ReturnCode: 0.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1514)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1514)
+
+Master랑 연결됨...
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+InitNetwork:OnConnectedToMaster()
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1660)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 2609)
+
+OperationResponse 226: ReturnCode: 0.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1514)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1514)
+
+OnStatusChanged: Disconnect current State: DisconnectingFromMasterserver
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.<>c__DisplayClass148_0:<EnqueueStatusCallback>b__0()
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OnStatusChanged: Connect current State: ConnectingToGameserver
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.PeerBase:InitCallback()
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OnStatusChanged: EncryptionEstablished current State: ConnectedToGameserver
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnStatusChanged(StatusCode) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1920)
+ExitGames.Client.Photon.<>c__DisplayClass148_0:<EnqueueStatusCallback>b__0()
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1920)
+
+OperationResponse 230: ReturnCode: 0.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1514)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1514)
+
+OperationResponse 226: ReturnCode: 0.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1514)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1514)
+
+OnEvent: Event 255.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2187)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 2187)
+
+Join the room
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+InitNetwork:OnJoinedRoom()
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 2609)
+
+my player name is Client(1)
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:129)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Script/NetworkController/InitNetwork.cs Line: 129)
+
+master clinet name is Client
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:136)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Script/NetworkController/InitNetwork.cs Line: 136)
+
+Client setting...
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:159)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Script/NetworkController/InitNetwork.cs Line: 159)
+
+Callback, my name is Client(1)
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+ClientManager:Callback_initNetwork(String, RPCController) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\ClientManager.cs:77)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:165)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Script/NetworkController/ClientManager.cs Line: 77)
+
+change my Prefab Name...
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:changePlayerPrefabName(String, String)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3621)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:166)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+In change Name RPC, player length is : 1
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:changePlayerPrefabName(String, String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:65)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3621)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:166)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+In change Name RPC, network player length: 2
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:changePlayerPrefabName(String, String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:66)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3621)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:166)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+In TurnOffClientCamera_Client...
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:turnOffClientCamera_Client(String)
+RPCController:turnOffClientCamera(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:86)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3608)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:168)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+현재 player: 1
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:turnOffClientCamera_Client(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:36)
+RPCController:turnOffClientCamera(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:86)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3608)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:168)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+my name is Client(1)
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:turnOffClientCamera_Client(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:38)
+RPCController:turnOffClientCamera(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:86)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3608)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:168)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+my network name is Client(1)
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:turnOffClientCamera_Client(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:39)
+RPCController:turnOffClientCamera(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:86)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3608)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:168)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+In turnOffRPC, network player length: 2
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+RPCController:turnOffClientCamera_Client(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:41)
+RPCController:turnOffClientCamera(String) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\RPCController.cs:86)
+System.Reflection.MonoMethod:InternalInvoke(Object, Object[], Exception&)
+System.Reflection.MonoMethod:Invoke(Object, BindingFlags, Binder, Object[], CultureInfo) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs:222)
+System.Reflection.MethodBase:Invoke(Object, Object[]) (at /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MethodBase.cs:115)
+NetworkingPeer:ExecuteRpc(Hashtable, PhotonPlayer) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2777)
+NetworkingPeer:RPC(PhotonView, String, PhotonTargets, PhotonPlayer, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:3608)
+PhotonNetwork:RPC(PhotonView, String, PhotonTargets, Boolean, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonNetwork.cs:2886)
+PhotonView:RPC(String, PhotonTargets, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonView.cs:582)
+InitNetwork:OnJoinedRoom() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\NetworkController\InitNetwork.cs:168)
+UnityEngine.GameObject:SendMessage(String, Object, SendMessageOptions)
+NetworkingPeer:SendMonoMessage(PhotonNetworkingMessage, Object[]) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2609)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2350)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: /Users/builduser/buildslave/mono/build/mcs/class/corlib/System.Reflection/MonoMethod.cs Line: 222)
+
+ClientStateController Start~!
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+ClientStateController:Start() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Script\ClientState\ClientStateController.cs:47)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Script/ClientState/ClientStateController.cs Line: 47)
+
+OperationResponse 252: ReturnCode: 0.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1514)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1514)
+
+OperationResponse 252: ReturnCode: 0.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnOperationResponse(OperationResponse) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1514)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1514)
+
+OnEvent: Event 254.
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2187)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 2187)
+
+HandleEventLeave for player ID: 1 evLeave: Event 254: {(Byte)252=(Int32[])System.Int32[], (Byte)203=(Int32)2, (Byte)254=(Int32)1}
+UnityEngine.DebugLogHandler:Internal_Log(LogType, String, Object)
+UnityEngine.DebugLogHandler:LogFormat(LogType, Object, String, Object[])
+UnityEngine.Logger:Log(LogType, Object)
+UnityEngine.Debug:Log(Object)
+NetworkingPeer:HandleEventLeave(Int32, EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:1266)
+NetworkingPeer:OnEvent(EventData) (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\NetworkingPeer.cs:2360)
+ExitGames.Client.Photon.PeerBase:DeserializeMessageAndCallback(Byte[])
+ExitGames.Client.Photon.EnetPeer:DispatchIncomingCommands()
+ExitGames.Client.Photon.PhotonPeer:DispatchIncomingCommands()
+PhotonHandler:Update() (at D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\Assets\Photon Unity Networking\Plugins\PhotonNetwork\PhotonHandler.cs:157)
+ 
+(Filename: D:/1mythings/study/research/ocean_project/2nd/MarineProject/VR_authoring_2nd/ocean_project_2nd/VR_Authoring/Assets/Photon Unity Networking/Plugins/PhotonNetwork/NetworkingPeer.cs Line: 1266)
+
+Crash!!!
+SymInit: Symbol-SearchPath: '.;D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring;D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring;C:\Windows;C:\Windows\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 530, UserName: 'Narrain'
+OS-Version: 6.1.7601 (Service Pack 1) 0x100-0x1
+D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server.exe:network_server.exe (000000013F940000), size: 25534464 (result: 0), SymType: '-exported-', PDB: 'D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server.exe', fileVersion: 5.4.1.40776
+C:\Windows\SYSTEM32\ntdll.dll:ntdll.dll (0000000077140000), size: 1744896 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\SYSTEM32\ntdll.dll', fileVersion: 6.1.7601.23572
+C:\Windows\system32\kernel32.dll:kernel32.dll (0000000077020000), size: 1175552 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\kernel32.dll', fileVersion: 6.1.7601.23572
+C:\Windows\system32\KERNELBASE.dll:KERNELBASE.dll (000007FEFD090000), size: 434176 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\KERNELBASE.dll', fileVersion: 6.1.7601.23572
+C:\Windows\system32\HID.DLL:HID.DLL (000007FEFB350000), size: 45056 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\HID.DLL', fileVersion: 6.1.7600.16385
+C:\Windows\system32\msvcrt.dll:msvcrt.dll (000007FEFEFC0000), size: 651264 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\msvcrt.dll', fileVersion: 7.0.7601.17744
+C:\Windows\system32\GDI32.dll:GDI32.dll (000007FEFE650000), size: 421888 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\GDI32.dll', fileVersion: 6.1.7601.23591
+C:\Windows\system32\USER32.dll:USER32.dll (0000000076F20000), size: 1024000 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\USER32.dll', fileVersion: 6.1.7601.23594
+C:\Windows\system32\LPK.dll:LPK.dll (000007FEFF330000), size: 57344 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\LPK.dll', fileVersion: 6.1.7601.23587
+C:\Windows\system32\USP10.dll:USP10.dll (000007FEFD2C0000), size: 827392 (result: 0), SymType: '-exported-', PDB: 'C:\Windows\system32\USP10.dll', fileVersion: 1.626.7601.23585
+C:\Windows\system32\ADVAPI32.dll:ADVAPI32.dll (000007FEFE820000), size: 897024 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\ADVAPI32.dll', fileVersion: 6.1.7601.23572
+C:\Windows\SYSTEM32\sechost.dll:sechost.dll (000007FEFED10000), size: 126976 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\SYSTEM32\sechost.dll', fileVersion: 6.1.7601.18869
+C:\Windows\system32\RPCRT4.dll:RPCRT4.dll (000007FEFE520000), size: 1232896 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\RPCRT4.dll', fileVersion: 6.1.7601.23601
+C:\Windows\system32\WS2_32.dll:WS2_32.dll (000007FEFE430000), size: 315392 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\WS2_32.dll', fileVersion: 6.1.7601.23451
+C:\Windows\system32\NSI.dll:NSI.dll (000007FEFE420000), size: 32768 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\NSI.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\VERSION.dll:VERSION.dll (000007FEFBF60000), size: 49152 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\VERSION.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\ole32.dll:ole32.dll (000007FEFEDB0000), size: 2109440 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\ole32.dll', fileVersion: 6.1.7601.23392
+C:\Windows\system32\SHLWAPI.dll:SHLWAPI.dll (000007FEFED30000), size: 462848 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\SHLWAPI.dll', fileVersion: 6.1.7601.17514
+C:\Windows\system32\PSAPI.DLL:PSAPI.DLL (0000000077300000), size: 28672 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\PSAPI.DLL', fileVersion: 6.1.7600.16385
+C:\Windows\system32\SHELL32.dll:SHELL32.dll (000007FEFD670000), size: 14196736 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\SHELL32.dll', fileVersion: 6.1.7601.23537
+C:\Windows\system32\OPENGL32.dll:OPENGL32.dll (000007FEEEC20000), size: 1167360 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\OPENGL32.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\GLU32.dll:GLU32.dll (000007FEF2870000), size: 184320 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\GLU32.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\DDRAW.dll:DDRAW.dll (000007FEECCD0000), size: 987136 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\DDRAW.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\DCIMAN32.dll:DCIMAN32.dll (000007FEF4BC0000), size: 32768 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\DCIMAN32.dll', fileVersion: 6.1.7601.23587
+C:\Windows\system32\SETUPAPI.dll:SETUPAPI.dll (000007FEFEA90000), size: 1929216 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\SETUPAPI.dll', fileVersion: 6.1.7601.17514
+C:\Windows\system32\CFGMGR32.dll:CFGMGR32.dll (000007FEFCED0000), size: 221184 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\CFGMGR32.dll', fileVersion: 6.1.7601.17514
+C:\Windows\system32\OLEAUT32.dll:OLEAUT32.dll (000007FEFE6C0000), size: 892928 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\OLEAUT32.dll', fileVersion: 6.1.7601.23569
+C:\Windows\system32\DEVOBJ.dll:DEVOBJ.dll (000007FEFD210000), size: 106496 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\DEVOBJ.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\dwmapi.dll:dwmapi.dll (000007FEFBEC0000), size: 98304 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\dwmapi.dll', fileVersion: 6.1.7601.18917
+C:\Windows\system32\WINMM.dll:WINMM.dll (000007FEFA4E0000), size: 241664 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\WINMM.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\IMM32.dll:IMM32.dll (000007FEFD290000), size: 188416 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\IMM32.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\MSCTF.dll:MSCTF.dll (000007FEFF340000), size: 1085440 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\MSCTF.dll', fileVersion: 6.1.7601.23572
+C:\Windows\system32\DNSAPI.dll:DNSAPI.dll (000007FEFC490000), size: 372736 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\DNSAPI.dll', fileVersion: 6.1.7601.17570
+C:\Windows\system32\IPHLPAPI.DLL:IPHLPAPI.DLL (000007FEF9910000), size: 159744 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\IPHLPAPI.DLL', fileVersion: 6.1.7601.17514
+C:\Windows\system32\WINNSI.DLL:WINNSI.DLL (000007FEF98C0000), size: 45056 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\WINNSI.DLL', fileVersion: 6.1.7600.16385
+C:\Windows\system32\WINHTTP.dll:WINHTTP.dll (000007FEF7D70000), size: 462848 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\WINHTTP.dll', fileVersion: 6.1.7601.23451
+C:\Windows\system32\webio.dll:webio.dll (000007FEF7D00000), size: 413696 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\webio.dll', fileVersion: 6.1.7601.23375
+D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Mono\mono.dll:mono.dll (000007FEDBE70000), size: 2994176 (result: 0), SymType: '-exported-', PDB: 'D:\1mythings\study\research\ocean_project\2nd\MarineProject\VR_authoring_2nd\ocean_project_2nd\VR_Authoring\network_server_Data\Mono\mono.dll', fileVersion: 1.0.0.1
+C:\Windows\system32\MSWSOCK.dll:MSWSOCK.dll (000007FEFC610000), size: 348160 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\MSWSOCK.dll', fileVersion: 6.1.7601.23451
+C:\Windows\System32\wshtcpip.dll:wshtcpip.dll (000007FEFC030000), size: 28672 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\System32\wshtcpip.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\dhcpcsvc6.DLL:dhcpcsvc6.DLL (000007FEF95F0000), size: 69632 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\dhcpcsvc6.DLL', fileVersion: 6.1.7601.17970
+C:\Windows\system32\dhcpcsvc.DLL:dhcpcsvc.DLL (000007FEF95D0000), size: 98304 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\dhcpcsvc.DLL', fileVersion: 6.1.7600.16385
+C:\Windows\system32\NLAapi.dll:NLAapi.dll (000007FEFA480000), size: 86016 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\NLAapi.dll', fileVersion: 6.1.7601.17964
+C:\Windows\system32\napinsp.dll:napinsp.dll (000007FEF5640000), size: 86016 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\napinsp.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\pnrpnsp.dll:pnrpnsp.dll (000007FEF5620000), size: 102400 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\pnrpnsp.dll', fileVersion: 6.1.7600.16385
+C:\Windows\System32\winrnr.dll:winrnr.dll (000007FEF55F0000), size: 45056 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\System32\winrnr.dll', fileVersion: 6.1.7600.16385
+C:\Program Files\Bonjour\mdnsNSP.dll:mdnsNSP.dll (00000000727C0000), size: 155648 (result: 0), SymType: '-exported-', PDB: 'C:\Program Files\Bonjour\mdnsNSP.dll', fileVersion: 3.1.0.1
+C:\Windows\system32\CRYPTBASE.dll:CRYPTBASE.dll (000007FEFCD10000), size: 61440 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\CRYPTBASE.dll', fileVersion: 6.1.7601.23601
+C:\Windows\system32\uxtheme.dll:uxtheme.dll (000007FEFB3F0000), size: 352256 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\uxtheme.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\d3d11.dll:d3d11.dll (000007FEF1E70000), size: 1921024 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\d3d11.dll', fileVersion: 6.2.9200.16570
+C:\Windows\system32\dxgi.dll:dxgi.dll (000007FEF3B30000), size: 380928 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\dxgi.dll', fileVersion: 6.2.9200.16492
+C:\Windows\system32\DXGIDebug.dll:DXGIDebug.dll (000007FEF4A60000), size: 147456 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\DXGIDebug.dll', fileVersion: 9.30.9600.16384
+C:\Windows\system32\WINTRUST.dll:WINTRUST.dll (000007FEFCE90000), size: 241664 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\WINTRUST.dll', fileVersion: 6.1.7601.23566
+C:\Windows\system32\CRYPT32.dll:CRYPT32.dll (000007FEFCF10000), size: 1495040 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\CRYPT32.dll', fileVersion: 6.1.7601.23566
+C:\Windows\system32\MSASN1.dll:MSASN1.dll (000007FEFCE80000), size: 61440 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\MSASN1.dll', fileVersion: 6.1.7601.17514
+C:\Windows\system32\aticfx64.dll:aticfx64.dll (000007FEEFF50000), size: 1449984 (result: 0), SymType: '-exported-', PDB: 'C:\Windows\system32\aticfx64.dll', fileVersion: 8.17.10.1404
+C:\Windows\system32\atiuxp64.dll:atiuxp64.dll (000007FEF2D10000), size: 163840 (result: 0), SymType: '-exported-', PDB: 'C:\Windows\system32\atiuxp64.dll', fileVersion: 8.14.1.6463
+C:\Windows\system32\atidxx64.dll:atidxx64.dll (000007FECCFB0000), size: 11902976 (result: 0), SymType: '-exported-', PDB: 'C:\Windows\system32\atidxx64.dll', fileVersion: 8.17.10.625
+C:\Windows\system32\CLBCatQ.DLL:CLBCatQ.DLL (000007FEFEC70000), size: 626688 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\CLBCatQ.DLL', fileVersion: 2001.12.8530.16385
+C:\Windows\System32\MMDevApi.dll:MMDevApi.dll (000007FEFB5A0000), size: 307200 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\System32\MMDevApi.dll', fileVersion: 6.1.7600.16385
+C:\Windows\System32\PROPSYS.dll:PROPSYS.dll (000007FEFB450000), size: 1228800 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\System32\PROPSYS.dll', fileVersion: 7.0.7601.17514
+C:\Windows\system32\wdmaud.drv:wdmaud.drv (000007FEFA4A0000), size: 241664 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\wdmaud.drv', fileVersion: 6.1.7601.17514
+C:\Windows\system32\ksuser.dll:ksuser.dll (0000000074BE0000), size: 24576 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\ksuser.dll', fileVersion: 6.1.7601.19091
+C:\Windows\system32\AVRT.dll:AVRT.dll (000007FEFB740000), size: 36864 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\AVRT.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\AUDIOSES.DLL:AUDIOSES.DLL (000007FEFAA20000), size: 323584 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\AUDIOSES.DLL', fileVersion: 6.1.7601.23471
+C:\Windows\system32\msacm32.drv:msacm32.drv (000007FEFA2E0000), size: 40960 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\msacm32.drv', fileVersion: 6.1.7600.16385
+C:\Windows\system32\MSACM32.dll:MSACM32.dll (000007FEFA130000), size: 98304 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\MSACM32.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\midimap.dll:midimap.dll (000007FEFA120000), size: 36864 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\midimap.dll', fileVersion: 6.1.7600.16385
+C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.18837_none_fa3b1e3d17594757\comctl32.dll:comctl32.dll (000007FEFB830000), size: 2048000 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.18837_none_fa3b1e3d17594757\comctl32.dll', fileVersion: 6.10.7601.18837
+C:\Windows\system32\ime\imekr8\imkrapi.dll:imkrapi.dll (000007FEF39A0000), size: 163840 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\ime\imekr8\imkrapi.dll', fileVersion: 8.1.7601.23572
+C:\Windows\system32\ime\shared\imjkapi.dll:imjkapi.dll (000007FEF3970000), size: 184320 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\ime\shared\imjkapi.dll', fileVersion: 10.1.7601.23572
+C:\Windows\System32\wship6.dll:wship6.dll (000007FEFC600000), size: 28672 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\System32\wship6.dll', fileVersion: 6.1.7600.16385
+C:\Windows\system32\rasadhlp.dll:rasadhlp.dll (000007FEF7400000), size: 32768 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\rasadhlp.dll', fileVersion: 6.1.7600.16385
+C:\Windows\System32\fwpuclnt.dll:fwpuclnt.dll (000007FEF97D0000), size: 339968 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\System32\fwpuclnt.dll', fileVersion: 6.1.7601.18283
+C:\Program Files\Debugging Tools for Windows (x64)\dbghelp.dll:dbghelp.dll (0000000003A60000), size: 1662976 (result: 0), SymType: 'PDB', PDB: 'C:\Program Files\Debugging Tools for Windows (x64)\dbghelp.dll', fileVersion: 6.12.2.633
+C:\Windows\system32\SspiCli.dll:SspiCli.dll (000007FEFCC80000), size: 151552 (result: 0), SymType: 'PDB', PDB: 'C:\Windows\system32\SspiCli.dll', fileVersion: 6.1.7601.23601
+
+========== OUTPUTING STACK TRACE ==================
+
+0x000000013FC8BEEA (network_server) CallbackArray1<bool>::Invoke
+0x000000013FC8C271 (network_server) CallbackArray1<bool>::Invoke
+0x000000013FC8CA5A (network_server) CallbackArray1<bool>::Invoke
+0x000000013FDBA0E0 (network_server) IntermediateRenderer::GetLayer
+0x000000013FDBA8DA (network_server) PlayerMainWndProc
+0x000000013FDBE5BC (network_server) PlayerWinMain
+0x000000014031BBE0 (network_server) RectT<int>::GetRight
+0x00000000770359CD (kernel32) BaseThreadInitThunk
+
+========== END OF STACKTRACE ===========
+
+**** Crash! ****

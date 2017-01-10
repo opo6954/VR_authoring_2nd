@@ -12,6 +12,8 @@ using System.Xml;
  * 
  * 이 state 전체가 client에게 넘겨지지 않고 따로 다른 client용 state를 만들어야 할 듯
  * 
+ * 저작도구에서 만든 XML과 직접적으로 연동되는 형태임
+ * 
  * 이 state는 server가 관장하기 때문에 playerInfo같은 정보는 필요 없음
  * server에서 main flow를 돌릴 때의 state가 이 statemodule를 기반으로 돌림
  * 
@@ -58,61 +60,71 @@ using System.Xml;
 
 public class StateModuleTemplate {
 
-    ServerManager _server;
+    protected ServerManager _server;
     
-    //전체 state의 시작, 진행중, 성공 여부
-    private bool isStateStart = false;
-    private bool isStateDoing = false;
-    public bool isStateEnd = false;
-
-    //각 player에서의 시작, 진행중, 성공 여부
-    //만일 isMultiStateDoing의 모든 요소가 true일 경우 전체 state는 완료가 된다
-    private bool[] isMultiStateStart;
-    private bool[] isMultiStateEnd;
-    private bool[] isMultiStateDoing;
-
-    
-
     private int playerNumber=-1;
 
 
 
-    private TaskModuleTemplate _myParentTask;//나의 윗단인 moduleINfo임
-    protected string myStateName;
+    TaskModuleTemplate _myParentTask;//나의 윗단인 moduleINfo임
+    string _myStateName;
+
+
 
     
     //각 state별로 필요한 property, object, networkplayer List로 string 형태로 저장해놓자
-    private List<string> propertyList = new List<string>();
-    private List<string> objectList = new List<string>();
-    private List<string> networkPlayerList = new List<string>();
+    
+    //현 state에 필요한 clientState의 string 형태
+    protected List<string> clientStateList = new List<string>();
 
-    //state-->clientState로 변환된 정보가 각 player별로 저장된 table
-    private List<List<ClientStateModuleTemplate>> clientStateAssignTable;
+    //현 state에 필요한 property의 string 형태
+    protected List<string> propertyList = new List<string>();
 
+    //현 state에 필요한 object의 string 형태
+    protected List<string> objectList = new List<string>();
 
+    //현 state에 필요한 role list임
+    protected List<string> playerRoleList = new List<string>();
+    
+    
+
+    
 
 	 
     //property 설정요소와 obj 설정 요소 존재
-    private Dictionary<string, object> propertyGroup = new Dictionary<string, object>();
-    private Dictionary<string, object> objectGroup = new Dictionary<string, object>();
-    private Dictionary<string, string> networkPlayerGroup = new Dictionary<string, string>();
+    protected Dictionary<string, string> propertyGroup = new Dictionary<string, string>();
+    protected Dictionary<string, string> objectGroup = new Dictionary<string, string>();
+    //player 이름과 role이 포함?
 
+    public string MyStateName
+    {
+        get
+        {
+            return _myStateName;
+        }
+        set
+        {
+            _myStateName = value;
+        }
+    }
 
+    public TaskModuleTemplate MyParent
+    {
+        get
+        {
+            return _myParentTask;
+        }
+        set
+        {
+            _myParentTask = value;
+        }
+    }
 
     //본 state가 속한 task를 생성자의 input으로 넣어줘야 함
     public StateModuleTemplate()
     {
     }
-
-    public void setMyParent(TaskModuleTemplate _task)
-    {
-        _myParentTask = _task;
-    }
-    public TaskModuleTemplate getMyParent()
-    {
-        return _myParentTask;
-    }
-
+    
     //Property, Object, NetworkPlayer List 관리
 
     public void addPropertyList(string _propertyName)
@@ -123,9 +135,9 @@ public class StateModuleTemplate {
     {
         objectList.Add(_objectName);
     }
-    public void addNetworkPlayerList(string _playerName)
+    public void addNetworkPlayerList(string _roleName)
     {
-        networkPlayerList.Add(_playerName);
+        playerRoleList.Add(_roleName);
     }
 
     public List<string> getPropertyList()
@@ -140,65 +152,36 @@ public class StateModuleTemplate {
 
     public List<string> getNetworkPlayerList()
     {
-        return networkPlayerList;
+        return playerRoleList;
     }
 
 
 
     //network player 관리
 
-    //network player 추가
-    public void addNetworkPlayer(string playerRole, string playerName)
-    {
-        if (networkPlayerGroup.ContainsKey(playerRole) == false)
-            networkPlayerGroup.Add(playerRole,playerName);
-        else
-            Debug.Log("Same key " + playerRole +  " exist in the networkPlayerGroup");
-    }
-    //network player 이름 있는지 확인
-    public string getNetworkPlayer(string playerRole)
-    {
-        if (networkPlayerGroup.ContainsKey(playerRole) == true)
-        {
-            return networkPlayerGroup[playerRole];
-        }
-        else
-        {
-            Debug.Log("No player Name Exist...");
-            return "No player Name Exist...";
-        }
-    }
-
-    public virtual void setNetworkPlayers(Dictionary<string, string> _networkPlayerGroup)
-    {
-        foreach ( string key in networkPlayerList)
-        {
-            addNetworkPlayer(key, _networkPlayerGroup[key]);
-        }
-    }
-    
     //property 및 obj 관리
 
     //property 추가하기
-    public void addProperty(string propertyName, object o)
+    public void addProperty(string propertyName, string value)
     {
         if(propertyGroup.ContainsKey(propertyName) == false)
-            propertyGroup.Add(propertyName, o);
+            propertyGroup.Add(propertyName, value);
 
         return;
     }
 
+
     //property 가져오기
-    public T getProperty<T>(string propertyName)
+    public string getProperty(string propertyName)
     {
         if (propertyGroup.ContainsKey(propertyName) == true)
         {
             
             
-            return (T)propertyGroup[propertyName];
+            return propertyGroup[propertyName];
         }
 
-        return default(T);  
+        return null;
     }
 
     //property 확인하기
@@ -210,7 +193,7 @@ public class StateModuleTemplate {
     }
 
     //task에서 state으로 property정보를 위임받을 때 사용, List에 있는 얘들만 차례대로 넣는다.
-    public virtual void setProperty(Dictionary<string, object> properties)
+    public virtual void setProperty(Dictionary<string, string> properties)
     {
         foreach (string key in propertyList)
         {
@@ -220,7 +203,7 @@ public class StateModuleTemplate {
 
 
     //object 추가하기
-    public void addObject(string objectName, object o)
+    public void addObject(string objectName, string o)
     {
         if (objectGroup.ContainsKey(objectName) == false)
             objectGroup.Add(objectName, o);
@@ -229,15 +212,15 @@ public class StateModuleTemplate {
     }
 
     //object 가져오기
-    public T getObject<T>(string objectName)
+    public string getObject(string objectName)
     {
         if (objectGroup.ContainsKey(objectName) == true)
         {
-            return (T) objectGroup[objectName];
+            return objectGroup[objectName];
         }
 
 
-        return default(T);
+        return null;
     }
 
     //object 확인하기
@@ -249,7 +232,7 @@ public class StateModuleTemplate {
     }
 
     //task에서 state으로 object 정보를 위임받을 때 사용, List에 있는 얘들만 차례대로 넣는다.
-    public virtual void setObject(Dictionary<string, object> objects)
+    public virtual void setObject(Dictionary<string, string> objects)
     {
         foreach (string key in objectList)
         {
@@ -258,17 +241,16 @@ public class StateModuleTemplate {
     }
     //설정하는 함수임
 
-
-
     //각 player별로 clientState를 배분한다.
     //걍 clientState에 wait만을 위한 state를 넣는 게 좋을 듯 하다.
     public virtual void buildClientStateTable()
     {
         Debug.Log("각 state별로 clientState를 순서대로 list로 나눠서 줌");
-        
     }
-
-
+    public virtual void updateClientStateTable()
+    {
+        Debug.Log("이 전의 clientstate결과가 다음 clientstate의 파라미터에 영향을 끼칠 경우 execute하기 직전에 update를 해야 한다.");
+    }
 
     public void Init()
     {
@@ -276,28 +258,7 @@ public class StateModuleTemplate {
         _server = GameObject.FindGameObjectWithTag("ServerUnit").GetComponent<ServerManager>();
 
         //본 state에 필요한 모든 player의 개수를 설정해야 함
-        if (networkPlayerGroup.Count > 0)
-            playerNumber = networkPlayerGroup.Count;
-        else
-            Debug.Log("Variable networkPlayerGroup not setting...");
-
-        isMultiStateStart = new bool[playerNumber];
-        isMultiStateEnd = new bool[playerNumber];
-        isMultiStateDoing = new bool[playerNumber];        
-
-        isMultiStateStart.SetValue(false, playerNumber);
-        isMultiStateDoing.SetValue(false, playerNumber);
-        isMultiStateEnd.SetValue(false, playerNumber);
-
-
-        //clientStateAssignTable 초기화하기
-        for (int i = 0; i < playerNumber; i++)
-        {
-            clientStateAssignTable.Add(new List<ClientStateModuleTemplate>());
-        }
     } 
-
-
 
 
 
@@ -305,8 +266,19 @@ public class StateModuleTemplate {
     //각 state별로 clientState를 바꿔야 합니다.
     public virtual void initState()
     {
+        ServerLogger.Instance().addText(MyStateName + " is now start...");
+
+        //초기화
         Init();
+
+        //clientStateAssignTable 만들기
+        
+        ServerLogger.Instance().addText(MyStateName + " is now building Client State Table...");
+        buildClientStateTable();//table 만들기
+        ServerLogger.Instance().addText(MyStateName + " is now executing Client State Table...");
+        _server.executeAssignTable();//servermanager단에서 만들어진 table 처리
     }
 
+    
 
 }

@@ -30,6 +30,7 @@ public class ServerLogger{
 
     public void addText(string text)
     {
+        Debug.Log(text);
         contents.text = contents.text + "\n" + text;
 
         

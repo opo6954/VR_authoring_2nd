@@ -51,10 +51,6 @@ using System.Collections;
  * 기존처럼 좌우로 소화기를 움직이면서 흩뿌리면서 화재에 소화 
  * 
  * 
- * 
- * 
- 
- * 
 */
 
 
@@ -99,7 +95,13 @@ public class ClientStateExample : ClientStateModuleTemplate {
     //마지막 ClientState가 종료된 후 1번 불림
     public override void Res()
     {
-        base.Res();
+
+        base.Res();//이 부분에 server로 보내는 것도 포함됨
+    }
+
+    public override void convertRes2Msg()
+    {
+        base.convertRes2Msg();
     }
 
     

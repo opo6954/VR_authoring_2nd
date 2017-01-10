@@ -314,10 +314,13 @@
     <Compile Include="Assets\Resources\UserInterface\DefaultUI\Script\UIEffect_AnswerSheet.cs" />
     <Compile Include="Assets\Resources\UserInterface\DefaultUI\Script\UIEffect_child.cs" />
     <Compile Include="Assets\Resources\UserInterface\UIModuleTemplate.cs" />
+    <Compile Include="Assets\Script\Animation\CharactorAnimationController.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateController.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateExample.cs" />
     <Compile Include="Assets\Script\ClientState\ClientStateModuleTemplate.cs" />
+    <Compile Include="Assets\Script\ClientState\EquipmentOrderClientState.cs" />
     <Compile Include="Assets\Script\ClientState\SenderTurnRadiosClientState.cs" />
+    <Compile Include="Assets\Script\ClientState\WaitClientState.cs" />
     <Compile Include="Assets\Script\DeviceSettings\InputDeviceSettings.cs" />
     <Compile Include="Assets\Script\Etc\TurnRadiationObject.cs" />
     <Compile Include="Assets\Script\Etc\TurnVentilationFan.cs" />
@@ -325,6 +328,7 @@
     <Compile Include="Assets\Script\NetworkController\ClientManager.cs" />
     <Compile Include="Assets\Script\NetworkController\InitNetwork.cs" />
     <Compile Include="Assets\Script\NetworkController\MessageProtocol.cs" />
+    <Compile Include="Assets\Script\NetworkController\RPCController.cs" />
     <Compile Include="Assets\Script\NetworkController\ServerLogger.cs" />
     <Compile Include="Assets\Script\NetworkController\ServerManager.cs" />
     <Compile Include="Assets\Script\Player\PlayerTemplate.cs" />
@@ -333,9 +337,11 @@
     <Compile Include="Assets\Script\ScenarioController\ScenarioController.cs" />
     <Compile Include="Assets\Script\States\ApproachObjState.cs" />
     <Compile Include="Assets\Script\States\ButtonPressState.cs" />
+    <Compile Include="Assets\Script\States\ConversationState.cs" />
+    <Compile Include="Assets\Script\States\FireDiscoveryState.cs" />
+    <Compile Include="Assets\Script\States\FireExtinguishState.cs" />
     <Compile Include="Assets\Script\States\MethodLearnState.cs" />
-    <Compile Include="Assets\Script\States\PlaySoundsState.cs" />
-    <Compile Include="Assets\Script\States\QuestioningState.cs" />
+    <Compile Include="Assets\Script\States\RadiosP2NState.cs" />
     <Compile Include="Assets\Script\States\RadiosP2PState.cs" />
     <Compile Include="Assets\Script\States\StateModuleTemplate.cs" />
     <Compile Include="Assets\Script\Task\FireAlarm\FireAlarm.cs" />
@@ -385,6 +391,8 @@
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Shared\Scripts\Showcase\DemoSwitcher.cs" />
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Shared\Scripts\flicker.cs" />
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\photonview.cs" />
+    <Compile Include="Assets\tmp.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Modern Interior Pack\Shaders\Glass.shader" />
