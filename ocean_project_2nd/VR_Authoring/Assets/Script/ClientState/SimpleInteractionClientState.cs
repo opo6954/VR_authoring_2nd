@@ -77,16 +77,18 @@ public class SimpleInteractionClientState : ClientStateModuleTemplate {
 		} else {
 			tooltip.active = false;
 		}
-		Debug.Log ("SimpleInteractionClientState Processing...");
+		//Debug.Log ("SimpleInteractionClientState Processing...");
 		base.Process();
 	}
 
 	//ClientState의 종료조건, 계속 조건을 확인해서 Goal이 true를 리턴하면 종료
 	public override bool Goal()
 	{
-		if (desiredState == siModule.getState())
-			return true;
-		//Debug.Log ("SimpleInteractionClientState Ended...");
+        
+        if (desiredState == siModule.getState())
+            return true;
+        //Debug.Log ("SimpleInteractionClientState Ended...");
+        
 		return false;
 	}
 	public override void Res()

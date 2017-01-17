@@ -8,8 +8,8 @@ public class RadioCallClientState : ClientStateModuleTemplate
     private bool is_end = false;
     private int ans = 0;
 
-    public string[] calling_list = { "갑돌이", "갑순이", "갑칠이", "갑갑이" };
-    public string calling_list_txt = "1.갑돌이\n2.갑순이\n3.갑칠이\n4.갑갑이\n"; //TEST EXAMPLE
+    public string[] calling_list = { "선장", "소화반장", "일항사", "지원반장" };
+    public string calling_list_txt = "1.선장\n2.소화반장\n3.일항사\n4.지원반장\n"; //TEST EXAMPLE
 
     public RadioCallClientState()
     {
@@ -52,6 +52,11 @@ public class RadioCallClientState : ClientStateModuleTemplate
             Debug.Log("call start");
             is_calling = true;
             PlayerTemplate.getRadio().SetActive(true);
+
+            PlayerTemplate.myCanvas.transform.FindChild("Background").gameObject.SetActive(true);
+            PlayerTemplate.myCanvas.transform.FindChild("question").gameObject.SetActive(true);
+            
+
         }
         else if(PlayerTemplate.isKeyDown(radio_button) && is_calling) // 무전기 끄기
         {
@@ -81,6 +86,10 @@ public class RadioCallClientState : ClientStateModuleTemplate
     public override void Res()
     {
         base.Res();
+
+        PlayerTemplate.myCanvas.transform.FindChild("question").GetComponent<UnityEngine.UI.Text>().text = "";
+
+
         Debug.Log(calling_list[ans]);
     }
 }

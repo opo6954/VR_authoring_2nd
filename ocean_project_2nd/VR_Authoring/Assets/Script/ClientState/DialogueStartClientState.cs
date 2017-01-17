@@ -47,8 +47,11 @@ public class DialogueStartClientState : ClientStateModuleTemplate {
 	public override void Process()
 	{
 		Debug.Log ("DialogueStartClientState Processing...");
-		if (target == null || playerCamera == null)
-			return;
+        if (target == null || playerCamera == null)
+        {
+            Debug.Log("wrong");
+            return;
+        }
 		
 		Vector3 screenPoint = playerCamera.WorldToViewportPoint (target.transform.position);
 
@@ -57,9 +60,12 @@ public class DialogueStartClientState : ClientStateModuleTemplate {
 //		Debug.Log (string.Format("x :{0}, y :{1}, z :{2}", temp.x, temp.y, temp.z));
 		// <-- Debugging Purposes
 
-		if (screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1 && screenPoint.z < 5) {
+		if (screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 && screenPoint.y < 1 && screenPoint.z < 20) {
 			tooltip.active = true;
-			tooltip.transform.position = target.transform.position;
+            Vector3 vs = new Vector3(target.transform.position.x, target.transform.position.y+5.0f, target.transform.position.z);
+            
+			tooltip.transform.position = vs;
+            
 			tooltip.transform.rotation = playerCamera.transform.rotation;
 
 			if (Input.GetKeyDown(KeyCode.X)) {

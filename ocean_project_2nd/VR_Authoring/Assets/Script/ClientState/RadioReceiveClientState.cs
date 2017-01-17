@@ -14,19 +14,21 @@ public class RadioReceiveClientState : ClientStateModuleTemplate {
 
     public void ringRadio() // 무전기 울리게 하기
     {
+
         is_ringing = true;
         // 무전기 울리는 알림
-        UnityEngine.UI.Text alarm_txt = GameObject.Find("Canvas/Alarm_txt").GetComponent<UnityEngine.UI.Text>();
-        alarm_txt.text = "무전기가 울립니다!!!!!";
-        PlayerTemplate.getAlarmImg().enabled = true;
+        UnityEngine.UI.Text alarm_txt = GameObject.Find("Canvas/question").GetComponent<UnityEngine.UI.Text>();
+        alarm_txt.text = "무전기가 울립니다!!!!!\n<color=red>X</color> 상호작용 버튼으로 받으세요";
+        PlayerTemplate.getRadio().SetActive(true);
+
     }
 
     public void pickRadio() // 무전기 받기
     {
-        PlayerTemplate.getRadio().SetActive(true);
-        UnityEngine.UI.Text alarm_txt = GameObject.Find("Canvas/Alarm_txt").GetComponent<UnityEngine.UI.Text>();
+        
+        UnityEngine.UI.Text alarm_txt = GameObject.Find("Canvas/question").GetComponent<UnityEngine.UI.Text>();
         alarm_txt.text = "";
-        PlayerTemplate.getAlarmImg().enabled = false;
+        
         is_ringing = false;
         is_end = true;
     }
@@ -39,6 +41,10 @@ public class RadioReceiveClientState : ClientStateModuleTemplate {
     public override void Init()
     {
         base.Init();
+
+        PlayerTemplate.myCanvas.transform.FindChild("Background").gameObject.SetActive(true);
+
+
     }
 
     public override void Process()
@@ -47,7 +53,7 @@ public class RadioReceiveClientState : ClientStateModuleTemplate {
         {
             pickRadio();
         }
-        else if (PlayerTemplate.isKeyDown(radio_button) && !is_ringing) // 무전기 울리게 하기
+        else if (!is_ringing) // 무전기 울리게 하기
         {
             ringRadio();
         }

@@ -415,6 +415,7 @@
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Shared\Scripts\Showcase\DemoSwitcher.cs" />
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Shared\Scripts\flicker.cs" />
     <Compile Include="Assets\Ultra_Real_Fire_Effects\Standard Assets\Character Controllers\Sources\Scripts\MouseLook.cs" />
+    <Compile Include="Assets\demotmpagent.cs" />
     <Compile Include="Assets\photonview.cs" />
     <Compile Include="Assets\tmp.cs" />
   </ItemGroup>

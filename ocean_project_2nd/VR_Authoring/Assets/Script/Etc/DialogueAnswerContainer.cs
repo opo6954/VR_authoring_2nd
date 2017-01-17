@@ -11,6 +11,9 @@ public class DialogueAnswerContainer : MonoBehaviour {
 
 	void Start () {
 		answer = -1;
+
+        
+
 	}
 	
 	// Update is called once per frame

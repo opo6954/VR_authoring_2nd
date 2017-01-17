@@ -47,7 +47,8 @@ public class PlayerTemplate : MonoBehaviour
 
     // Player 관련 gameobject(inactive issue로 여기에 추가)
     public static GameObject radio;
-    public static UnityEngine.UI.RawImage alarm_img;
+    
+    public static GameObject myCanvas;
 
 
     //player 관련 util 함수
@@ -83,16 +84,14 @@ public class PlayerTemplate : MonoBehaviour
         return radio;
     }
 
-    public static UnityEngine.UI.RawImage getAlarmImg()
-    {
-        return alarm_img;
-    }
+    
 
     void Start()
     {
         radio = GameObject.FindWithTag("radio");
         radio.SetActive(false);
-        alarm_img = GameObject.Find("Canvas/Alarm").GetComponent<UnityEngine.UI.RawImage>();
-        alarm_img.enabled = false;
+
+        myCanvas = GameObject.Find("Canvas");
+
     }
 }
