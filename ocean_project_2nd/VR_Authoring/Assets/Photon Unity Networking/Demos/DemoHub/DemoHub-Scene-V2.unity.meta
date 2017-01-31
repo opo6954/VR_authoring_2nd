@@ -1,4 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 7dfd47dc8b9484dd79d8636d8603a9e5
 DefaultImporter:
   userData: 
+=======
+guid: 1e2caec2c02e49d41ae51cb322d96379
+timeCreated: 1482731936
+licenseType: Free
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

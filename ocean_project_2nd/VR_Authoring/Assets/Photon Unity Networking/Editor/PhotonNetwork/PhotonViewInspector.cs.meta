@@ -1,12 +1,24 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: e73a30c46df19194f873ea7a9ce12753
 labels:
 - ExitGames
 - PUN
 - Photon
 - Networking
+=======
+guid: 8b67506b2b1b8f7478e6bfdf69c3395b
+timeCreated: 1482731949
+licenseType: Free
+>>>>>>> refs/remotes/origin/master
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
+<<<<<<< HEAD
+=======
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

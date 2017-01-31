@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 99267cd9ef908d8469ef526e479775a6
 SubstanceImporter:
   serializedVersion: 3
@@ -133,11 +134,47 @@ SubstanceImporter:
     textureParameters:
     - name: Pavement_01_Diffuse
       alphaSource: 5
+=======
+guid: 80c84ccce4fe53d419fb986c3f7c0c81
+timeCreated: 1482732180
+licenseType: Free
+SubstanceImporter:
+  serializedVersion: 5
+  materialInstances:
+  - serializedVersion: 16
+    name: Pavement_01
+    prototypeName: Pavement_01
+    shaderName: 
+    shader: {fileID: 45, guid: 0000000000000000f000000000000000, type: 0}
+    shaderKeywords: 
+    renderQueue: -1
+    lightmapFlags: 5
+    inputs: []
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
+      generateMipmaps: 1
+      generateAllOutputs: 0
+      animationUpdateRate: 0
+    materialProperties:
+      serializedVersion: 2
+      texEnvs: []
+      floats: []
+      colors: []
+    textureParameters:
+    - name: Pavement_01_Diffuse
+      alphaSource: 6
+>>>>>>> refs/remotes/origin/master
       filterMode: 1
       aniso: 1
       wrapMode: 0
     - name: Pavement_01_Specular
+<<<<<<< HEAD
       alphaSource: 0
+=======
+      alphaSource: 7
+>>>>>>> refs/remotes/origin/master
       filterMode: 1
       aniso: 1
       wrapMode: 0
@@ -146,6 +183,7 @@ SubstanceImporter:
       filterMode: 1
       aniso: 1
       wrapMode: 0
+<<<<<<< HEAD
     - name: Pavement_01_Bump
       alphaSource: 0
       filterMode: 1
@@ -156,20 +194,50 @@ SubstanceImporter:
       filterMode: 1
       aniso: 1
       wrapMode: 0
+=======
+>>>>>>> refs/remotes/origin/master
     - name: Pavement_01_Height
       alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
+<<<<<<< HEAD
     - name: Pavement_01_Glossiness
       alphaSource: 0
       filterMode: 1
       aniso: 1
       wrapMode: 0
+=======
+    textureAssignments:
+    - shaderProp:
+        name: _MainTex
+      material: {instanceID: 0}
+      baseUID: 1224163837
+    - shaderProp:
+        name: _BumpMap
+      material: {instanceID: 0}
+      baseUID: 1224163822
+    - shaderProp:
+        name: _ParallaxMap
+      material: {instanceID: 0}
+      baseUID: 1224163781
+    - shaderProp:
+        name: _SpecGlossMap
+      material: {instanceID: 0}
+      baseUID: 1224163814
+>>>>>>> refs/remotes/origin/master
     buildTargetSettings:
     - serializedVersion: 2
       buildTarget: 
       textureWidth: 512
       textureHeight: 512
       textureFormat: 0
+<<<<<<< HEAD
   deletedPrototypes: []
+=======
+      loadingBehavior: 1
+  deletedPrototypes: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

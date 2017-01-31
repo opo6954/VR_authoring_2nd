@@ -1,4 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3132b20ffdf43924da403021f95590ae
 TextScriptImporter:
   userData: 
+=======
+guid: 125dc7c11e20a8c4c95b112a3a92c721
+timeCreated: 1482732195
+licenseType: Free
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

@@ -1,12 +1,22 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 531c14f8d5cdc4e5baa83ee6e16f783a
+=======
+guid: 9677140b8afb00c40a566122475a2046
+timeCreated: 1482732069
+licenseType: Free
+>>>>>>> refs/remotes/origin/master
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+<<<<<<< HEAD
     linearTexture: 1
+=======
+    linearTexture: 0
+>>>>>>> refs/remotes/origin/master
     correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
@@ -14,7 +24,11 @@ TextureImporter:
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
+<<<<<<< HEAD
     externalNormalMap: 1
+=======
+    externalNormalMap: 0
+>>>>>>> refs/remotes/origin/master
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
@@ -25,9 +39,15 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
+<<<<<<< HEAD
   maxTextureSize: 1024
   textureSettings:
     filterMode: 1
+=======
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+>>>>>>> refs/remotes/origin/master
     aniso: -1
     mipBias: -1
     wrapMode: -1
@@ -44,9 +64,17 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
+<<<<<<< HEAD
   textureType: 1
   buildTargetSettings: []
   spriteSheet:
+=======
+  spriteTessellationDetail: -1
+  textureType: -1
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+>>>>>>> refs/remotes/origin/master
     sprites: []
     outline: []
   spritePackingTag: 

@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4ad7633f7befb9d4b81c2123c39c2dae
 AudioImporter:
   serializedVersion: 4
@@ -10,3 +11,26 @@ AudioImporter:
   useHardware: 0
   loopable: 0
   userData: 
+=======
+guid: db0656920d9c68f4dacebf89dbf513aa
+timeCreated: 1482732201
+licenseType: Free
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  preloadAudioData: 1
+  loadInBackground: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

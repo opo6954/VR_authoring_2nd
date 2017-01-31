@@ -1,2 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 953d6c4c7f7ec324d860efb0db9c68ff
+=======
+guid: 6ce9f8b4cf7af1449b75233832d6a06b
+timeCreated: 1482732158
+licenseType: Free
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

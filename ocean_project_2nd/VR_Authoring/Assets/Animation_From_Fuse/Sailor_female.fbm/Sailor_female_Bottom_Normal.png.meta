@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b0a31ff3f47d8374cab0ece1424c596d
 timeCreated: 1483960287
+=======
+guid: dce8eb01a516f8b43b48ec521d4071c6
+timeCreated: 1484049716
+>>>>>>> refs/remotes/origin/master
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -8,7 +13,11 @@ TextureImporter:
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
+<<<<<<< HEAD
     linearTexture: 1
+=======
+    linearTexture: 0
+>>>>>>> refs/remotes/origin/master
     correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
@@ -16,7 +25,11 @@ TextureImporter:
     mipMapFadeDistanceEnd: 3
   bumpmap:
     convertToNormalMap: 0
+<<<<<<< HEAD
     externalNormalMap: 1
+=======
+    externalNormalMap: 0
+>>>>>>> refs/remotes/origin/master
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
@@ -47,7 +60,11 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
+<<<<<<< HEAD
   textureType: 1
+=======
+  textureType: -1
+>>>>>>> refs/remotes/origin/master
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2

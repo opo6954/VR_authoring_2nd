@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b33e456ae548c4d4ca6c71bd1d2c203d
 ModelImporter:
   serializedVersion: 16
@@ -9,6 +10,20 @@ ModelImporter:
     100006: Hips
     100008: Jaw
     100010: JawEND
+=======
+guid: f7f1d875fd0e25a418f792bac8f9e77d
+timeCreated: 1482732328
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Chest
+    100002: Head
+    100004: Hips
+    100006: Jaw
+    100008: JawEND
+    100010: //RootNode
+>>>>>>> refs/remotes/origin/master
     100012: LeftArm
     100014: LeftCheek
     100016: LeftEye
@@ -80,12 +95,21 @@ ModelImporter:
     100148: Spine
     100150: TongueBack
     100152: TongueTip
+<<<<<<< HEAD
     400000: //RootNode
     400002: Chest
     400004: Head
     400006: Hips
     400008: Jaw
     400010: JawEND
+=======
+    400000: Chest
+    400002: Head
+    400004: Hips
+    400006: Jaw
+    400008: JawEND
+    400010: //RootNode
+>>>>>>> refs/remotes/origin/master
     400012: LeftArm
     400014: LeftCheek
     400016: LeftEye
@@ -157,7 +181,11 @@ ModelImporter:
     400148: Spine
     400150: TongueBack
     400152: TongueTip
+<<<<<<< HEAD
     7400000: Jump_Land
+=======
+    7400000: _197_Idle_JumpDownLow_Idle
+>>>>>>> refs/remotes/origin/master
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -166,6 +194,7 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+<<<<<<< HEAD
     optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
@@ -204,6 +233,26 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: .00999999978
+=======
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+>>>>>>> refs/remotes/origin/master
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -211,11 +260,16 @@ ModelImporter:
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
+<<<<<<< HEAD
+=======
+    keepQuads: 0
+>>>>>>> refs/remotes/origin/master
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
+<<<<<<< HEAD
   tangentSpace:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
@@ -951,3 +1005,31 @@ ModelImporter:
   animationType: 3
   additionalBone: 0
   userData: 
+=======
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

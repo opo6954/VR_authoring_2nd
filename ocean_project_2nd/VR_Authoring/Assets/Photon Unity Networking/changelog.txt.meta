@@ -1,7 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 612a7d8fb44bb994d90d9c0fa1408703
 labels:
 - ExitGames
 - PUN
 - Photon
 - Networking
+=======
+guid: 70049f8b8fafdf24c8b7ccc2404720da
+timeCreated: 1482732199
+licenseType: Free
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

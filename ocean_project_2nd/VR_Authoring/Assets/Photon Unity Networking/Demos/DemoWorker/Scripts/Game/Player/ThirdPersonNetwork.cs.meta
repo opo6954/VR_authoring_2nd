@@ -1,10 +1,22 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 13c4159c5850b1a498351cd423b910b3
 labels:
 - ExitGames
 - PUN
+=======
+guid: 8e9f6f5fc3a55a541951b1a73f28a981
+timeCreated: 1482731949
+licenseType: Free
+>>>>>>> refs/remotes/origin/master
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
+<<<<<<< HEAD
+=======
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master
