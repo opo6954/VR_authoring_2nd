@@ -1,7 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 97b050d43ac7c4d2b9f6cbb587650761
+=======
 guid: 7d186608a80fdfd43a4d572f6f60e4d6
 timeCreated: 1482732055
 licenseType: Free
+>>>>>>> refs/remotes/origin/master
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -27,7 +31,11 @@ TextureImporter:
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
+<<<<<<< HEAD
+  maxTextureSize: 1024
+=======
   maxTextureSize: 2048
+>>>>>>> refs/remotes/origin/master
   textureSettings:
     filterMode: -1
     aniso: -1
@@ -46,11 +54,17 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
+<<<<<<< HEAD
+  textureType: -1
+  buildTargetSettings: []
+  spriteSheet:
+=======
   spriteTessellationDetail: -1
   textureType: -1
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
+>>>>>>> refs/remotes/origin/master
     sprites: []
     outline: []
   spritePackingTag: 

@@ -1,4 +1,19 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 23ccffaf915b101419d098a118141d9a
+TrueTypeFontImporter:
+  serializedVersion: 2
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 1
+  characterPadding: 0
+  includeFontData: 1
+  use2xBehaviour: 0
+  fontNames: []
+  customCharacters: 
+  fontRenderingMode: 0
+  userData: 
+=======
 guid: 954d21b6dfb4dc04d90a483a0e8c92f8
 timeCreated: 1482732203
 licenseType: Free
@@ -20,3 +35,4 @@ TrueTypeFontImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

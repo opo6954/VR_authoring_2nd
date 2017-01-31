@@ -1,4 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: d127e961917b252458a9910af185709e
+labels:
+- ExitGames
+- PUN
+=======
 guid: 1945ef85261a3c449bdf1a6d6d3cef9a
 timeCreated: 1482731936
 licenseType: Free
@@ -6,3 +12,4 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

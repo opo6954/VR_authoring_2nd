@@ -1,4 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: ae31d748c0bbc05448a13e58f8861963
+NativeFormatImporter:
+  userData: 
+=======
 guid: 3b150254ddb825f498e8c887515c8a5d
 timeCreated: 1482732170
 licenseType: Free
@@ -6,3 +11,4 @@ NativeFormatImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

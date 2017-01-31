@@ -1,4 +1,16 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 7d93183d7fa55d34fa5e60699b70656f
+AudioImporter:
+  serializedVersion: 4
+  format: 0
+  quality: -1
+  stream: 1
+  3D: 1
+  forceToMono: 1
+  useHardware: 0
+  loopable: 0
+=======
 guid: fff55f77439532845ac94612734f0d18
 timeCreated: 1482732202
 licenseType: Free
@@ -20,3 +32,4 @@ AudioImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

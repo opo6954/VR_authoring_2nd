@@ -37,7 +37,7 @@ public class DialogueTalkClientState : ClientStateModuleTemplate {
 	//ClientState가 시작한 후 계속 불림
 	public override void Process()
 	{
-		Debug.Log ("DialogueTalkClientState Processing...");
+		
 		if (options == null) {
 			dialogue.active = false;
 			return;
@@ -65,10 +65,21 @@ public class DialogueTalkClientState : ClientStateModuleTemplate {
 	public override bool Goal()
 	{
 		answer = dialogue.GetComponent<DialogueAnswerContainer> ().answer;
+
+        if (Input.GetKeyDown("x") == true)
+        {
+            return true;
+        }
+
+
+        Debug.Log(answer);
+        
 		if (answer >= 0) {
 			//Debug.Log ("DialogueTalkClientState Ended...");
 			return true;
 		}
+
+
 		return false;
 	}
 	public override void Res()

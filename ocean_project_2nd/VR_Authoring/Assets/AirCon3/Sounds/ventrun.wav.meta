@@ -1,4 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: aca58846bad7c054189e9bb4e784a6ef
+timeCreated: 1484030095
+licenseType: Free
+AudioImporter:
+  serializedVersion: 6
+  defaultSettings:
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+=======
 guid: d96b383e6fbc5594bbc8538d2c99b0da
 AudioImporter:
   serializedVersion: 6
@@ -8,6 +21,7 @@ AudioImporter:
     sampleRateOverride: 0
     compressionFormat: 0
     quality: 0
+>>>>>>> refs/remotes/origin/master
     conversionMode: 0
   platformSettingOverrides: {}
   forceToMono: 0

@@ -1,9 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: 50ddac281b22b4d439fed8088ba83950
+TextureImporter:
+=======
 guid: 07746e908b481da4db345f0c47addb11
 timeCreated: 1482731972
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
+>>>>>>> refs/remotes/origin/master
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -17,11 +22,21 @@ TextureImporter:
   bumpmap:
     convertToNormalMap: 0
     externalNormalMap: 0
+<<<<<<< HEAD
+    heightScale: .25
+=======
     heightScale: 0.25
+>>>>>>> refs/remotes/origin/master
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+<<<<<<< HEAD
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+=======
   cubemapConvolution: 0
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
@@ -30,11 +45,17 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
+>>>>>>> refs/remotes/origin/master
     aniso: -1
     mipBias: -1
     wrapMode: -1
   nPOTScale: 1
   lightmap: 0
+<<<<<<< HEAD
+  compressionQuality: 50
+  textureType: -1
+  buildTargetSettings: []
+=======
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
@@ -57,3 +78,4 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

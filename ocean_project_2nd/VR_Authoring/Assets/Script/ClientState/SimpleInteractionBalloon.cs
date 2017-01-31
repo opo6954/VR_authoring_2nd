@@ -42,6 +42,7 @@ public class SimpleInteractionBalloon : SimpleInteractionModuleTemplate {
 	// Use this for initialization
 	void Start () {
 		flag = false;
+        curState = false;
 	}
 
 	// Update is called once per frame

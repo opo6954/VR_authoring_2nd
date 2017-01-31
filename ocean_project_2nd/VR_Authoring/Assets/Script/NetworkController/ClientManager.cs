@@ -25,10 +25,7 @@ public class ClientManager : Photon.PunBehaviour {
 
     void Start()
     {
-        
          
-
-
 
         /*
          * 

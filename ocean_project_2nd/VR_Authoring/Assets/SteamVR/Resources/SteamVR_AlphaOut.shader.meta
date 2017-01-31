@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: da25bb0dccfd3894181fc5e84714cd17
+timeCreated: 1456189850
+licenseType: Store
+=======
 guid: 6847ca9fbda005f44b946e57ee8bcd97
 timeCreated: 1482732158
 licenseType: Free
+>>>>>>> refs/remotes/origin/master
 ShaderImporter:
   defaultTextures: []
   userData: 

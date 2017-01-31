@@ -1,7 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: d37c2cf88f7c59f4c8cf5d3812568143
+=======
 guid: 0e0ab4f37fdf2b240bdaeff69d01aae0
 timeCreated: 1482731944
 licenseType: Free
+>>>>>>> refs/remotes/origin/master
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []
@@ -9,4 +13,7 @@ MonoImporter:
   icon: {instanceID: 0}
   userData: 
   assetBundleName: 
+<<<<<<< HEAD
+=======
   assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

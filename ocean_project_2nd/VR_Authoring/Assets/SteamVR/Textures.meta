@@ -1,4 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: abfc00e0350ad744083849e2d7ae06ee
+folderAsset: yes
+DefaultImporter:
+  userData: 
+  assetBundleName: 
+=======
 guid: fd7f1dfdc39f1894aa880747c6977781
 folderAsset: yes
 timeCreated: 1482731933
@@ -7,3 +14,4 @@ DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+>>>>>>> refs/remotes/origin/master

@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: ca600c25f665e924080249d35223a35b
+folderAsset: yes
+timeCreated: 1480659811
+=======
 guid: 46e6cfacceac03342bcaa990f65a0283
 folderAsset: yes
 timeCreated: 1482731937
+>>>>>>> refs/remotes/origin/master
 licenseType: Free
 DefaultImporter:
   userData: 
