@@ -29,14 +29,30 @@ public class RPCController : Photon.PunBehaviour {
         MessageProtocol mp = new MessageProtocol(parameters);
 
         string receiver = mp.receiver;
-        
-        if (receiver == PhotonNetwork.masterClient.name)//server 받음
+
+        Debug.Log("On RPC SendMessage...");
+        Debug.Log("Sender: " + mp.sender);
+        Debug.Log("Receiver: " + receiver);
+
+
+        //receiver를 통해 message가 제대로 보내졌는지 확인하자.
+        if (receiver == PhotonNetwork.playerName)
         {
-            localServerManager.receiveMessage(mp);//server에서 처리
-        }
-        else if (receiver != PhotonNetwork.masterClient.name)//client받음
-        {
-            localClientManager.receiveMessage(mp);//client에서 처리
+            if (receiver == PhotonNetwork.masterClient.name)//server 받음
+            {
+                for (int i = 0; i < parameters.Length; i++)
+                {
+                    Debug.Log("On RPC, " + i.ToString() + "th contents is " + parameters[i]);
+                }
+
+                Debug.Log("For localServerManager, " + localServerManager.name);
+
+                localServerManager.receiveMessage(mp);//server에서 처리
+            }
+            else if (receiver != PhotonNetwork.masterClient.name)//client받음
+            {
+                localClientManager.receiveMessage(mp);//client에서 처리
+            }
         }
     }
    
@@ -86,26 +102,36 @@ public class RPCController : Photon.PunBehaviour {
 
 
 
-    //아마 player들의 position, rotattion 외의 다른 부분을 sync 맞춰야 할 때 쓰일 예정인 함수들 밑의 message와는 독립적으로 운영되어야 한다
-    //이 부분은 각 character가 자신의 clientstate에 맞춰서 animation을 하는 부분을 sync로 맞출 때에 쓰일 예정임
+    //Player의 animatino을 네트워크상에서 맞춰준다
     [PunRPC]
     public void animationSync(int state)
     {
-        CharacterAniState cas = CharacterAniState.IDLE;
-        switch (state)
+        if (PhotonNetwork.isMasterClient == false)
         {
-            case 0:
-                cas = CharacterAniState.TALKING;
-                break;
-            case 1:
-                cas = CharacterAniState.PHONE;
-                break;
-            case 2:
-                cas = CharacterAniState.WALK;
-                break;
-        }
+            CharacterAnimationState cas = CharacterAnimationState.IDLE;
 
-        localClientAnimator.checkActionAnimation(cas);
+            switch (state)
+            {
+
+                case 0:
+                    cas = CharacterAnimationState.BUTTON;
+                    break;
+                case 1:
+                    cas = CharacterAnimationState.IDLE;
+                    break;
+                case 2:
+                    cas = CharacterAnimationState.PHONE;
+                    break;
+                case 3:
+                    cas = CharacterAnimationState.TALKING;
+                    break;
+                case 4:
+                    cas = CharacterAnimationState.WALK;
+                    break;
+            }
+
+            localClientAnimator.triggerAnimation(cas);
+        }
     }
 
 

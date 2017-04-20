@@ -15,7 +15,7 @@ public class ServerLogger{
         if(myInstance == null)
         {
             myInstance = new ServerLogger();
-
+            
             canvas = GameObject.FindGameObjectWithTag("Server_Canvas");
             contents = canvas.transform.GetChild(0).transform.GetChild(0).GetChild(0).GetComponent<UnityEngine.UI.Text>();
         }

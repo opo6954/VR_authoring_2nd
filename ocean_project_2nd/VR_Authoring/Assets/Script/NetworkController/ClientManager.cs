@@ -10,22 +10,26 @@ using System.Collections;
  * 이후 master client로부터 message를 받아서 처리할 수 있는 구조 만들기d
  * */
 //client쪽 관리
-public class ClientManager : Photon.PunBehaviour {
+public class ClientManager : Photon.PunBehaviour
+{
 
     public string myPlayerName;
-     
+
+    public bool isMine;
+
     ClientStateController clientStateController = null;
     PlayerTemplate myPlayerInfo = null;
-    RPCController rpcController=null;
+    RPCController rpcController = null;
     
+
     void Awake()
     {
-   
+        
     }
 
     void Start()
     {
-         
+
 
         /*
          * 
@@ -41,7 +45,7 @@ public class ClientManager : Photon.PunBehaviour {
          * 
         */
 
-        
+
         /*
         Debug.Log("Init Client...");
 
@@ -64,7 +68,7 @@ public class ClientManager : Photon.PunBehaviour {
 
     void Update()
     {
-        
+
     }
 
     //client 초기화부분 joystick input 정보 등을 초기화할 수 있음
@@ -76,14 +80,14 @@ public class ClientManager : Photon.PunBehaviour {
 
         InputDeviceSettings.Instance().mappingJoystickButton();
 
-        clientStateController = gameObject.AddComponent<ClientStateController>(); 
+        clientStateController = gameObject.AddComponent<ClientStateController>();
 
         GameObject canvas = GameObject.FindGameObjectWithTag("Server_Canvas");
 
-        if(canvas != null)
+        if (canvas != null)
             canvas.SetActive(false);//server를 위한 canvas는 제거
 
-        
+
         //server한테 connect message 보내기
         sendMessage(new MessageProtocol(MessageProtocol.MESSAGETYPE.CONNECT, PhotonNetwork.playerName, PhotonNetwork.masterClient.name, 1, new string[1] { PhotonNetwork.playerName }));
     }
@@ -110,7 +114,7 @@ public class ClientManager : Photon.PunBehaviour {
         Debug.Log("Current task is " + text);
     }
 
-    
+
 
 
     /*
@@ -148,7 +152,7 @@ public class ClientManager : Photon.PunBehaviour {
         //이후 그 clientstate를 실행한다
         clientStateController.setCurrClientState(csmt);
 
-    //이 부분이 제일 중요함d
+        //이 부분이 제일 중요함d
     }
     //역할 정보 설정기능
     public void controlRoleInfo(MessageProtocol mp)
@@ -167,7 +171,7 @@ public class ClientManager : Photon.PunBehaviour {
         string infoType = mp.getParameterValue(0);
 
         //null 아닐경웅
-        if(infoType != null)
+        if (infoType != null)
         {
             if (infoType == "Scenario")
             {
@@ -180,7 +184,7 @@ public class ClientManager : Photon.PunBehaviour {
             }
 
         }
-        
+
     }
     //모든 training 종료
     public void finishiTraining(MessageProtocol mp)
@@ -198,9 +202,6 @@ public class ClientManager : Photon.PunBehaviour {
         sendMessage(mp);
     }
 
-    
-    
-    
 
 
 
@@ -209,7 +210,10 @@ public class ClientManager : Photon.PunBehaviour {
 
 
 
-   
+
+
+
+
 
     public void turnOffClientCamera_Client(string playerName)
     {
@@ -225,22 +229,27 @@ public class ClientManager : Photon.PunBehaviour {
         Debug.Log("my network name is " + PhotonNetwork.playerName);
 
         Debug.Log("In turnOffRPC, network player length: " + PhotonNetwork.playerList.Length);
-        
 
-        //다른 player의 관련 요소 끄기
+
+        //다 끄지 말고 일단 내가 제어할 수 없는 얘들은 끄기(AudioListener, 등
+        //ClientManager에는 client의 기본 기능이 포함되어 있으므로 켜두기
+
+
         for (int i = 0; i < players.Length; i++)
         {
             if (players[i].GetPhotonView().name != myPlayerName)
             {
-                //client Manager 끄기
-                players[i].GetComponent<ClientManager>().enabled = false;
                 //Player Template 끄기
+
+                players[i].GetComponent<ClientManager>().isMine = false;
+
                 players[i].GetComponent<PlayerTemplate>().enabled = false;
 
                 Transform fpsController = players[i].transform.FindChild("FPSController");
 
                 //Character Controller 끄기
                 fpsController.GetComponent<CharacterController>().enabled = false;
+
                 //오디오 소스 끄기
                 fpsController.GetComponent<AudioSource>().enabled = false;
 
@@ -249,6 +258,7 @@ public class ClientManager : Photon.PunBehaviour {
 
                 //1인칭 Character 끄기
                 fpsController.FindChild("FirstPersonCharacter").gameObject.SetActive(false);
+                               
 
             }
         }
@@ -270,7 +280,7 @@ public class ClientManager : Photon.PunBehaviour {
                 Debug.Log("My role name is " + myPlayerInfo.MyRoleName);
 
                 //이 부분에서 message 보내자
-                sendMessage(new MessageProtocol(MessageProtocol.MESSAGETYPE.ROLEINFO, PhotonNetwork.playerName, PhotonNetwork.masterClient.name, 2, new string[2] { PhotonNetwork.playerName, myPlayerInfo.MyRoleName}));
+                sendMessage(new MessageProtocol(MessageProtocol.MESSAGETYPE.ROLEINFO, PhotonNetwork.playerName, PhotonNetwork.masterClient.name, 2, new string[2] { PhotonNetwork.playerName, myPlayerInfo.MyRoleName }));
 
                 yield break;
             }
@@ -285,7 +295,7 @@ public class ClientManager : Photon.PunBehaviour {
         //client에서의 message관련 logging...
         Debug.Log("Send message...");
         Debug.Log(mp.ToString());
-        rpcController.photonView.RPC("sendMessage", PhotonTargets.All, mp.getParameters());
+        rpcController.photonView.RPC("sendMessage", PhotonTargets.All, mp.getpackingMessages());
     }
 
 
@@ -314,7 +324,7 @@ public class ClientManager : Photon.PunBehaviour {
 
                 controlRoleInfo(mp);
 
-                
+
 
                 break;
             case MessageProtocol.MESSAGETYPE.TRAININGEND:
@@ -329,106 +339,27 @@ public class ClientManager : Photon.PunBehaviour {
     }
 
     //특정 action에 등장하는 animation을 sync한다
-    public void actionAnimationSync(CharacterAniState aniState)
+    public void actionAnimationSync(CharacterAnimationState aniState)
     {
-        int state=-1;
-        switch(aniState)
+        int state = -1;
+        switch (aniState)
         {
-            case CharacterAniState.TALKING:
+            case CharacterAnimationState.BUTTON:
                 state = 0;
                 break;
-            case CharacterAniState.PHONE:
+            case CharacterAnimationState.IDLE:
                 state = 1;
                 break;
-            case CharacterAniState.WALK:
+            case CharacterAnimationState.PHONE:
                 state = 2;
+                break;
+            case CharacterAnimationState.TALKING:
+                state = 3;
+                break;
+            case CharacterAnimationState.WALK:
+                state = 4;
                 break;
         }
         rpcController.photonView.RPC("animationSync", PhotonTargets.All, state);
     }
-
-
-
-
-    /*
-    *     [PunRPC]
-   public void sendRoleInfo(string[] roleInfo)
-   {
-       string type = roleInfo[0];
-
-       if (type == "connect")
-       {
-           if (PhotonNetwork.isMasterClient == false)
-           {
-               string sender = roleInfo[1];
-               string receiver = roleInfo[2];
-
-               if (PhotonNetwork.playerName == receiver)
-               {
-                   int numberofRole = int.Parse(roleInfo[3]);
-
-                   string[] roleList = new string[numberofRole];
-
-                   for (int i = 0; i < numberofRole; i++)
-                   {
-                       roleList[i] = roleInfo[i + 4];
-                   }
-
-                   localClientManager.chooseRoleInfo(roleList);
-               }
-           }
-       }
-       else if (type == "request")
-       {
-           string sender = roleInfo[1];
-           string receiver = roleInfo[2];
-
-           if (PhotonNetwork.isMasterClient == true)
-           {
-               string playerName = roleInfo[3];
-               string roleName = roleInfo[4];
-
-               localServerManager.addRolePlayer(playerName, roleName);
-           }
-       }
-   }
-    * */
-
-    /*
-     * 이 부분은 TRAININGINFO에서 처리해야 함
-     *  [PunRPC]
-    public void sendScenarioInfoToClient(object[] parameters)
-    {
-        //client한테만 해당
-        if (PhotonNetwork.isMasterClient == false)
-        {
-
-            string sender = parameters[0].ToString(); ;
-            string scenarioName = parameters[1].ToString();
-
-            localClientManager.setScenarioNameText(scenarioName);
-        }
-    }
-
-    [PunRPC]
-    public void sendTaskInfoToClient(object[] parameters)
-    {
-        //client한테만 해당
-        if (PhotonNetwork.isMasterClient == false)
-        {
-            string sender = parameters[0].ToString();
-            string taskName = parameters[1].ToString();
-
-            localClientManager.setTaskNameText(taskName);
-        }
-    }
-
-     * */
-
-
-    //network 관련 함수, server로의 message를 보내거나 받는다 이 부분을 통해서만 server와 통신이 가능하다
-
-    //Server-->Client로의 message를 수신한다.
-
-   
 }

@@ -10,7 +10,7 @@ using System.Collections.Generic;
  * 
  * 
  * 
- * 
+ *  
  *  
  * */
 
@@ -29,7 +29,7 @@ public class ServerManager : Photon.PunBehaviour {
     public Dictionary<string, Dictionary<string, object>> clientTrainInfo;
 
     public Dictionary<string, int> trainingScoreList;
-
+     
 
     //key는 role이름, value는 done이 되었는지 안되었는지 확인
     public Dictionary<string, bool> clientStateDoneFlags;
@@ -109,7 +109,7 @@ public class ServerManager : Photon.PunBehaviour {
 
     void Start()
     {
-        minPlayerNumber = 1;
+        minPlayerNumber = 4;
 
         playerRoleList = new Dictionary<string, string>();
 
@@ -155,6 +155,7 @@ public class ServerManager : Photon.PunBehaviour {
         sc.setServer(this);
 
 
+        //임시로 tmpState만듦
         ScenarioModuleTemplate tmpScenario = new ScenarioModuleTemplate();//임시 scenario
 
         TaskModuleTemplate tmpTask = new TaskModuleTemplate();//임시 task
@@ -398,7 +399,7 @@ public class ServerManager : Photon.PunBehaviour {
                 return items.Key;
             }
         }
-        return "";
+        return ""; 
     }
 
 
@@ -419,7 +420,7 @@ public class ServerManager : Photon.PunBehaviour {
     {
         ServerLogger.Instance().addText("Send message...");
         ServerLogger.Instance().addText(mp.ToString());
-        rpcController.photonView.RPC("sendMessage", PhotonTargets.All, mp.getParameters());
+        rpcController.photonView.RPC("sendMessage", PhotonTargets.All, mp.getpackingMessages());
     }
     //message 받기 이후 message type에 따라 처리하면 됨
     //client-->server의 모든 message를 받는 local 함수임

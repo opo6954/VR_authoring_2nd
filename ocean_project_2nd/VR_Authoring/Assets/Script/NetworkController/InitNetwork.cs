@@ -20,7 +20,7 @@ public class InitNetwork : Photon.PunBehaviour{
     RPCController rpcController = null;
 
     string _gameVersion = "1";
-    public int maxPlayer = 4;
+    private int maxPlayer = 4;
     private bool isPlayerSetting = false;
     private bool isJoinRoom = false;
 
@@ -80,7 +80,7 @@ public class InitNetwork : Photon.PunBehaviour{
     {
         Debug.Log("Master랑 연결됨...");
 
-        PhotonNetwork.JoinOrCreateRoom("marine room", new RoomOptions() { maxPlayers = byte.Parse(this.maxPlayer.ToString()) }, null);
+        PhotonNetwork.JoinOrCreateRoom("marine room", new RoomOptions() { MaxPlayers = byte.Parse(maxPlayer.ToString()) }, null);
         
     }
 
@@ -149,8 +149,7 @@ public class InitNetwork : Photon.PunBehaviour{
             //servermanager instance 잡기
             rpcController.localServerManager = server.GetComponent<ServerManager>();
             rpcController.localServerManager.Callback_initNetwork(PhotonNetwork.playerName, rpcController);
-
-
+            
             this.photonView.RPC("turnOffClientCamera", PhotonTargets.All, PhotonNetwork.playerName);
 
         }
@@ -164,17 +163,26 @@ public class InitNetwork : Photon.PunBehaviour{
             //player는 network상에서 prefab을 소환해야하니까 일단 photonnetwork로 instantiate를 해야함
             //이후에 player를 훝어서 걍 꺼놓는 거로 하자 그거는 일단 기본 flow를 만든 후에 하자
             //network에서 instantiate됨
-            GameObject player = PhotonNetwork.Instantiate("Player_Network/Player_Own_Network", Vector3.zero, Quaternion.identity, 0);
+            GameObject player = PhotonNetwork.Instantiate("Player_Network/Player_Own_Network", new Vector3(0,0,30), Quaternion.identity, 0);
             player.GetComponent<ClientManager>().Callback_initNetwork(PhotonNetwork.playerName,rpcController);
             this.photonView.RPC("changePlayerPrefabName",PhotonTargets.AllBuffered, new object[] { player.name, PhotonNetwork.playerName});
 
+
+            
             rpcController.localPlayerName = player.name;
             //clientmanager instance 잡기
             rpcController.localClientManager = player.GetComponent<ClientManager>();
+
+            //내가 조종 가능한 clientManager임을 true값을 통해 표시하기
+            rpcController.localClientManager.isMine = true;
+
             rpcController.localClientAnimator = player.GetComponent<CharactorAnimationController>();
             rpcController.localClientManager.myPlayerName = player.name;
 
+            rpcController.localClientAnimator.rpcController = rpcController;
+            rpcController.localClientAnimator.clientManager = rpcController.localClientManager;
 
+            
             this.photonView.RPC("turnOffClientCamera", PhotonTargets.All, PhotonNetwork.playerName);
         }   
         //RPC 부르기
