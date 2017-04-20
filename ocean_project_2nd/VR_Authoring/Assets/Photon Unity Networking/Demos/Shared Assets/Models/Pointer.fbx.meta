@@ -1,41 +1,21 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 0baebe6c8f51e754a96dd7d4dee9bb4e
 ModelImporter:
-  serializedVersion: 16
-=======
-guid: 981bb372b7d5d664ba5525090125caff
-timeCreated: 1482732280
-licenseType: Free
-ModelImporter:
   serializedVersion: 19
->>>>>>> refs/remotes/origin/master
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
     4300000: Pointer
-<<<<<<< HEAD
     9500000: //RootNode
   materials:
-    importMaterials: 0
-=======
-  materials:
     importMaterials: 1
->>>>>>> refs/remotes/origin/master
     materialName: 0
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-<<<<<<< HEAD
-    optimizeGameObjects: 0
-    animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
-=======
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
@@ -47,70 +27,36 @@ ModelImporter:
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
->>>>>>> refs/remotes/origin/master
     animationWrapMode: 0
     extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD
-    globalScale: .400000006
-    meshCompression: 0
-    addColliders: 0
-    importBlendShapes: 0
-=======
-    globalScale: 1
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
->>>>>>> refs/remotes/origin/master
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
-<<<<<<< HEAD
-=======
     keepQuads: 0
->>>>>>> refs/remotes/origin/master
     weldVertices: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-<<<<<<< HEAD
-  tangentSpace:
-    normalSmoothAngle: 0
-    splitTangentsAcrossUV: 1
-    normalImportMode: 1
-    tangentImportMode: 1
-  importAnimation: 0
-=======
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 60
+    normalSmoothAngle: 0
     normalImportMode: 0
     tangentImportMode: 3
   importAnimation: 1
->>>>>>> refs/remotes/origin/master
   copyAvatar: 0
   humanDescription:
     human: []
     skeleton: []
-<<<<<<< HEAD
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
-    feetSpacing: 0
-    rootMotionBoneName: 
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
-  additionalBone: 0
-  userData: 
-=======
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -121,10 +67,9 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
->>>>>>> refs/remotes/origin/master

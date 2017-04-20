@@ -1,11 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 2b7b9f63437475b4e9d2688b23e6413d
-timeCreated: 1484030267
-licenseType: Free
-=======
-guid: 0d2f97c7d483a3a459e34a28787049a7
->>>>>>> refs/remotes/origin/master
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -22,10 +16,6 @@ ModelImporter:
     4300000: ac3_fan
     4300002: aircon3
     9500000: //RootNode
-<<<<<<< HEAD
-=======
-    11100000: //RootNode
->>>>>>> refs/remotes/origin/master
   materials:
     importMaterials: 1
     materialName: 0
@@ -50,11 +40,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-<<<<<<< HEAD
-    globalScale: 1
-=======
-    globalScale: 0.03
->>>>>>> refs/remotes/origin/master
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -68,19 +54,11 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-<<<<<<< HEAD
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-=======
-    useFileScale: 0
-  tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
-    tangentImportMode: 4
->>>>>>> refs/remotes/origin/master
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -96,11 +74,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-<<<<<<< HEAD
   animationType: 2
-=======
-  animationType: 1
->>>>>>> refs/remotes/origin/master
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

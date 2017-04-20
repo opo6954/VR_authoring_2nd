@@ -1,100 +1,116 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public enum CharacterAniState
+public enum CharacterAnimationState
 {
     IDLE, WALK, TALKING, BUTTON, PHONE
+}
 
+public static class CharacterAniState
+{
+
+
+    public static Dictionary<CharacterAnimationState, string> stateMapping;
+
+    static CharacterAniState()
+    {
+        stateMapping = new Dictionary<CharacterAnimationState, string>() { {CharacterAnimationState.IDLE, "Idle"},{CharacterAnimationState.WALK, "Walking"},{CharacterAnimationState.TALKING, "Talking"},{CharacterAnimationState.BUTTON, "Button"},{CharacterAnimationState.PHONE, "BeginPhone"} };
+    }
 }
 
 public class CharactorAnimationController : MonoBehaviour {
    
 
-    CharacterAniState myState;
+    CharacterAnimationState myState;
     public Animator myAnimator;
-
+    public GameObject ownRadio;
+    public RPCController rpcController;
+    public ClientManager clientManager;
     
 
 	// Use this for initialization
 	void Start () {
-
+        
+        if (ownRadio != null)
+        {
+            ownRadio.SetActive(false);
+        }
 	}
 	
 	// Update is called once per frame
 
     public void resetAnimation()
     {
-        if (myState != CharacterAniState.IDLE)
+        if (myState != CharacterAnimationState.IDLE)
         {
-            myState = CharacterAniState.IDLE;
-            myAnimator.SetTrigger("Idle");
-            myAnimator.ResetTrigger("Talking");
-            myAnimator.ResetTrigger("Button");
-            myAnimator.ResetTrigger("Phone");
+            myState = CharacterAnimationState.IDLE;
+            myAnimator.SetTrigger(CharacterAniState.stateMapping[CharacterAnimationState.IDLE]);
+            myAnimator.ResetTrigger(CharacterAniState.stateMapping[CharacterAnimationState.TALKING]);
+            myAnimator.ResetTrigger(CharacterAniState.stateMapping[CharacterAnimationState.BUTTON]);
+            myAnimator.ResetTrigger(CharacterAniState.stateMapping[CharacterAnimationState.PHONE]);
+            ownRadio.SetActive(false);
         }
     }
 
-    public void checkActionAnimation(CharacterAniState action)
+    public void triggerAnimation(CharacterAnimationState action)
     {
-        switch (action)
+        if (myState == CharacterAnimationState.PHONE)
         {
-            case CharacterAniState.TALKING:
-                if (myState != CharacterAniState.TALKING)
-                {
-                    myState = CharacterAniState.TALKING;
-                    myAnimator.SetTrigger("Talking");
-                }
-                
-                break;
-            case CharacterAniState.BUTTON:
-                if (myState != CharacterAniState.BUTTON)
-                {
-                    myState = CharacterAniState.BUTTON;
-                    myAnimator.SetTrigger("Button");
-                }
-
-                break;
-            case CharacterAniState.PHONE:
-                if (myState != CharacterAniState.PHONE)
-                {
-                    myState = CharacterAniState.PHONE;
-                    myAnimator.SetTrigger("Phone");
-                }
-                break;
+            ownRadio.SetActive(true);
         }
+        if (myState != action)
+        {
+            myState = action;
+            myAnimator.SetTrigger(CharacterAniState.stateMapping[action]);
+        }        
     }
-
+    //RPC로 Network상에서 animation을 바꿔주자
     void checkMovementAnimation()
     {
+        
         if (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("s"))
         {
-            if (myState != CharacterAniState.WALK)
-            {
-                myState = CharacterAniState.WALK;
-                myAnimator.SetTrigger("Walk");
-
-            }
+            clientManager.actionAnimationSync(CharacterAnimationState.WALK);
         }
         else if (Input.GetKeyUp("w") || Input.GetKeyUp("a") || Input.GetKeyUp("d") || Input.GetKeyUp("s"))
         {
-            if (myState != CharacterAniState.IDLE)
-            {
-                myState = CharacterAniState.IDLE;
-                myAnimator.SetTrigger("Idle");
-            }
+            clientManager.actionAnimationSync(CharacterAnimationState.IDLE);
         }
     }
      
 
 	void Update () {
+        //for Debugging
+        /*
         if (Input.GetKeyDown("r"))
         {
-            checkActionAnimation(CharacterAniState.BUTTON);
+            checkActionAnimation(AnimationState.PHONE);
         }
         else if (Input.GetKeyDown("t"))
         {
             resetAnimation();
         }
-        checkMovementAnimation();        
+        */
+        //Network
+
+        //본인일 경우 animation setting을 하기        
+        if(clientManager.isMine == true)
+            checkMovementAnimation();        
+
+
+
+        //For local
+
+        /*
+        if (Input.GetKeyDown("w") || Input.GetKeyDown("a") || Input.GetKeyDown("d") || Input.GetKeyDown("s"))
+        {
+            triggerAnimation(CharacterAnimationState.WALK);
+        }
+        else if (Input.GetKeyUp("w") || Input.GetKeyUp("a") || Input.GetKeyUp("d") || Input.GetKeyUp("s"))
+        {
+            triggerAnimation(CharacterAnimationState.IDLE);
+        }
+         * */
 	}
 }

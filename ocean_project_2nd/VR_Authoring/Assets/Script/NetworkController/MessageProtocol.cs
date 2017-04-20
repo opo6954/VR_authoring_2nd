@@ -134,10 +134,10 @@ public class MessageProtocol {
 
     public override string ToString()
     {
-        return "MSG " + MessageProtocol.getTypeNameStr(type) + " FROM " + sender + " TO " + receiver;
+        return "MSG " + MessageProtocol.getStrFromMsgType(type) + " FROM " + sender + " TO " + receiver;
     }
 
-    public static string getTypeNameStr(MESSAGETYPE mp)
+    public static string getStrFromMsgType(MESSAGETYPE mp)
     {
         switch (mp)
         {
@@ -156,6 +156,28 @@ public class MessageProtocol {
         }
     }
 
+    public static MESSAGETYPE getMsgTypeFromStr(string str)
+    {
+        switch (str)
+        {
+            case "CONNECT":
+                return MESSAGETYPE.CONNECT;
+            case "ROLEINFO":
+                return MESSAGETYPE.ROLEINFO;
+            case "CLIENTSTATE":
+                return MESSAGETYPE.CLIENTSTATE;
+            case "TRAININGINFO":
+                return MESSAGETYPE.TRAININGINFO;
+            case "TRAININGEND":
+                return MESSAGETYPE.TRAININGEND;
+            default:
+                Debug.Log("Wrong with get type");
+                return MESSAGETYPE.CONNECT;
+        }
+    }
+
+
+
     public void setParameterValue(int idx, string val)
     {
         parameters[idx] = val;
@@ -172,10 +194,18 @@ public class MessageProtocol {
 
     public void unpackingMessage()
     {
-        type = (MESSAGETYPE)int.Parse(packingMessages[0]);
+        for (int i = 0; i < packingMessages.Length; i++)
+        {
+            Debug.Log(i.ToString() + "th Message Contents: " + packingMessages[i]);
+        }
+
+        type = getMsgTypeFromStr(packingMessages[0]);
         sender = packingMessages[1];
         receiver = packingMessages[2];
         numOfParameter = int.Parse(packingMessages[3]);
+
+        parameters = new string[numOfParameter];
+
 
         for (int i = 0; i < numOfParameter; i++)
         {
@@ -188,6 +218,8 @@ public class MessageProtocol {
     //packing array로부터 messageprotocol만들기
     public MessageProtocol(string[] _packingMessages)
     {
+        packingMessages = new string[_packingMessages.Length];
+
         for (int i = 0; i < _packingMessages.Length; i++)
         {
             packingMessages[i] = _packingMessages[i];
@@ -199,42 +231,46 @@ public class MessageProtocol {
     {
         numOfParameter = _numOfParameter;
 
-        parameters = new string[4 + numOfParameter];
+        packingMessages = new string[4 + numOfParameter];
 
-        
 
-        parameters[0] = _type.ToString();
 
-        parameters[1] = "";//sender
+        packingMessages[0] = getStrFromMsgType(_type);
 
-        parameters[2] = "";//receiver
+        packingMessages[1] = "";//sender
 
-        parameters[3] = numOfParameter.ToString();
+        packingMessages[2] = "";//receiver
+
+        packingMessages[3] = numOfParameter.ToString();
 
         for (int i = 0; i < numOfParameter; i++)
         {
-            parameters[4 + i] = _parameter[i];
+            packingMessages[4 + i] = _parameter[i];
         }
     }
 
 
 
-    public MessageProtocol(MESSAGETYPE _type, string sender, string receiver, int _numOfParameter, string[] _parameter)
+    public MessageProtocol(MESSAGETYPE _type, string _sender, string _receiver, int _numOfParameter, string[] _parameter)
     {
+
+        sender = _sender;
+        receiver = _receiver;
+
         numOfParameter = _numOfParameter;
-        parameters = new string[4 + numOfParameter];
+        packingMessages = new string[4 + numOfParameter];
 
-        parameters[0] = _type.ToString();
+        packingMessages[0] = getStrFromMsgType(_type);
 
-        parameters[1] = sender;//sender
+        packingMessages[1] = sender;//sender
 
-        parameters[2] = receiver;//receiver
+        packingMessages[2] = receiver;//receiver
 
-        parameters[3] = numOfParameter.ToString();
+        packingMessages[3] = numOfParameter.ToString();
 
         for (int i = 0; i < numOfParameter; i++)
         {
-            parameters[4 + i] = _parameter[i];
+            packingMessages[4 + i] = _parameter[i];
         }
     }
 
@@ -266,18 +302,18 @@ public class MessageProtocol {
 
         numOfParameter = tmpParameters.Count;
 
-        parameters = new string[4 + numOfParameter];
+        packingMessages = new string[4 + numOfParameter];
 
-        parameters[0] = _type.ToString();
-        parameters[1] = "";
-        parameters[2] = "";
-        parameters[3] = numOfParameter.ToString();
+        packingMessages[0] = getStrFromMsgType(_type);
+        packingMessages[1] = "";
+        packingMessages[2] = "";
+        packingMessages[3] = numOfParameter.ToString();
 
         
 
         for (int i = 0; i < numOfParameter; i++)
         {
-            parameters[4 + i] = tmpParametersArray[i];
+            packingMessages[4 + i] = tmpParametersArray[i];
         }
 
     }
@@ -286,23 +322,23 @@ public class MessageProtocol {
 
     public void setSenderPlayer(string _senderPlayer)
     {
-        parameters[1] = _senderPlayer;
+        packingMessages[1] = _senderPlayer;
     }
 
     public void setReceiverPlayer(string _receiverPlayer)
     {
-        parameters[2] = _receiverPlayer;
+        packingMessages[2] = _receiverPlayer;
     }
 
 
-    public string[] getParameters()
+    public string[] getpackingMessages()
     {
-        if (parameters[1] == "" || parameters[2] == "")
+        if (packingMessages[1] == "" || packingMessages[2] == "")
         {
             Debug.Log("Neither sender or receiver configure...");
         }
 
-        return parameters;
+        return packingMessages;
     }
     public string getClientStateName()
     {
@@ -321,9 +357,9 @@ public class MessageProtocol {
 
             for (int i = 0; i < numOfParameter; i++)
             {
-                if (4 + i + 1 < parameters.Length)
+                if (4 + i + 1 < packingMessages.Length)
                 {
-                    myDic.Add(parameters[4 + i], parameters[4 + i + 1]);
+                    myDic.Add(packingMessages[4 + i], packingMessages[4 + i + 1]);
                 }
             }
 

@@ -1,11 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 449b48f7eb5d87a4baaa5fb73f875a59
-=======
-guid: 8b3e292cf9b777743b3dede081ecd595
-timeCreated: 1482732261
-licenseType: Free
->>>>>>> refs/remotes/origin/master
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
@@ -129,51 +123,32 @@ ModelImporter:
     3300000: wrench
     4300000: construction_worker
     4300002: wrench
-    7400000: Take 001
-<<<<<<< HEAD
-    7400006: idle0
-    7400012: idle
-    7400014: run
-    7400016: walk
-    7400018: jump_pose
-    11100000: //RootNode
-    13700000: construction_worker
-  materials:
-    importMaterials: 1
-    materialName: 3
-=======
+    7400000: idle
+    7400002: run
+    7400004: walk
+    7400006: jump_pose
     9500000: //RootNode
     13700000: construction_worker
   materials:
     importMaterials: 1
     materialName: 0
->>>>>>> refs/remotes/origin/master
     materialSearch: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
-<<<<<<< HEAD
-    resampleRotations: 1
-=======
     resampleCurves: 1
->>>>>>> refs/remotes/origin/master
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-<<<<<<< HEAD
-    animationCompression: 0
-=======
     animationCompression: 1
->>>>>>> refs/remotes/origin/master
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-<<<<<<< HEAD
     clipAnimations:
     - serializedVersion: 16
       name: idle
@@ -290,14 +265,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.01
-=======
-    clipAnimations: []
-    isReadable: 1
-  meshes:
-    lODScreenPercentages: []
-    globalScale: 1
->>>>>>> refs/remotes/origin/master
+    globalScale: 0
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
@@ -311,19 +279,11 @@ ModelImporter:
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
-<<<<<<< HEAD
-    useFileScale: 0
-  tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
-    tangentImportMode: 4
-=======
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
->>>>>>> refs/remotes/origin/master
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -339,15 +299,9 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-<<<<<<< HEAD
-  animationType: 1
-  humanoidOversampling: 1
-  additionalBone: 1
-=======
   animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
->>>>>>> refs/remotes/origin/master
   userData: 
   assetBundleName: 
   assetBundleVariant: 

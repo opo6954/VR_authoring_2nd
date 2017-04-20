@@ -88,10 +88,12 @@ public class PlayerTemplate : MonoBehaviour
 
     void Start()
     {
+        /*
         radio = GameObject.FindWithTag("radio");
         radio.SetActive(false);
 
         myCanvas = GameObject.Find("Canvas");
+         * */
 
     }
 }

@@ -1,53 +1,33 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
 guid: 8f3b8af169a9a814698111fd64643579
-TextureImporter:
-=======
-guid: e6b03dbc80da3be4d923334e63cbbf25
-timeCreated: 1482732133
+timeCreated: 1485849721
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
->>>>>>> refs/remotes/origin/master
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
     enableMipMap: 1
-<<<<<<< HEAD
     linearTexture: 1
-=======
-    linearTexture: 0
->>>>>>> refs/remotes/origin/master
     correctGamma: 0
     fadeOut: 0
     borderMipMap: 0
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
   bumpmap:
-<<<<<<< HEAD
-    convertToNormalMap: 1
-    externalNormalMap: 1
-    heightScale: .125599995
-=======
     convertToNormalMap: 0
-    externalNormalMap: 0
+    externalNormalMap: 1
     heightScale: 0.25
->>>>>>> refs/remotes/origin/master
     normalMapFilter: 0
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
-<<<<<<< HEAD
-  textureFormat: -1
-  maxTextureSize: 1024
-=======
   cubemapConvolution: 0
   cubemapConvolutionSteps: 7
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 2048
->>>>>>> refs/remotes/origin/master
   textureSettings:
     filterMode: -1
     aniso: -1
@@ -55,11 +35,6 @@ TextureImporter:
     wrapMode: -1
   nPOTScale: 1
   lightmap: 0
-<<<<<<< HEAD
-  compressionQuality: 50
-  textureType: 1
-  buildTargetSettings: []
-=======
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
@@ -72,7 +47,7 @@ TextureImporter:
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
   spriteTessellationDetail: -1
-  textureType: -1
+  textureType: 1
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
@@ -82,4 +57,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
->>>>>>> refs/remotes/origin/master
